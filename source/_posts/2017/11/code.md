@@ -46,7 +46,7 @@ categories: 学习笔记
    2.本地的绝对路径
    3.本地的相对路径  -->
    <!-- 注释的功能：1.注释记载下来 2.锁定错误，检查错误，挑错-->
-   <a href="http://www.baidu.com">百度一下</a><!-- 超链接功能hyperlink    来源于anchor汽车抛锚，起初是当锚点作用的 -->
+   <a href="https://www.baidu.com">百度一下</a><!-- 超链接功能hyperlink    来源于anchor汽车抛锚，起初是当锚点作用的 -->
    <!-- a标签的功能有：1.超链接  2.锚点   3.协议限定符  就是用javescript在herf里写代码例如：herf=javescript:while(1){alert('中毒了，哦也！！！')}   4.自动调用电话或者邮件功能 -->
    <div style="width:100px;height: 100px;background-color:black;" id="only"></div>
    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

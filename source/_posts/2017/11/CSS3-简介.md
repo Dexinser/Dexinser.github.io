@@ -68,7 +68,7 @@ url(‘Sansation_Light.eot') format(‘eot’)；下载前面的优先选用
          url('diyfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
          url('diyfont.svg#fontname') format('svg'); /* iOS 4.1- */
 }`
-[字体](http://www.w3cplus.com/content/css3-font-face) (字体包下载地址)
+[字体](https://www.w3cplus.com/content/css3-font-face) (字体包下载地址)
 [字体](www.dafont.com) (字体包下载地址)
 
 ## 8

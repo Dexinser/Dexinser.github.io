@@ -11,8 +11,8 @@ language: zh-Hans
 timezone:
 
 # URL
-## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://indexcode.cn
+## If your site is put in a subdirectory, set url as 'https://yoursite.com/child' and root as '/child/'
+url: https://indexcode.cn
 root: /
 permalink: :title.html
 permalink_defaults:
@@ -96,7 +96,7 @@ tag_map:
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
-## http://momentjs.com/docs/#/displaying/format/
+## https://momentjs.com/docs/#/displaying/format/
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
@@ -132,7 +132,7 @@ baidusitemap:
 baidu_url_submit:
   count: 50 ## 比如3，代表提交最新的3个链接
   host: indexcode.cn  ## 在百度站长平台中注册的域名
-  token: http://data.zz.baidu.com/urls?site=indexcode.cn&token=LPpxYn7H6WBz9ZuE ## 请注意这个是您的秘钥，请不要发布在公众仓库里！
+  token: https://data.zz.baidu.com/urls?site=indexcode.cn&token=LPpxYn7H6WBz9ZuE ## 请注意这个是您的秘钥，请不要发布在公众仓库里！
   path: urls.txt  ## 文本文档的地址，新链接会保存在此文本文档里 
 
 # Deployment

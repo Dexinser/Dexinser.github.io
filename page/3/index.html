@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl">
+  
+  
+  
+  
+  <title>To die or not to die, this is a question~</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
+<meta property="og:type" content="website">
+<meta property="og:title" content="To die or not to die, this is a question~">
+<meta property="og:url" content="https://indexcode.cn/page/3/index.html">
+<meta property="og:site_name" content="To die or not to die, this is a question~">
+<meta property="og:description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="To die or not to die, this is a question~">
+<meta name="twitter:description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
+  
+    <link rel="alternative" href="/atom.xml" title="To die or not to die, this is a question~" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet">
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.jpeg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Dexinser</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">不想成为架构师的程序员不是一个好的程序员~</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder=" Search...">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/categories/资源分享/">资源分享</a></li>
+                        
+                            <li><a href="/categories/algorithm/">算法学习</a></li>
+                        
+                            <li><a href="/categories/学习笔记/">学习笔记</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/Dexinser" title="github">github</a>
+                            
+                                <a class="fl weibo" target="_blank" href="https://weibo.com/u/5223005381" title="weibo">weibo</a>
+                            
+                                <a class="fl rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/CSS3/" style="font-size: 17.5px;">CSS3</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TV/" style="font-size: 10px;">TV</a> <a href="/tags/book/" style="font-size: 12.5px;">book</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/others/" style="font-size: 10px;">others</a> <a href="/tags/个人分享/" style="font-size: 15px;">个人分享</a> <a href="/tags/个人感悟/" style="font-size: 12.5px;">个人感悟</a> <a href="/tags/个人日记/" style="font-size: 12.5px;">个人日记</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/历史故事/" style="font-size: 10px;">历史故事</a> <a href="/tags/后端/" style="font-size: 10px;">后端</a> <a href="/tags/商业问题/" style="font-size: 10px;">商业问题</a> <a href="/tags/学习笔记/" style="font-size: 12.5px;">学习笔记</a> <a href="/tags/影视人生/" style="font-size: 12.5px;">影视人生</a> <a href="/tags/影评/" style="font-size: 10px;">影评</a> <a href="/tags/思维能力/" style="font-size: 10px;">思维能力</a> <a href="/tags/杂/" style="font-size: 10px;">杂</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/笔试/" style="font-size: 10px;">笔试</a> <a href="/tags/计算机基础/" style="font-size: 10px;">计算机基础</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/认知提升/" style="font-size: 17.5px;">认知提升</a> <a href="/tags/诗与远方/" style="font-size: 10px;">诗与远方</a> <a href="/tags/资源分享/" style="font-size: 10px;">资源分享</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://me.csdn.net/dexinser">csdn</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://segmentfault.com/u/dexinser">segmentfault</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.jianshu.com/u/c1794d13eba9">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">健康生活~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Dexinser</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.jpeg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Dexinser</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">不想成为架构师的程序员不是一个好的程序员~</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/资源分享/">资源分享</a></li>
+                
+                    <li><a href="/categories/algorithm/">算法学习</a></li>
+                
+                    <li><a href="/categories/学习笔记/">学习笔记</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="https://github.com/Dexinser" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/5223005381" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-2017/11/前端基础题总结" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/前端基础题总结.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.732Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/前端基础题总结.html">前端基础题总结</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>前端基础题总结</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h3 id="1-行内元素和快级元素"><a href="#1-行内元素和快级元素" class="headerlink" title="1. 行内元素和快级元素"></a>1. 行内元素和快级元素</h3><p>inline： <code>&lt;span&gt;&lt;/span&gt;,&lt;strong&gt;&lt;/strong&gt;,&lt;em&gt;&lt;/em&gt;,&lt;a&gt;&lt;/a&gt;,&lt;del&gt;&lt;/del&gt;</code>;<br>block:  <code>&lt;p&gt;&lt;/p&gt;,&lt;ol&gt;&lt;/ol&gt;,&lt;li&gt;&lt;/li&gt;,&lt;ul&gt;&lt;/ul&gt;,&lt;div&gt;&lt;/div&gt;,&lt;form&gt;&lt;/form&gt;,&lt;adress&gt;&lt;/adress&gt;&lt;table&gt;&lt;/table&gt;&lt;h1-6&gt;</code>;<br>行内元素转化为块级元素：display : block;</p>
+<h3 id="2-css代码三中引入方式："><a href="#2-css代码三中引入方式：" class="headerlink" title="2. css代码三中引入方式："></a>2. css代码三中引入方式：</h3><pre><code>行间样式
+页面级css
+引入css文件 link
+style标签下写 @import url();
+</code></pre><h3 id="3-web标准：行为、样式、结构相分离"><a href="#3-web标准：行为、样式、结构相分离" class="headerlink" title="3. web标准：行为、样式、结构相分离"></a>3. web标准：行为、样式、结构相分离</h3><h3 id="4-简化代码："><a href="#4-简化代码：" class="headerlink" title="4. 简化代码："></a>4. 简化代码：</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">	*&#123;</span><br><span class="line">		margin: 0 10px;</span><br><span class="line">		padding: 0;</span><br><span class="line">	&#125;</span><br><span class="line">	#content&#123;</span><br><span class="line">		background:#ffffff;</span><br><span class="line">	&#125;</span><br><span class="line">	#content div&#123;</span><br><span class="line">		font-size: 14px;</span><br><span class="line">		text-align: center;</span><br><span class="line">		color: #e9e9e9;</span><br><span class="line">	&#125;</span><br><span class="line">	#nav&#123;</span><br><span class="line">		background-color: #e0e0e0;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-浏览器中margin默认值为8px；"><a href="#5-浏览器中margin默认值为8px；" class="headerlink" title="5. 浏览器中margin默认值为8px；"></a>5. 浏览器中margin默认值为8px；</h3><h3 id="6-盒模型的计算："><a href="#6-盒模型的计算：" class="headerlink" title="6. 盒模型的计算："></a>6. 盒模型的计算：</h3><figure class="highlight plain"><figcaption><span>lang</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">		&lt;title&gt;liangxi&lt;/title&gt;</span><br><span class="line">		&lt;style&gt;</span><br><span class="line">		body&#123;</span><br><span class="line">			padding: 0;</span><br><span class="line">			margin: 0;</span><br><span class="line">		&#125;</span><br><span class="line">		#my-defined&#123;</span><br><span class="line">			width: 100px;</span><br><span class="line">			height: 100px;</span><br><span class="line">			padding: 0 100px;</span><br><span class="line">			margin: 10px 20px 30px 40px;</span><br><span class="line">			border: 1px solid orange;</span><br><span class="line">			background: orange;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div id=&quot;my-defined&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>html中orange颜色的区域宽度是302px<br>orange区域距离页面左边40px，上10px</p>
+<h3 id="7-用css、html编写一个两列布局的页面，要求右侧宽度为200px；左侧自动扩展。"><a href="#7-用css、html编写一个两列布局的页面，要求右侧宽度为200px；左侧自动扩展。" class="headerlink" title="7. 用css、html编写一个两列布局的页面，要求右侧宽度为200px；左侧自动扩展。"></a>7. 用css、html编写一个两列布局的页面，要求右侧宽度为200px；左侧自动扩展。</h3><figure class="highlight plain"><figcaption><span>lang</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">	&lt;title&gt;liangxi&lt;/title&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">	.right&#123;</span><br><span class="line">		float: right;</span><br><span class="line">		width: 200px;</span><br><span class="line">		height: 100px;</span><br><span class="line">		background:red; </span><br><span class="line">	&#125;</span><br><span class="line">	.left&#123;</span><br><span class="line">		height: 100px;</span><br><span class="line">		margin-right: 200px;</span><br><span class="line">		background: black;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div class=&quot;right&quot;&gt;&lt;/div&gt;</span><br><span class="line">	&lt;div class=&quot;left&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="8-居中一个浮动元素："><a href="#8-居中一个浮动元素：" class="headerlink" title="8. 居中一个浮动元素："></a>8. 居中一个浮动元素：</h3><div class="wrap"><br>    <div id="my-defined"></div><br></div>
+
+<figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">	&lt;!-- 第一种方法： --&gt;</span><br><span class="line">	.wrap &#123;</span><br><span class="line">		position: relative;</span><br><span class="line">		height: 1000px;</span><br><span class="line">		width: 100%;</span><br><span class="line">	&#125;</span><br><span class="line">	.wrap #my-defined&#123;</span><br><span class="line">		position: absolute;</span><br><span class="line">		width: 300px;</span><br><span class="line">		height: 500px;</span><br><span class="line">		left: 50%;</span><br><span class="line">		right: 50%;</span><br><span class="line">		margin-left: -150px;</span><br><span class="line">		margin-top: -250px;</span><br><span class="line">		background-color: #ccc;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;!-- 第二种方法： --&gt;</span><br><span class="line">	.wrap&#123;</span><br><span class="line">		position: relative;</span><br><span class="line">		height: 1000px;</span><br><span class="line">		width: 100%;</span><br><span class="line">	&#125;</span><br><span class="line">	.wrap #my-defined&#123;</span><br><span class="line">		position: absolute;</span><br><span class="line">		width: 300px;</span><br><span class="line">		height: 500px;</span><br><span class="line">		top: 50%;</span><br><span class="line">		left: 50%;</span><br><span class="line">		transform: translate(-50%, -50%);</span><br><span class="line">		background-color: #ccc;</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;!-- 第三种方法： --&gt;</span><br><span class="line">	.wrap&#123;</span><br><span class="line">		display: flex;</span><br><span class="line">		width: 100%;</span><br><span class="line">		height: 1000px;</span><br><span class="line">		justify-content: center;</span><br><span class="line">		align-items: center;</span><br><span class="line">	&#125;</span><br><span class="line">	.wrap #my-defined&#123;</span><br><span class="line">		height: 500px;</span><br><span class="line">		width: 300px;</span><br><span class="line">		background-color: #ccc;		</span><br><span class="line">	&#125;</span><br><span class="line">	&lt;!-- 第四种方法： --&gt;</span><br><span class="line">	.wrap&#123;</span><br><span class="line">		position: relative;</span><br><span class="line">		width: 100%;</span><br><span class="line">		height: 1000px;</span><br><span class="line">	&#125;</span><br><span class="line">	.wrap #my-defined&#123;</span><br><span class="line">		position: absolute;</span><br><span class="line">		top: 0;</span><br><span class="line">		left: 0;</span><br><span class="line">		bottom: 0;</span><br><span class="line">		right: 0;</span><br><span class="line">		margin: auto;</span><br><span class="line">		background-color: #ccc;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="9-画出下图示意图："><a href="#9-画出下图示意图：" class="headerlink" title="9. 画出下图示意图："></a>9. 画出下图示意图：</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>liangxi<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">			<span class="selector-id">#page</span>&#123;</span></span><br><span class="line"><span class="undefined">				width: 520px;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.nav</span>&#123;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">width</span><span class="selector-pseudo">:200px</span>;</span></span><br><span class="line"><span class="undefined">				float: right;</span></span><br><span class="line"><span class="undefined">				background: orange;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.main</span>&#123;</span></span><br><span class="line"><span class="undefined">				width: 200px;</span></span><br><span class="line"><span class="undefined">				float: left;</span></span><br><span class="line"><span class="undefined">				padding-left: 110px;</span></span><br><span class="line"><span class="undefined">				background: black;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.sub</span>&#123;</span></span><br><span class="line"><span class="undefined">				width: 100px;</span></span><br><span class="line"><span class="undefined">				float: left;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">margin</span><span class="selector-pseudo">:10px</span> 0 10<span class="selector-tag">px</span> <span class="selector-tag">-100px</span>;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.nav</span>,<span class="selector-class">.sub</span>&#123;</span></span><br><span class="line"><span class="css">				<span class="selector-tag">border</span>: 10<span class="selector-tag">px</span> <span class="selector-tag">deshed</span> <span class="selector-id">#000</span>;</span></span><br><span class="line"><span class="undefined">				height: 300px;</span></span><br><span class="line"><span class="undefined">				background: orange;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="css">			<span class="selector-class">.sub</span>&#123;</span></span><br><span class="line"><span class="undefined">				height: 280px;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"page"</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"sub"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="10-form表单中method属性值及其区别："><a href="#10-form表单中method属性值及其区别：" class="headerlink" title="10. form表单中method属性值及其区别："></a>10. form表单中method属性值及其区别：</h3><pre><code>GET 使用URL 或Cookie 传参，而POST将数据，放在BODY中。
+GET 的URL会有长度上的限制， POST可以传输很多数据。
+POST比GET安全。
+</code></pre><p>但其实HTTP协议里没有规定POST数据就要放在BODY里， 也没有要求GET数据就一定要放在URL中而不能放在BODY中。<br>HTTP协议对GET和POST 都没有对数据的长度进行限制，两方面原因造成数据限制的原因<br>    早起浏览器会对URL长度进行限制（浏览器URL输入框）<br>    浏览器会对Content-length进行限制，这是为了服务器安全和稳定。</p>
+<h3 id="11-去掉ul-gt-li结构中前面的圆点，并且解决li前面的空余"><a href="#11-去掉ul-gt-li结构中前面的圆点，并且解决li前面的空余" class="headerlink" title="11. 去掉ul&gt;li结构中前面的圆点，并且解决li前面的空余"></a>11. 去掉ul&gt;li结构中前面的圆点，并且解决li前面的空余</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>liangxi<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">			ul &#123;</span></span><br><span class="line"><span class="undefined">			height: 100px;</span></span><br><span class="line"><span class="undefined">			padding: 0;</span></span><br><span class="line"><span class="undefined">			list-style: none;</span></span><br><span class="line"><span class="undefined">			border: 1px solid black;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="12-JavaScript中typeof可能返回的结果：number-string-boolean-object-undefined-function-symbol"><a href="#12-JavaScript中typeof可能返回的结果：number-string-boolean-object-undefined-function-symbol" class="headerlink" title="12. JavaScript中typeof可能返回的结果：number,string,boolean,object,undefined,function,symbol;"></a>12. JavaScript中typeof可能返回的结果：number,string,boolean,object,undefined,function,symbol;</h3><h3 id="13-已知数组var-arr-“goole”-”microsoft”-”oracle”-”阿里”，”freewheel”-”IBM”-”爱立信”，”百度”，”企鹅”，”美团”，”去哪儿”，”58同城”，”新浪”，”搜狐”，”大众点评”，”360”-”汽车之家”，”巨人网络”，”携程”，”4399”-”凤凰网”，”人民网”-，亲们，如果你想进前十的公司，请用效率最高的方法将此数组按照顺序链接成字符。"><a href="#13-已知数组var-arr-“goole”-”microsoft”-”oracle”-”阿里”，”freewheel”-”IBM”-”爱立信”，”百度”，”企鹅”，”美团”，”去哪儿”，”58同城”，”新浪”，”搜狐”，”大众点评”，”360”-”汽车之家”，”巨人网络”，”携程”，”4399”-”凤凰网”，”人民网”-，亲们，如果你想进前十的公司，请用效率最高的方法将此数组按照顺序链接成字符。" class="headerlink" title="13. 已知数组var arr = [“goole”,”microsoft”,”oracle”,”阿里”，”freewheel”,”IBM”,”爱立信”，”百度”，”企鹅”，”美团”，”去哪儿”，”58同城”，”新浪”，”搜狐”，”大众点评”，”360”,”汽车之家”，”巨人网络”，”携程”，”4399”,”凤凰网”，”人民网”]，亲们，如果你想进前十的公司，请用效率最高的方法将此数组按照顺序链接成字符。"></a>13. 已知数组var arr = [“goole”,”microsoft”,”oracle”,”阿里”，”freewheel”,”IBM”,”爱立信”，”百度”，”企鹅”，”美团”，”去哪儿”，”58同城”，”新浪”，”搜狐”，”大众点评”，”360”,”汽车之家”，”巨人网络”，”携程”，”4399”,”凤凰网”，”人民网”]，亲们，如果你想进前十的公司，请用效率最高的方法将此数组按照顺序链接成字符。</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var arr = [&quot;goole&quot;,&quot;microsoft&quot;,&quot;oracle&quot;,&quot;阿里&quot;,&quot;freewheel&quot;,&quot;IBM&quot;,&quot;爱立信&quot;,&quot;百度&quot;,&quot;企鹅&quot;,&quot;美团&quot;,&quot;去哪儿&quot;,&quot;58同城&quot;,&quot;新浪&quot;,&quot;搜狐&quot;,&quot;大众点评&quot;,&quot;360&quot;,&quot;汽车之家&quot;,&quot;巨人网络&quot;,&quot;携程&quot;,&quot;4399&quot;,&quot;凤凰网&quot;,&quot;人民网&quot;];
+    console.log(arr.join(&#39;,&#39;));
+&lt;/script&gt;</code></p>
+<h3 id="14-写出html、css、JavaScript注释代码形式："><a href="#14-写出html、css、JavaScript注释代码形式：" class="headerlink" title="14. 写出html、css、JavaScript注释代码形式："></a>14. 写出html、css、JavaScript注释代码形式：</h3><pre><code>html：&lt;!--   --&gt;
+css:/*   */
+js://
+</code></pre><h3 id="15-编写一段JavaScript脚生成下面这段DOM结构。"><a href="#15-编写一段JavaScript脚生成下面这段DOM结构。" class="headerlink" title="15. 编写一段JavaScript脚生成下面这段DOM结构。"></a>15. 编写一段JavaScript脚生成下面这段DOM结构。</h3><p><code>&lt;div class=&quot;exmple&quot;&gt;
+    &lt;p class=&quot;slogan&quot;&gt;成哥，你最帅!&lt;/p&gt;
+&lt;/div&gt;</code></p>
+<p>JS代码如下：</p>
+<p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var $Div = document.createElement(&#39;div&#39;);
+    var $P = document.createElement(&#39;p&#39;);
+    $Div.className = &quot;exmple&quot;;
+    $P.className = &quot;slogan&quot;;
+    $Div.appendChild($P);
+    document.body.appendChild($div);
+    $P.innerHTML = &quot;成哥，你最帅！&quot;;
+&lt;/script&gt;</code></p>
+<h3 id="16-为html元素绑定一个事件，如点击事件。写出兼容各个浏览器的事件绑定方法。"><a href="#16-为html元素绑定一个事件，如点击事件。写出兼容各个浏览器的事件绑定方法。" class="headerlink" title="16. 为html元素绑定一个事件，如点击事件。写出兼容各个浏览器的事件绑定方法。"></a>16. 为html元素绑定一个事件，如点击事件。写出兼容各个浏览器的事件绑定方法。</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    &lt;!-- 兼容各个浏览器的绑定事件： --&gt;
+    function addEvent(elem, type, handle){
+        if(elem.addEventListener){
+            elem.addEventListener(type, handle, false);
+        }else if (elem.attachEvent) {
+            elem[&#39;temp&#39; + type + handle] = handle;
+            elem[type + handle]= function (){
+                elem[&#39;temp&#39; + type + handle].call(elem);
+            };
+            elem.attachEvent(&#39;on&#39; + type, elem[type + handle])
+        }else{
+            elem[&#39;on&#39;+type]=handle;
+        }
+    }
+    &lt;!-- 兼容各个浏览器的一处绑定事件： --&gt;
+    function removeEvent(elem, type, handle){
+        if(elem.removeEventListener) {
+            elem.removeEventListener(type, handle, false);
+        }else if(elem.detachEvent) {
+            elem.datachEvent(‘on’ + type, elem[type + handle]);
+        }else {
+            elem[‘on’ + type] = null; //  elem[‘on’ + type] = false;
+        }
+    }
+&lt;/script&gt;</code></p>
+<p>第二种方法：</p>
+<p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function addEvent(elem, type, handle){
+        if(elem.addEventListener){
+            elem.addEventListener(type, handle, false);
+        }else if (elem.attachEvent) {
+            elem[handle.name] = function () {
+                handle.call(elem);
+            };
+            elem.attachEvent(&#39;on&#39; + type, elem[handle.name]);
+        }else{
+            elem[&#39;on&#39;+type]=handle;
+        }
+    }
+    &lt;!-- 兼容各个浏览器的移除绑定事件： --&gt;
+    function removeEvent(elem, type, handle){
+        if(elem.removeEventListener) {
+            elem.removeEventListener(type, handle, false);
+        }else if(elem.detachEvent) {
+            elem.datachEvent(‘on’ + type, elem[handle.name]);
+        }else {
+            elem[‘on’ + type] = null; //  elem[‘on’ + type] = false;
+        }
+    }
+&lt;/script&gt;</code></p>
+<h3 id="17-Call-apply-作用都是改变this指向；"><a href="#17-Call-apply-作用都是改变this指向；" class="headerlink" title="17. Call,apply:作用都是改变this指向；"></a>17. Call,apply:作用都是改变this指向；</h3><p>区别：传参的方式不同，call直接传，apply利用数组的形式传参；</p>
+<h3 id="18-封装ajax-向服务器异步发送数据；"><a href="#18-封装ajax-向服务器异步发送数据；" class="headerlink" title="18. 封装ajax,向服务器异步发送数据；"></a>18. 封装ajax,向服务器异步发送数据；</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function ajax(method, url, flag, callback, data){
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new window.XMLHttpRequest();
+        }else{
+            xhr = new ActiveXObject(&#39;Mirosoft.XMLHTTP&#39;);
+        }
+        var method = method.toUpperCase();  //对应的是toLowerCase()方法;
+        if(method === &#39;GET&#39;){
+            xhr.open(&#39;GET&#39;, url + &#39;?&#39; + data, flag);
+            xhr.send();
+        }else if(method === &#39;POST&#39;){
+            xhr.open(&#39;POST&#39;, url, flag);
+            xhr.setRequestHeader(&#39;content-type&#39;, &#39;application/x-www-form-urlencoded&#39;);
+            xhr.send(data);
+        }
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState === 4){
+                if(xhr.status === 200){
+                    callback(xhr.responseText); 
+                }
+            }
+        }
+    }
+&lt;/script&gt;</code></p>
+<h3 id="19-数组去重-eg：var-arr-‘a’-’b’-234-23-’a’-’b’-3-1-234"><a href="#19-数组去重-eg：var-arr-‘a’-’b’-234-23-’a’-’b’-3-1-234" class="headerlink" title="19. 数组去重 eg：var arr = [‘a’,’b’,234,23,’a’,’b’,3,1,234];"></a>19. 数组去重 eg：var arr = [‘a’,’b’,234,23,’a’,’b’,3,1,234];</h3><p>第一种方法：</p>
+<p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function () {
+     var arr = [],
+        obj = {},
+        len = this.length;
+        for(var i = 0;i &lt; len;i++){
+            if(!obj[this[i]]){
+                obj[this[i]] = &quot;11&quot;;
+                arr.push(this[i]);
+            }
+        }
+        return arr;
+}
+    var arr = [1,1,2,2,2,3,3,33,4,4,5,45,45,];
+    [].unique(arr);    --&gt; 结果为：[1，2，3，33，4，5，45]
+&lt;/script&gt;</code><br>第二种方法：<br><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function (arr) {
+        return new Set(arr);
+    }
+    var arr = [1,1,2,2,2,3,3,33,4,4,5,45,45,];
+    [].unique(arr);    --&gt; 结果为：[1，2，3，33，4，5，45]
+&lt;/script&gt;</code><br>第三种方法：<br><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function (arr) {
+        var temp = [], len = arr.length;
+        for(let i = 0; i &lt; len; i++) {
+            if(temp.indexOf(arr[i]) === -1) {
+                temp.push(arr[i]);
+            }
+        }
+        return temp;
+    }
+    var arr = [1,1,2,2,2,3,3,33,4,4,5,45,45,];
+    [].unique(arr);    --&gt; 结果为：[1，2，3，33，3，4，45]
+&lt;/script&gt;</code><br>第四种方法：<br><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function (arr) {
+        var temp = [], len = arr.length;
+        for(let i = 0; i &lt; len; i++) {
+            if(arr.indexOf(arr[i]) === i) {
+                temp.push(arr[i]);
+            }
+        }
+        return temp;
+    }
+    var arr = [1,1,2,2,2,3,3,33,4,4,5,45,45,];
+    [].unique(arr);    --&gt; 结果为：[1，2，3，33，4，5，45]
+&lt;/script&gt;</code><br>第五种方法：<br><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function (arr) {
+        var temp = [],index = [], len = arr.length;
+        for(let i = 0; i &lt; len; i++) {
+            for(let j = i + 1; j &lt; len; j++) {
+                if(arr[i] === arr[j]) {
+                    i ++ ;
+                    j = i;
+                }
+            }
+            temp.push(arr[i]);
+            index.push(i);
+        }
+        console.log(index);
+        return temp;
+    }
+    var arr = [1,1,2,2,2,3,3,33,4,4,5,45,45,];
+    [].unique(arr);    --&gt; 结果为：[1，2，3，33，4，5，45]
+&lt;/script&gt;</code></p>
+<h3 id="20-如今有个ul，如果有十亿个li；要求点击li触发事件，弹出对应li的内容"><a href="#20-如今有个ul，如果有十亿个li；要求点击li触发事件，弹出对应li的内容" class="headerlink" title="20. 如今有个ul，如果有十亿个li；要求点击li触发事件，弹出对应li的内容"></a>20. 如今有个ul，如果有十亿个li；要求点击li触发事件，弹出对应li的内容</h3><p><code>&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</code><br><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var oUl = document.getElementsByTagName(&#39;ul&#39;)[0];
+    oUl.onclick = function  (e) {
+        var event = e || window.event;
+        var target = event.target || event.srcElement;
+        console.log(target.innerHTML);
+    }
+&lt;/script&gt;</code></p>
+<h3 id="21-阻止事件冒泡和事件默认时间"><a href="#21-阻止事件冒泡和事件默认时间" class="headerlink" title="21. 阻止事件冒泡和事件默认时间"></a>21. 阻止事件冒泡和事件默认时间</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    &lt;!-- //取消冒泡 --&gt;
+    function stopBubble(e) {
+        if(e.stopPropagation){
+            e.stopPropagation();
+        }else{
+            e.cancelBubble = true;
+        }
+    }     
+    &lt;!-- //阻止默认事件 --&gt;
+    function  cancelHandler(e){
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            e.returnValue = false;
+        }
+    }
+&lt;/script&gt;</code></p>
+<h3 id="22-什么是DOM："><a href="#22-什么是DOM：" class="headerlink" title="22. 什么是DOM："></a>22. 什么是DOM：</h3><p>DOM是操作css，html的一套编程接口；<br>DOM对象即为宿主对象，浏览器厂商定义的；<br>DOM定义了表示和修改文档所需的方法。<br>对html和xml编程接口不是css</p>
+<h3 id="23-利用JavaScript取非行间样式，要求兼容性各个浏览器"><a href="#23-利用JavaScript取非行间样式，要求兼容性各个浏览器" class="headerlink" title="23. 利用JavaScript取非行间样式，要求兼容性各个浏览器"></a>23. 利用JavaScript取非行间样式，要求兼容性各个浏览器</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function getComputedStyle(obj,styleProp){
+        if (window.getComputedStyle) {
+            return window.getComputedStyle(obj,false)[styleProp];
+        }else{
+            return obj.currentStyle[styleProp];
+        }
+    }
+&lt;/script&gt;</code></p>
+<h3 id="24-运行test-和new-test-的结果是什么："><a href="#24-运行test-和new-test-的结果是什么：" class="headerlink" title="24. 运行test()和new test()的结果是什么："></a>24. 运行test()和new test()的结果是什么：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var a = 5;
+    function test(){
+        a=0;
+        alert(a);
+        alert(this.a);
+        var a;
+        alert(a);
+    }
+&lt;/script&gt;</code><br>结果是：0 5 0    ,    0 undefined 0</p>
+<h3 id="25-有字符串”aaaaabbbccccddddeeefgaa”-转换为连续不重复的字符串"><a href="#25-有字符串”aaaaabbbccccddddeeefgaa”-转换为连续不重复的字符串" class="headerlink" title="25. 有字符串”aaaaabbbccccddddeeefgaa”,转换为连续不重复的字符串"></a>25. 有字符串”aaaaabbbccccddddeeefgaa”,转换为连续不重复的字符串</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;aaaaabbbccccddddeeefgaa&quot;;
+    var reg = /(.)\1*/g;
+    console.log(str.replace(reg,&quot;$1&quot;));
+&lt;/script&gt;</code></p>
+<h3 id="26-一串连续数字实现打点功能：100000000转换成：1-000-000-000"><a href="#26-一串连续数字实现打点功能：100000000转换成：1-000-000-000" class="headerlink" title="26. 一串连续数字实现打点功能：100000000转换成：1.000.000.000"></a>26. 一串连续数字实现打点功能：100000000转换成：1.000.000.000</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;1000000000&quot;;
+    var reg = /(?=(\B)(\d{3})+$)/g;
+    console.log(str.replace(reg,&quot;.&quot;));
+&lt;/script&gt;</code></p>
+<h3 id="27-写出运算结果："><a href="#27-写出运算结果：" class="headerlink" title="27. 写出运算结果："></a>27. 写出运算结果：</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">	alert(typeof(a))--undefined</span><br><span class="line">	alert(typeof(undefined))--undefined</span><br><span class="line">	alert(typeof(NaN))--number</span><br><span class="line">	alert(typeof(null))--object</span><br><span class="line"></span><br><span class="line">	var a = &quot;123abc&quot;;</span><br><span class="line">	alert(typeof(+a));--number</span><br><span class="line">	alert(typeof(!!a));--boolean</span><br><span class="line">	alert(typeof(a + &quot;&quot;));--string</span><br><span class="line"></span><br><span class="line">	alert(1 == &quot;1&quot;); --true</span><br><span class="line">	alert(NaN == NaN); --flase</span><br><span class="line">	alert(NaN == undefined);--flase</span><br><span class="line">	alert(&quot;11&quot; + 11);--1111</span><br><span class="line">	alert(1===&quot;1&quot;)--flase</span><br><span class="line">	alert(parseInt(&quot;123abc&quot;))--123</span><br><span class="line"></span><br><span class="line">	var num = 1232123.3456789;</span><br><span class="line">	alert(num.toFixed(3));--1232123.346</span><br><span class="line">	//toFixed只在number类型上可以用，保留几位有效数字，四舍五入</span><br><span class="line"></span><br><span class="line">	// typeof(typeof(a))--string</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="28-打印当前年月时分秒"><a href="#28-打印当前年月时分秒" class="headerlink" title="28. 打印当前年月时分秒"></a>28. 打印当前年月时分秒</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var date = new Date();
+  console.log(date.getFullYear + &quot;年&quot; + (date.getMonth() + 1) + &quot;月&quot; + date.getDate() + &quot;日&quot;+ date.getHours() + &quot;时&quot; + date.getMinutes() + &quot;分&quot; + date.getSeconds() + &quot;秒&quot;);
+&lt;/script&gt;</code></p>
+<h3 id="29-css中，font-size设置的是字体的高；单位是px，em是相对值。"><a href="#29-css中，font-size设置的是字体的高；单位是px，em是相对值。" class="headerlink" title="29. css中，font-size设置的是字体的高；单位是px，em是相对值。"></a>29. css中，font-size设置的是字体的高；单位是px，em是相对值。</h3><h3 id="30-有html结构："><a href="#30-有html结构：" class="headerlink" title="30. 有html结构："></a>30. 有html结构：</h3><pre><code>`&lt;div style=&quot;background-color:red;margin:0 0 100px 0;&quot;&gt;123&lt;/div&gt;
+&lt;div style=&quot;background-color:red;margin:200px 0 0 0;&quot;&gt;234&lt;/div&gt;`
+
+他们之间的间距是：200px
+</code></pre><h3 id="31-简单说说自定义构造函数创建对象的原理："><a href="#31-简单说说自定义构造函数创建对象的原理：" class="headerlink" title="31. 简单说说自定义构造函数创建对象的原理："></a>31. 简单说说自定义构造函数创建对象的原理：</h3><pre><code>在函数的最前面隐式的加上 this = {}；最后隐式的返回 return this；
+</code></pre><h3 id="32-写出一种原型链实现继承的方式：圣杯模式"><a href="#32-写出一种原型链实现继承的方式：圣杯模式" class="headerlink" title="32. 写出一种原型链实现继承的方式：圣杯模式"></a>32. 写出一种原型链实现继承的方式：圣杯模式</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	var inherit =(function()&#123;</span><br><span class="line"></span><br><span class="line">	var F = function()&#123;&#125;;</span><br><span class="line">		return function(P,C)&#123;</span><br><span class="line">			F.prototype = P.prototype;</span><br><span class="line">			C.prototype = new F();</span><br><span class="line">			C.prototype.constructor = C;</span><br><span class="line">			C.prototype.uber = P.prototype;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;());</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="33-深度克隆："><a href="#33-深度克隆：" class="headerlink" title="33. 深度克隆："></a>33. 深度克隆：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.deepClone = function (parent, child) {
+           var child = {} || child;
+           var toStr = Object.prototype.toString,
+               arrStr = &#39;[object Array]&#39;;
+           for(var prop in parent){
+               if(parent.hasOwnProperty(prop)){
+                   if(typeof(parent[prop]) === &quot;object&quot;){
+                    child[prop] = (toStr.call(parent[prop]) === arrStr) ? []:
+                    {};
+                    deepClone(parent[prop], child[prop]);
+                   }else{
+                       child[prop] = parent[prop];
+                   }
+               }
+           }
+      }
+&lt;/script&gt;</code></p>
+<h3 id="34-描述预编译过程："><a href="#34-描述预编译过程：" class="headerlink" title="34. 描述预编译过程："></a>34. 描述预编译过程：</h3><pre><code>（1）创建AO对象；
+（2）找形参和变量声明，将变量和形参作为AO对象的属性名，值为undefined；
+（3）将实参和形参相统一；
+（4）在函数体里找函数声明，将函数声明作为AO对象的属性名，将函数体作为赋值对象赋予函数名。
+</code></pre><h3 id="35-介绍js语言特点："><a href="#35-介绍js语言特点：" class="headerlink" title="35. 介绍js语言特点："></a>35. 介绍js语言特点：</h3><pre><code>单线程；脚本语言；解释性语言，解释一行执行一行；ECMA标注；弱数据类型语言；可以跨平台；
+</code></pre><h3 id="36-介绍主流浏览器以及他们相应的内核，介绍浏览器分为哪几部分，内核呢？"><a href="#36-介绍主流浏览器以及他们相应的内核，介绍浏览器分为哪几部分，内核呢？" class="headerlink" title="36. 介绍主流浏览器以及他们相应的内核，介绍浏览器分为哪几部分，内核呢？"></a>36. 介绍主流浏览器以及他们相应的内核，介绍浏览器分为哪几部分，内核呢？</h3><pre><code>浏览器分为：shell与内核（js引擎，渲染引擎，其他）
+</code></pre><p>  主流浏览器：IE（trident）；chrome（webkit/blink）；safari（webkit）；Firefox（Gecko）；Opera（presto）；</p>
+<h3 id="37-简述js时间线的顺序："><a href="#37-简述js时间线的顺序：" class="headerlink" title="37. 简述js时间线的顺序："></a>37. 简述js时间线的顺序：</h3><pre><code>1、创建Document对象，开始解析web页面。document.readyState = &apos;loading&apos;。
+2、遇到link外部css，创建线程加载，并继续解析文档。
+3、遇到script外部js，并且没有设置async、defer，浏览器加载，并阻塞，等待js加载完成并执行该脚本，然后继续解析文档。
+4、遇到script外部js，并且设置有async、defer，浏览器创建线程加载，并继续解析文档。对于async属性的脚本，脚本加载完成后立即执行。（异步禁止使用document.write()）
+5、遇到img等，先正常解析dom结构，然后浏览器异步加载src，并继续解析文档。
+6、当文档解析完成，document.readyState = &apos;interactive&apos;。
+7、文档解析完成后（就是所有dom节点都解析完），所有设置有defer的脚本会按照顺序执行。（注意与async的不同,但同样禁止使用document.write()）;
+8、document对象触发DOMContentLoaded事件，这也标志着程序执行从同步脚本执行阶段，转化为事件驱动阶段。
+9、当所有async的脚本加载完成并执行后、img等加载完成后，document.readyState = &apos;complete&apos;，window对象触发load事件。
+10、从此，以异步响应方式处理用户输入、网络事件等。
+</code></pre><h3 id="38-异步加载js的几种方案："><a href="#38-异步加载js的几种方案：" class="headerlink" title="38. 异步加载js的几种方案："></a>38. 异步加载js的几种方案：</h3><pre><code>defer async
+</code></pre><p>异步加载兼容性写法：</p>
+<figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  function asyncLoaded (url,callback) &#123;</span><br><span class="line">      var script = document.createElement(&apos;script&apos;);</span><br><span class="line">      script.type = &quot;text/javascript&quot;;</span><br><span class="line">      if (script.readySate) &#123;</span><br><span class="line">          script.onreadystatechange = function ()&#123;</span><br><span class="line">              if (script.readySate == &quot;complete&quot; || script.readySate == &quot;loaded&quot;) &#123;</span><br><span class="line">                  obj[callback]();</span><br><span class="line">                  script.onreadystatechange = null ;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">          script.onload = function()&#123;</span><br><span class="line">              obj[callback]();</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      script.src = url ;</span><br><span class="line">      document.head.appendChild(script);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="39-打印结果："><a href="#39-打印结果：" class="headerlink" title="39. 打印结果："></a>39. 打印结果：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var a = (10*3-4/2 + 1)%2,
+        b = 3;
+    b %= a + 3;
+    console.log(a++);
+    console.log(--b);
+&lt;/script&gt;</code></p>
+<pre><code>结果：1   2
+</code></pre><h3 id="40-使用原生js，addEventListener-给每个li元素绑定一个click事件，输出他们的顺序。"><a href="#40-使用原生js，addEventListener-给每个li元素绑定一个click事件，输出他们的顺序。" class="headerlink" title="40. 使用原生js，addEventListener,给每个li元素绑定一个click事件，输出他们的顺序。"></a>40. 使用原生js，addEventListener,给每个li元素绑定一个click事件，输出他们的顺序。</h3><p><code>&lt;ul&gt;
+    &lt;li&gt;a&lt;/li&gt;
+    &lt;li&gt;a&lt;/li&gt;
+    &lt;li&gt;a&lt;/li&gt;
+    &lt;li&gt;a&lt;/li&gt;
+&lt;/ul&gt;</code></p>
+<p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var liCollection = document.getElementsByTagName(&#39;li&#39;),
+    len = liCollection.length;
+    for (var i = 0; i &lt; len; i++) {
+        (function(j){
+            liCollection[j].addEventListener(&#39;click&#39;,function(){
+                console.log(j);
+            }false);
+        }(i))
+    }
+&lt;/script&gt;</code></p>
+<h3 id="41-一个字符串由-a-z-组成，找出第一个只出现一次的字母"><a href="#41-一个字符串由-a-z-组成，找出第一个只出现一次的字母" class="headerlink" title="41. 一个字符串由[a-z]组成，找出第一个只出现一次的字母"></a>41. 一个字符串由[a-z]组成，找出第一个只出现一次的字母</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    Array.prototype.unique = function() {
+     var len = this.length,
+         obj = {},
+         arr = [];
+     for(var i = 0; i &lt; len; i++){
+       if(!obj[this[i]]) {
+         obj[this[i]] = &quot;1&quot;;
+         arr.push(this[i]);
+       }
+     }
+     return arr;
+    }
+    var str = &quot;abaadf&quot;;
+    var arr = str.split(&quot;&quot;);
+    var arr1 = arr.unique();
+    console.log(arr1[0]);
+&lt;/script&gt;</code></p>
+<h3 id="42-打印结果："><a href="#42-打印结果：" class="headerlink" title="42. 打印结果："></a>42. 打印结果：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var name = &quot;222&quot;;
+    var a = {
+        name:&quot;111&quot;,
+        say:function(){
+            console.log(this.name);
+        }
+    }
+    var fun = a.say;
+    fun();
+    a.say();
+    var b = {
+        name:&quot;333&quot;,
+        say:function(fun){
+            fun();
+        }
+    }
+    b.say(a.say);
+    b.say=a.say;
+    b.say();
+&lt;/script&gt;</code></p>
+<p>结果： 222  111  222  333</p>
+<h3 id="43-原始值"><a href="#43-原始值" class="headerlink" title="43. 原始值"></a>43. 原始值</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;你成哥很帅&quot;;
+    str.length = 3;
+    console.log(str);    
+&lt;/script&gt;</code></p>
+<p>执行结果为：你成哥很帅<br>原因：原始值不可改变</p>
+<h3 id="44-请用多种方法创造对象："><a href="#44-请用多种方法创造对象：" class="headerlink" title="44. 请用多种方法创造对象："></a>44. 请用多种方法创造对象：</h3><pre><code>字面量 var obj = {}；
+构造函数 var obj = new Object{};
+var obj = Object.create(原型)
+</code></pre><h3 id="45-解决污染全局变量"><a href="#45-解决污染全局变量" class="headerlink" title="45. 解决污染全局变量"></a>45. 解决污染全局变量</h3><pre><code>命名空间，闭包
+</code></pre><h3 id="46-枚举一个对象中所有自有属性："><a href="#46-枚举一个对象中所有自有属性：" class="headerlink" title="46. 枚举一个对象中所有自有属性："></a>46. 枚举一个对象中所有自有属性：</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  Person.prototype.lastName = &quot;ji&quot;;</span><br><span class="line"></span><br><span class="line">  function Person(name,age)&#123;</span><br><span class="line">    this.name  = name;</span><br><span class="line">    this.age = age ;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var oPerson = new Person (&apos;cheng&apos;,123);</span><br><span class="line">  for(var prop in oPerson)&#123;</span><br><span class="line">    if(oPerson.hasOwnProperty(prop))&#123;</span><br><span class="line">    console.log(oPerson[prop]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="47-让数组里的数据从大到小排列："><a href="#47-让数组里的数据从大到小排列：" class="headerlink" title="47. 让数组里的数据从大到小排列："></a>47. 让数组里的数据从大到小排列：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    arr.sort(function(a,b){
+        return a - b;
+    }());
+&lt;/script&gt;</code></p>
+<h3 id="48-es5严格模式如何使用，应该注意些什么："><a href="#48-es5严格模式如何使用，应该注意些什么：" class="headerlink" title="48. es5严格模式如何使用，应该注意些什么："></a>48. es5严格模式如何使用，应该注意些什么：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+全局严格模式:直接加 字符串：&quot;use strict&quot;;
+局部函数内严格模式（推荐）
+function test(){
+    &quot;use strict&quot;;
+}
+注意：不支持with,arguments.callee,func.caller,变量赋值前必须声明，局部this必须被赋值(Person.call(null/undefined) 赋值什么就是什么),拒绝重复属性和参数
+&lt;/script&gt;</code></p>
+<h3 id="49-选择html元素节点几种方法，以及他们各自的兼容性问题及特点："><a href="#49-选择html元素节点几种方法，以及他们各自的兼容性问题及特点：" class="headerlink" title="49. 选择html元素节点几种方法，以及他们各自的兼容性问题及特点："></a>49. 选择html元素节点几种方法，以及他们各自的兼容性问题及特点：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+        getElementsByTagName()[0];
+        getElementById();
+        getElementsByName();
+        getElementByClassName(); interactive8及以下不兼容
+        querySelectorAll();非实时ie7及以下不兼容
+        querySelector();非实时ie7及以下不兼容
+    1.getElementById方法定义在Document.prototype上，即Element节点上不能使用。
+    2.getElementsByName方法定义在HTMLDocument.prototype上，即非html中的document以外不能使用(xml document,Element)
+    3.getElementsByTagName方法定义在Document.prototype 和 Element.prototype上
+    4.HTMLDocument.prototype定义了一些常用的属性，body,head,分别指代HTML文档中的&lt;body&gt;&lt;head&gt;标签。
+    5.Document.prototype上定义了documentElement属性，指代文档的根元素，在HTML文档中，他总是指代&lt;html&gt;元素
+    6.getElementsByClassName、querySelectorAll、querySelector在Document,Element类中均有定义
+&lt;/script&gt;</code></p>
+<h3 id="50-说出节点类型的值为1-2-3-8-9的值对应的节点是什么："><a href="#50-说出节点类型的值为1-2-3-8-9的值对应的节点是什么：" class="headerlink" title="50. 说出节点类型的值为1,2,3,8,9的值对应的节点是什么："></a>50. 说出节点类型的值为1,2,3,8,9的值对应的节点是什么：</h3><p>元素节点   —— 1<br>属性节点   —— 2<br>文本节点   —— 3<br>注释节点   —— 8<br>document  —— 9 单独成一类 文档节点<br><!-- DocumentFragment  ——  11 文档碎片 --><br><!-- 获取节点类型   nodeType  --></p>
+<h3 id="51-鼠标事件的触发顺序："><a href="#51-鼠标事件的触发顺序：" class="headerlink" title="51. 鼠标事件的触发顺序："></a>51. 鼠标事件的触发顺序：</h3><pre><code>mousedown; focus; mouseup; click;
+右键事件：
+
+`&lt;script type=&quot;text/javascript&quot;&gt;    
+elem.onmousedown = function (e) {
+    if(e.button == 2){
+        alert(&quot;右键点击&quot;)
+    }
+}
+&lt;/script&gt;`
+</code></pre><h3 id="52-数据格式JSON转换为字符串，以及把字符串转换为JSON的方法"><a href="#52-数据格式JSON转换为字符串，以及把字符串转换为JSON的方法" class="headerlink" title="52. 数据格式JSON转换为字符串，以及把字符串转换为JSON的方法"></a>52. 数据格式JSON转换为字符串，以及把字符串转换为JSON的方法</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    JSON.parse();  string — &gt; json字符串
+JSON.stringify();   json — &gt; string
+&lt;/script&gt;</code></p>
+<h3 id="53-BOM对象及其功能："><a href="#53-BOM对象及其功能：" class="headerlink" title="53. BOM对象及其功能："></a>53. BOM对象及其功能：</h3><pre><code>Window     JavaScript 层级中的顶层对象，表示浏览器窗口。
+    属性：
+        closed    返回窗口是否已被关闭。
+        document    对 Document 对象的只读引用。
+        history    对 History 对象的只读引用。
+        innerheight    返回窗口的文档显示区的高度。
+        innerwidth    返回窗口的文档显示区的宽度。
+    方法：
+        alert()    显示带有一段消息和一个确认按钮的警告框。
+        blur()    把键盘焦点从顶层窗口移开。
+        clearInterval()    取消由 setInterval() 设置的 timeout。 
+
+Navigator  包含客户端浏览器的信息。
+    属性：
+        appCodeName    返回浏览器的代码名。 
+    方法：
+        javaEnabled()    规定浏览器是否启用 Java。
+
+Screen     包含客户端显示屏的信息。 
+    属性：
+        availHeight    返回显示屏幕的高度 (除 Windows 任务栏之外)。
+        availWidth    返回显示屏幕的宽度 (除 Windows 任务栏之外)。
+        width    返回显示器屏幕的宽度。
+
+History    包含了浏览器窗口访问过的 URL。 
+    属性：
+        length    返回浏览器历史列表中的 URL 数量。
+    方法：
+        back()    加载 history 列表中的前一个 URL。
+        forward()    加载 history 列表中的下一个 URL。
+        go()    加载 history 列表中的某个具体页面。
+
+Location   包含了当前 URL 的信息。
+    属性：
+        href    设置或返回完整的 URL。
+    方法：
+        assign()    加载新的文档。
+        reload()    重新加载当前文档。
+        replace()    用新的文档替换当前文档。
+</code></pre><h3 id="54-说明position定位的值有什么区别，如果有不能兼容的问题，如何解决"><a href="#54-说明position定位的值有什么区别，如果有不能兼容的问题，如何解决" class="headerlink" title="54. 说明position定位的值有什么区别，如果有不能兼容的问题，如何解决"></a>54. 说明position定位的值有什么区别，如果有不能兼容的问题，如何解决</h3><pre><code>absolute 绝对定位
+relative 相对定位
+fixed     相对可视区定位，而且脱离原来位置 ie6不能用
+sticky回去查一查
+</code></pre><h3 id="55-添加css代码使得ul外观可以包住li："><a href="#55-添加css代码使得ul外观可以包住li：" class="headerlink" title="55. 添加css代码使得ul外观可以包住li："></a>55. 添加css代码使得ul外观可以包住li：</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	ul&#123;</span><br><span class="line">		list-style: none;</span><br><span class="line">		padding: 0;</span><br><span class="line">	&#125;</span><br><span class="line">	ul&gt;li&#123;</span><br><span class="line">		float: left;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	ul:after&#123;</span><br><span class="line">	content:&quot;&quot;;</span><br><span class="line">	display:inline-block;</span><br><span class="line">	clear:both;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p><code>&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></p>
+<h3 id="56-熟知的选择优先级关系（权重）"><a href="#56-熟知的选择优先级关系（权重）" class="headerlink" title="56. 熟知的选择优先级关系（权重）"></a>56. 熟知的选择优先级关系（权重）</h3><pre><code>！important            无穷大
+style（行间样式）    1000
+id                    100
+class/属性/伪类        10
+标签/伪元素            1
+通配符*                0
+</code></pre><h3 id="57-display值及含义"><a href="#57-display值及含义" class="headerlink" title="57. display值及含义"></a>57. display值及含义</h3><p>display值： inline—行级元素，不沾满整行，不可以改变宽高<br>            block—-块级元素 沾满整行 可以改变宽高<br>            inline-block—-行级块元素 不占满整行 可以改变宽高 </p>
+<h3 id="58-写一个输入框，带有js功能，鼠标聚焦提示消息信息，失去焦点显示提示信息"><a href="#58-写一个输入框，带有js功能，鼠标聚焦提示消息信息，失去焦点显示提示信息" class="headerlink" title="58. 写一个输入框，带有js功能，鼠标聚焦提示消息信息，失去焦点显示提示信息"></a>58. 写一个输入框，带有js功能，鼠标聚焦提示消息信息，失去焦点显示提示信息</h3><figure class="highlight plain"><figcaption><span>type</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	input&#123;</span><br><span class="line">		border: 1px solid black;</span><br><span class="line">		color: #999;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	.fontGrey&#123;</span><br><span class="line">	color: #999;</span><br><span class="line">	&#125;</span><br><span class="line">	.fontNormal&#123;</span><br><span class="line">	color: #424242;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">	username:&lt;input tyoe=&quot;text&quot; value=&quot;请输入用户名&quot;onfocus=&quot;if(this value=&apos;请输入用户名&apos;)&#123;this.value=&apos;&apos;;this.className=&apos;fontNormal&apos;&#125;&quot;onblur=&quot;if(this.value==&apos;&apos;)&#123;this.value=&apos;请输入用户名&apos;;this.className=&apos;fontGrey&apos;&#125;&quot; onchange=&quot;console.log(this.value)&quot;&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="59-写出打印结果并说明原因："><a href="#59-写出打印结果并说明原因：" class="headerlink" title="59. 写出打印结果并说明原因："></a>59. 写出打印结果并说明原因：</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    function fn(a,b){
+        arguments[0] = 1;
+        console.log(a);
+        fn(2,1);
+    }
+    打印：1;
+    原因：实参，形参相统一;
+&lt;/script&gt;</code></p>
+<h3 id="60-将下列变量转化为小驼峰形式：my-first-name-gt-myFirstName"><a href="#60-将下列变量转化为小驼峰形式：my-first-name-gt-myFirstName" class="headerlink" title="60. 将下列变量转化为小驼峰形式：my-first-name-&gt;myFirstName"></a>60. 将下列变量转化为小驼峰形式：my-first-name-&gt;myFirstName</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;my-first-name&quot;;
+    var reg =/-(\w)/g;
+    var test = str.replace(reg,function($,$1){
+        return $1.toUpperCase();
+    });
+    console.log(test);
+&lt;/script&gt;</code></p>
+<h3 id="61-将aaaaabbbb字符串调换成bbbbaaaa形式"><a href="#61-将aaaaabbbb字符串调换成bbbbaaaa形式" class="headerlink" title="61. 将aaaaabbbb字符串调换成bbbbaaaa形式"></a>61. 将aaaaabbbb字符串调换成bbbbaaaa形式</h3><p><code>&lt;script type=&quot;text/javascript&quot;&gt;
+    var str = &quot;aaaabbbb&quot;;
+     var reg = /(\w{4})(\w{4})/g;
+     console.log(str.replace(reg,&quot;$2$1&quot;));
+&lt;/script&gt;</code></p>
+<p>说一下你对前端的理解.</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/人生启迪发人深省" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/人生启迪发人深省.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.730Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/人生启迪发人深省.html">人生启迪</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="影视人生-人生启迪"><a href="#影视人生-人生启迪" class="headerlink" title="影视人生-人生启迪"></a>影视人生-人生启迪</h2><p><strong> 人生启迪：</strong> <excerpt in index | 首页摘要><br>动情美剧：This Is Us</excerpt></p>
+<p>启迪电影：Cloud Atlas （演员：汤姆汉克斯、哈利贝瑞、雨果维文、周迅  导演：汤姆提克威、拉娜沃卓斯基）</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/个人随笔/">个人随笔</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/影视人生/">影视人生</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/事件" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/事件.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.729Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/事件.html">绑定事件</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> 绑定事件：</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="如何绑定事件："><a href="#如何绑定事件：" class="headerlink" title="如何绑定事件："></a>如何绑定事件：</h3><ol>
+<li>ele.onxxx = function (event) {}<br>兼容性很好，但是一个元素只能绑定一个处理程序<br>基本等同于写在HTML行间上</li>
+<li>obj.addEventListener(type, fn, false);<br>IE9以下不兼容，可以为一个事件绑定多个处理程序</li>
+<li>obj.attachEvent(‘on’ + type, fn);<br>IE独有，一个事件同样可以绑定多个处理程序</li>
+</ol>
+<h3 id="事件处理程序的运行环境："><a href="#事件处理程序的运行环境：" class="headerlink" title="事件处理程序的运行环境："></a>事件处理程序的运行环境：</h3><ol>
+<li>ele.onxxx = function (event){}<br>程序this指向是dom元素本身</li>
+<li>obj.addEventListener(type, fn, false);<br>程序this指向是dom元素本身</li>
+<li>obj.attachEvent(‘on’ + type, fn);<br>程序this指向window</li>
+</ol>
+<p>2有需要注意的地方：虽然这个方法可以绑定多个处理程序，但是也得看是怎么绑定的：<br> <code>var oDiv = document.getElementsByTagName(div)[0];
+ oDiv.addEventListener(&#39;click&#39;, function() {
+   alert(0);
+ }, false);
+ oDiv.addEventListener(&#39;click&#39;, function() {
+   alert(1);
+ }, false);</code><br>这样的结果就是：先弹窗为0，在弹窗为1；  因为绑定的事件处理函数不是同一个事件处理函数，绑定的事件处理函数是多个事件处理函数时，绑定多少个事件处理函数就会执行多少次这个所绑定的事件处理函数，并且无论这个是否是同一事件类型。 </p>
+<p> <code>var oDiv = document.getElementsByTagName(div)[0],
+     test = function(){
+    alert(0);
+     };</code><br> oDiv.addEventListener(‘click’, test, false);<br>这样的结果就是： 只弹窗一次0；  因为绑定的事件处理函数是同一个就是test处理函数。总结：同一dom元素绑定同一事件类型而且是同一个处理函数的时候，只执行所绑定的test处理函数一次！！！</p>
+<p>事件处理模型：事件冒泡和事件捕获（这两个方法的切换也就是addEventListener这个方法的第三个参数的false和true的切换）<br>事件冒泡：结构上的由于最内部的dom结构触发事件处理函数，但是这个处理函数会往上冒泡，直到冒泡到最祖先层次才会结束。但是必须要绑定这个事件的处理函数。往上冒泡就是必须是同一个事件处理函数才能自动往上触发父级或者更高级的同样绑定的同一事件类型的处理函数。<br>这俩个方法的区别就是触发事件的先后顺序发生了改变，事件冒泡是才从里往外，顾名思义也就像鱼儿从水底吐泡向水上冒泡一样，从dom结构上来说就是从子级往父级和更高级的父级关系上发生的事件处理模型。而捕获从事件发生的顺序上跟冒泡正好相反，这两个方法也就是事件发生顺序上的这点区别而已。如果这两个方法都有的话，是先捕获在冒泡的。与写代码的顺序无关，IE并没有捕获，只有冒泡。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/专业必备技能" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/专业必备技能.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.728Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/专业必备技能.html">计算机发展+Git简单使用+markdown简单语法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> 计算机发展+Git简单使用+markdown简单语法：</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h1 id="计算机的发展历程："><a href="#计算机的发展历程：" class="headerlink" title="计算机的发展历程："></a>计算机的发展历程：</h1><p>电子数字计算机是一种能够自行按照已设定的程序进行数据处理的电子设备；是软件与硬件相结合、面向系统、侧重应用的自动化求解工具。<br>世界上第一台电子数字计算机ENIAC在1946年诞生于美国；短短70年计算机技术迅猛发展，从科学计算、数据处理等应用领域，迅速扩展到实时控制、辅助设计、智能模拟等诸多领域。今天计算机无所不在~~</p>
+<p>1946年，我们使用电子真空管制造计算机，机器语言编程主要应用于科学计算。<br>1956年，出现了晶体管，制造出了第二代计算机，批处理控制成为一种操作计算机的主要方式，进而也出现了高级计算机语言Fortan语言用于科学计算/COBOL语言应用于数据处理；应用领域也扩展到数据处理领域。<br>1959年，集成电路的出现，多道程序的概念得以实施；进而操作系统/数据库管理系统/高级语言程序等一系列的系统软件成组产生；应用领域得到了进一步的扩展。<br>1976年，大规模集成电路/超大规模集成电路相继面世；计算机向快速化、小型化、系统化、网络化、智能化等方面快速发展。<br>1980年，微型计算机概念出现了；计算机的廉价化进一步促进了应用领域的快速膨胀。<br>1990年，图形化人机交互技术面世；计算机使用的友善化推动了应用人群的快速扩展。<br>2003年，移动计算机的出现，是的计算机进一步发展，使得现在计算机无处不在。</p>
+<h2 id="计算机系统的组成："><a href="#计算机系统的组成：" class="headerlink" title="计算机系统的组成："></a>计算机系统的组成：</h2><p>计算机系统：包括硬件子系统和软件子系统<br>硬件：借助光、电、磁、机械等原理构成的各种物理部件的有机组合，是系统工作的实体。 —CPU，主存储器，I/O控制系统，外围设备</p>
+<p>软件：各种程序和文件，用于指挥计算机系统按指定的要求进行协同工作。 包括系统软件、支撑软件和应用软件。  关键系统软件是：操作系统与语言处理程序。</p>
+<h2 id="计算机硬件系统："><a href="#计算机硬件系统：" class="headerlink" title="计算机硬件系统："></a>计算机硬件系统：</h2><p>中央处理器–运算单元、控制单元；<br>主存储器；<br>外围设备–输出设备、输入设备、存储设备、网络通信设备；<br>这些硬件是靠系统总线连接着相互作用的。</p>
+<p>今天的计算机绝大部分是由 冯诺依曼模型设计的存储程序计算机。</p>
+<ol>
+<li>以运算单元为中心，控制流由指令流产生</li>
+<li>采用存储程序原理，面向主存组织数据流</li>
+<li>主存是按地址访问、线性编址的空间</li>
+<li>指令由操作码和地址码组成</li>
+<li>数据以二进制编码</li>
+</ol>
+<h2 id="存储计算机的结构："><a href="#存储计算机的结构：" class="headerlink" title="存储计算机的结构："></a>存储计算机的结构：</h2><pre><code> &lt;-----控制器
+|&gt;
+</code></pre><p>数据程序–&gt;输入设备–&gt;存储器–&gt;输出设备–&gt;计算结果<br>                       |<br>                     运算器</p>
+<h2 id="总线及其组成："><a href="#总线及其组成：" class="headerlink" title="总线及其组成："></a>总线及其组成：</h2><p>总线（Bus）是计算机各种功能部件之间传送信息的公共通信干线，它是CPU、内存、输入输出设备传递信息的公用通道；<br>计算机的各个部件通过总线相连接，外围设备通过相应的接口电路在于总线相连接，从而形成了计算机硬件系统；<br>按照所传输的信息种类，总线包括一组控制线、一组数据线和一组地址线。</p>
+<p>内部总线：用于CPU芯片内部连接各元件；<br>系统总线：用于连接CPU、存储器和各种I/O模块等主要部件；<br>通信总线：用于计算机系统之间通信。</p>
+<h2 id="中央处理器（CPU）"><a href="#中央处理器（CPU）" class="headerlink" title="中央处理器（CPU）"></a>中央处理器（CPU）</h2><p>中央处理器是计算机的运算核心（Core）和控制单元（Control Unit），主要包括：<br>运算逻辑部件：一个或多个运算器；<br>寄存器部件：包括通用寄存器、控制与状态寄存器，以及高速缓冲存储器（Cache）；<br>控制部件：实现各部件间联系的数据、控制及状态的内部总线；负责对指令译码、发出为完成每条指令所要执行操作的控制信号、实现数据输出等功能的部件；</p>
+<h2 id="处理器与寄存器："><a href="#处理器与寄存器：" class="headerlink" title="处理器与寄存器："></a>处理器与寄存器：</h2><p>运算单元、控制单元、内部总线、PC/IR/Flag、MAR/MDR;<br>寄存器、Cache、IOAR/IODR</p>
+<h2 id="CPU："><a href="#CPU：" class="headerlink" title="CPU："></a>CPU：</h2><p>标志寄存器Flag、程序计数器PC、<br>控制单元：指令暂存器IR、指令译码器ID<br>内存地址寄存器MAR、内存数据寄存器MDR<br>     |<br>   主存储器</p>
+<p>存储器的组织层次：层级越小，容量更小，速度更快，价格更高；层级越高，容量更大，速度更慢，价格更低。<br>L0：寄存器<br>L1：L1 Cache（SRAM）<br>L2：L2 Cache（SRAM）<br>L3：L3 Cache（SRAM）<br>L4：主存（DRAM）<br>L5：SSD（本地固态硬盘）<br>L6：本地外存储器（本地硬盘）<br>L7：远程外存储器（分布式文件系统，Web服务器）</p>
+<h2 id="外围设备：输入设备、输出设备、存储设备、网络设备（机机通信设备）"><a href="#外围设备：输入设备、输出设备、存储设备、网络设备（机机通信设备）" class="headerlink" title="外围设备：输入设备、输出设备、存储设备、网络设备（机机通信设备）"></a>外围设备：输入设备、输出设备、存储设备、网络设备（机机通信设备）</h2><p>外围设备控制方式：轮询方式–CPU忙式控制，CPU执行内存数据交换；中断方式–CPU启动外设，外设中断CPU，CPU执行内存数据交换；DMA方式–CPU启动DMA，DMA执行输入输出与内存数据交换，DMA中断CPU。</p>
+<h2 id="计算机软件系统的组成：系统软件、支撑软件、应用软件；"><a href="#计算机软件系统的组成：系统软件、支撑软件、应用软件；" class="headerlink" title="计算机软件系统的组成：系统软件、支撑软件、应用软件；"></a>计算机软件系统的组成：系统软件、支撑软件、应用软件；</h2><h2 id="系统软件：操作系统、实用程序、语言处理程序、数据库管理系统；"><a href="#系统软件：操作系统、实用程序、语言处理程序、数据库管理系统；" class="headerlink" title="系统软件：操作系统、实用程序、语言处理程序、数据库管理系统；"></a>系统软件：操作系统、实用程序、语言处理程序、数据库管理系统；</h2><p>操作系统实施对各种软硬件资源的管理控制<br>实用程序为方便用户所设，如文本编辑等<br>语言处理程序把用汇编语言/该机语言编写的程序，翻译成可执行的及其语言程序；<br>支撑软件：有接口软件、工具软件、环境数据库，支持用户使用计算机的环境，提供开发工具；<br>应用软件：是用户按器需要自行编写的专用程序；</p>
+<h2 id="程序员的计算机系统视图："><a href="#程序员的计算机系统视图：" class="headerlink" title="程序员的计算机系统视图："></a>程序员的计算机系统视图：</h2><p>最开始的计算机是<br>程序员—&gt; 机器指令—-&gt; 计算机硬件系统<br>当操作系统与实用软件的出现扩展机器指令，可以着重于CPU的计算，增加了系统调用，注重再来计算上面；<br>增加了数据库管理系统之后，程序设计；<br>高级语言的形成，使得我们面向目标机器变成了面向目标解决；</p>
+<h2 id="软件开发的不同层次："><a href="#软件开发的不同层次：" class="headerlink" title="软件开发的不同层次："></a>软件开发的不同层次：</h2><p>计算机硬件系统：及其语言<br>操作系统质资源管理：机器语言+广义指令（扩充了硬件资源管理）<br>操作系统之文件系统：机器语言+系统调用（扩充了信息资源管理）<br>数据库管理系统：++数据库语言（扩充了功能更强的信息资源管理）<br>语言处理程序：面向问题的语言</p>
+<h2 id="计算机程序的执行过程："><a href="#计算机程序的执行过程：" class="headerlink" title="计算机程序的执行过程："></a>计算机程序的执行过程：</h2><p>一些高级语言一般会经过转换程序转换成另一种高级语言执行比如我们的第四代语言需要转换成C语言这样的第三代语言高级语言源程序，之后通过编译程序转换成目标代码程序或者通过解释程序编程目标代码程序；我们也可以通过汇编语言源程序通过汇编程序转换成目标代码程序；最后目标代码程序则需经过库函数通过连接程序变为可执行程序；可执行程序是在操作系统中可执行的程序；可执行程序最后装入程序装入内存，在操作系统下进行执行。</p>
+<h2 id="操作平台与操作系统"><a href="#操作平台与操作系统" class="headerlink" title="操作平台与操作系统"></a>操作平台与操作系统</h2><p>任何一台及其都有其操作平台与操作系统；<br>计算机的操作系统：<br>开关标示，按钮控制，亮灯显示；</p>
+<h1 id="Git有很多命令："><a href="#Git有很多命令：" class="headerlink" title="Git有很多命令："></a>Git有很多命令：</h1><p>git init （交给git来管理）<br>git add . （工作区上传到缓存区）<br>git commit -m ‘本次提交的注释信息’  （缓存区上传到仓库）<br>git reset –hard HEAD^  (回滚到上一个版本，一个尖角号就是后退一个版本)<br>git log  (获取当前的版本号和之前的版本)<br>git refolg (看我们真实的一些操作并且返回所有的id号)<br>git reset –hard ID号  (回滚到本ID号所在的版本)<br>git diff  (比较工作区与缓存区的区别)<br>git diff HEAD  (比较工作区与仓库的区别)<br>git diff –cached  (比较缓存区与仓库的区别)<br>git checkout HEAD <file>   (把仓库的代码覆盖到工作区和缓存区，如果写代码写错了，就可以这样啊)<br>git reset HEAD  (把仓库区覆盖缓存区)<br>git checkout – <file>   (缓存区覆盖工作区)</file></file></p>
+<h2 id="多人开发："><a href="#多人开发：" class="headerlink" title="多人开发："></a>多人开发：</h2><p>git branch dev  (新建一个dev分支)<br>git branch    （查看现在分支）<br>git branch -va  (查看远程和本地的所有分支)<br>git checkout dev  (从当前分支改到dev分支上，多人开发一般都会把master分支保护起来，一个人一个分支)<br>git merge dev  (把在dev上开发的代码合并到master分支上，此功能应该先回到master分支上，这样就是合并dev到master分支上)<br>要是dev分支上与我们master分支上互相都有不同，也就是master是别人在你上传到master上之前提交修改了，所以合并你的dev的时候就会出现冲突，冲突合并会出现HEAD上与你不同的内容，和你dev与master不同的内容之间会有分割线，所以你就要手动的进行合并。<br>git checkout remotes/origin/dev  (下载远程dev分支上的内容到本地)<br>多人开发首先应该拉取代码：<br>git pull origin master  (拉取远程代码到本地)<br>git push origin master:master  (把本地上的代码处理完冲突在推送到远程上)<br>一般公司里你自己并不能提交到master分支上，所以你应该提交一个提交请求并且@一下这个项目的主管（前端主管和后端主管），主管审核无误后，主管才会推送到master分支上。</p>
+<h2 id="github简单使用："><a href="#github简单使用：" class="headerlink" title="github简单使用："></a>github简单使用：</h2><p>1）git  init<br>初始化一个git<br>2) vim .gitignore 新增以及编写这个文件<br>node_modules/<br>意思就是上传的时候忽略这个文件夹以及里面的内容，因为我上传的是nodejs项目文件，所以不用把node_modules上传上去<br>3）git add .    添加代码到git<br>4)  git commit -m ‘第一个版本’<br>版本的备注信息<br>5) git remote add origin <a href="https://github.com/jasonzhangdong/auth2.0test.git">https://github.com/jasonzhangdong/auth2.0test.git</a><br>将代码关联到github上面，后面的url就是第二部拷贝下来的那个路径<br>6）git push -u origin master<br>     将代码推送上去</p>
+<h2 id="git一些问题："><a href="#git一些问题：" class="headerlink" title="git一些问题："></a>git一些问题：</h2><p>问题描述：<br>在使用gulp当中，自动生成的node_modules文件夹，因为文件目录层级太深，无法系统删除，用360粉碎工具也报错<br>解决方法：<br>使用npm中的插件rimraf，专门用于删除的模块插件<br>　　1、安装：npm install -g rimraf（全局安装）<br>　　2、使用：先定位目标文件夹的父级目录，然后命令行输入rimraf <strong><em>（</em></strong>为需要删除的文件夹名称）  eg：rimraf node_modules</p>
+<h1 id="MarkDown的简要规则："><a href="#MarkDown的简要规则：" class="headerlink" title="MarkDown的简要规则："></a>MarkDown的简要规则：</h1><p>标题是每篇文章都需要也是最常用的格式，在 Markdown 中，如果一段文字被定义为标题，只要在这段文字前加 # 号即可。<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure></p>
+<p>熟悉 HTML 的同学肯定知道有序列表与无序列表的区别，在 Markdown 下，列表的显示只需要在文字前加上 - 或 * 即可变为无序列表，有序列表则直接在文字前加1. 2. 3. 符号要和文字之间加上一个字符的空格。</p>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>如果你需要引用一小段别处的句子，那么就要用引用的格式。只需要在文本前加入 &gt; 这种尖括号（大于号）即可，要注意符号和文本之间的空格。</p>
+<h2 id="图片与链接"><a href="#图片与链接" class="headerlink" title="图片与链接:"></a>图片与链接:</h2><p>插入链接与插入图片的语法很像，区别在一个 !号<br>图片为：<img src alt>{ImgCap}{/ImgCap}<br>链接为：<a href></a><br>插入图片的地址需要图床，这里推荐围脖图床修复计划 与 CloudApp 的服务，生成URL地址即可。<br>例子：<br>插入链接：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Baidu</span>](<span class="link">https://baidu.com</span>)</span><br><span class="line">插入图片：</span><br><span class="line">![<span class="string">Mou icon</span>](<span class="link">https://mouapp.com/Mou_128.png</span>)</span><br></pre></td></tr></table></figure></p>
+<p>展示效果如下：<br><a href="https://baidu.com">Baidu</a><br>插入图片：<br><img src="https://mouapp.com/Mou_128.png" alt="Mou icon"></p>
+<h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体:"></a>粗体与斜体:</h2><p>Markdown 的粗体和斜体也非常简单，用两个 <em> 包含一段文本就是粗体的语法，用一个 </em> 包含一段文本就是斜体的语法。</p>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>表格是我觉得 Markdown 比较累人的地方，例子如下：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="params">| Tables        |</span> Are           <span class="params">| Cool  |</span></span><br><span class="line"></span><br><span class="line"><span class="params">| ------------- |</span><span class="symbol">:-------------</span><span class="symbol">:|</span> -----<span class="symbol">:|</span></span><br><span class="line"></span><br><span class="line"><span class="params">| col 3 is      |</span> right-aligned <span class="params">| $1600 |</span></span><br><span class="line"></span><br><span class="line"><span class="params">| col 2 is      |</span> centered      <span class="params">|   $12 |</span></span><br><span class="line"></span><br><span class="line"><span class="params">| zebra stripes |</span> are neat      <span class="params">|    $1 |</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="代码框"><a href="#代码框" class="headerlink" title="代码框:"></a>代码框:</h2><p>如果你是个程序猿，需要在文章里优雅的引用代码框，在 Markdown下实现也非常简单，只需要用两个 ` 把中间的代码包裹起来。使用 tab 键即可缩进。</p>
+<p>分割线<br>分割线的语法只需要三个 * 号.<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="emphasis">***</span></span><br><span class="line"><span class="emphasis">***</span></span><br></pre></td></tr></table></figure></p>
+<p>效果展示如下：</p>
+<hr>
+<hr>
+<hr>
+<hr>
+<p>这是四条分割线吗？</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/资源分享/">资源分享</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/认知提升/">认知提升</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/relative" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/relative.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.727Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/relative.html">编程相关-杂（Relative）</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> 编程相关-杂（Relative）：</strong> <excerpt in index | 首页摘要><br><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="built_in">li</span>&gt; vscode&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">&lt;<span class="built_in">li</span>&gt; <span class="built_in">atom</span>&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">&lt;<span class="built_in">li</span>&gt; webstrom&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">&lt;<span class="built_in">li</span>&gt;sublime的插件问题&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">&lt;<span class="built_in">li</span>&gt;emmet&lt;/<span class="built_in">li</span>&gt;</span><br><span class="line">emmet插件的简单使用规则：div.<span class="built_in">demo</span>#only*<span class="number">3</span>&gt;p[<span class="built_in">style</span>=<span class="string">"background-color:orange;width:100px;height:100px;"</span>]</span><br><span class="line">div&gt;(p^span.<span class="built_in">demo</span>#only&#123;内容&#125;)</span><br><span class="line">ul&gt;<span class="built_in">li</span>&#123;a$&#125;*<span class="number">10</span></span><br></pre></td></tr></table></figure></excerpt></p>
+<h1 id="Sublime-Text-3-快捷键精华版"><a href="#Sublime-Text-3-快捷键精华版" class="headerlink" title="Sublime Text 3 快捷键精华版:"></a>Sublime Text 3 快捷键精华版:</h1><p>Ctrl+Shift+P：打开命令面板<br>Ctrl+P：搜索项目中的文件<br>Ctrl+G：跳转到第几行<br>Ctrl+W：关闭当前打开文件<br>Ctrl+Shift+W：关闭所有打开文件<br>Ctrl+Shift+V：粘贴并格式化<br>Ctrl+D：选择单词，重复可增加选择下一个相同的单词<br>Ctrl+L：选择行，重复可依次增加选择下一行<br>Ctrl+Shift+L：选择多行<br>Ctrl+Shift+Enter：在当前行前插入新行<br>Ctrl+X：删除当前行<br>Ctrl+M：跳转到对应括号<br>Ctrl+U：软撤销，撤销光标位置<br>Ctrl+J：选择标签内容<br>Ctrl+F：查找内容<br>Ctrl+Shift+F：查找并替换<br>Ctrl+H：替换<br>Ctrl+R：前往 method<br>Ctrl+N：新建窗口<br>Ctrl+K+B：开关侧栏<br>Ctrl+Shift+M：选中当前括号内容，重复可选着括号本身<br>Ctrl+F2：设置/删除标记<br>Ctrl+/：注释当前行<br>Ctrl+Shift+/：当前位置插入注释<br>Ctrl+Alt+/：块注释，并Focus到首行，写注释说明用的<br>Ctrl+Shift+A：选择当前标签前后，修改标签用的<br>F11：全屏<br>Shift+F11：全屏免打扰模式，只编辑当前文件<br>Alt+F3：选择所有相同的词<br>Alt+.：闭合标签<br>Alt+Shift+数字：分屏显示<br>Alt+数字：切换打开第N个文件<br>Shift+右键拖动：光标多不，用来更改或插入列内容<br>鼠标的前进后退键可切换Tab文件<br>按Ctrl，依次点击或选取，可需要编辑的多个位置<br>按Ctrl+Shift+上下键，可替换行<br>选择类<br>Ctrl+D 选中光标所占的文本，继续操作则会选中下一个相同的文本。<br>Alt+F3 选中文本按下快捷键，即可一次性选择全部的相同文本进行同时编辑。举个栗子：快速选中并更改所有相同的变量名、函数名等。<br>Ctrl+L 选中整行，继续操作则继续选择下一行，效果和 Shift+↓ 效果一样。<br>Ctrl+Shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。<br>Ctrl+Shift+M 选择括号内的内容（继续选择父括号）。举个栗子：快速选中删除函数中的代码，重写函数体代码或重写括号内里的内容。<br>Ctrl+M 光标移动至括号内结束或开始的位置。<br>Ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。<br>Ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。<br>Ctrl+Shift+[ 选中代码，按下快捷键，折叠代码。<br>Ctrl+Shift+] 选中代码，按下快捷键，展开代码。<br>Ctrl+K+0 展开所有折叠代码。<br>Ctrl+← 向左单位性地移动光标，快速移动光标。<br>Ctrl+→ 向右单位性地移动光标，快速移动光标。<br>shift+↑ 向上选中多行。<br>shift+↓ 向下选中多行。<br>Shift+← 向左选中文本。<br>Shift+→ 向右选中文本。<br>Ctrl+Shift+← 向左单位性地选中文本。<br>Ctrl+Shift+→ 向右单位性地选中文本。<br>Ctrl+Shift+↑ 将光标所在行和上一行代码互换（将光标所在行插入到上一行之前）。<br>Ctrl+Shift+↓ 将光标所在行和下一行代码互换（将光标所在行插入到下一行之后）。<br>Ctrl+Alt+↑ 向上添加多行光标，可同时编辑多行。<br>Ctrl+Alt+↓ 向下添加多行光标，可同时编辑多行。<br>编辑类<br>Ctrl+J 合并选中的多行代码为一行。举个栗子：将多行格式的CSS属性合并为一行。<br>Ctrl+Shift+D 复制光标所在整行，插入到下一行。<br>Tab 向右缩进。<br>Shift+Tab 向左缩进。<br>Ctrl+K+K 从光标处开始删除代码至行尾。<br>Ctrl+Shift+K 删除整行。<br>Ctrl+/ 注释单行。<br>Ctrl+Shift+/ 注释多行。<br>Ctrl+K+U 转换大写。<br>Ctrl+K+L 转换小写。<br>Ctrl+Z 撤销。<br>Ctrl+Y 恢复撤销。<br>Ctrl+U 软撤销，感觉和 Gtrl+Z 一样。<br>Ctrl+F2 设置书签<br>Ctrl+T 左右字母互换。<br>F6 单词检测拼写<br>搜索类<br>Ctrl+F 打开底部搜索框，查找关键字。<br>Ctrl+shift+F 在文件夹内查找，与普通编辑器不同的地方是sublime允许添加多个文件夹进行查找，略高端，未研究。<br>Ctrl+P 打开搜索框。举个栗子：1、输入当前项目中的文件名，快速搜索文件，2、输入@和关键字，查找文件中函数名，3、输入：和数字，跳转到文件中该行代码，4、输入#和关键字，查找变量名。<br>Ctrl+G 打开搜索框，自动带：，输入数字跳转到该行代码。举个栗子：在页面代码比较长的文件中快速定位。<br>Ctrl+R 打开搜索框，自动带@，输入关键字，查找文件中的函数名。举个栗子：在函数较多的页面快速查找某个函数。<br>Ctrl+： 打开搜索框，自动带#，输入关键字，查找文件中的变量名、属性名等。<br>Ctrl+Shift+P 打开命令框。场景栗子：打开命名框，输入关键字，调用sublime text或插件的功能，例如使用package安装插件。<br>Esc 退出光标多行选择，退出搜索框，命令框等。<br>显示类<br>Ctrl+Tab 按文件浏览过的顺序，切换当前窗口的标签页。<br>Ctrl+PageDown 向左切换当前窗口的标签页。<br>Ctrl+PageUp 向右切换当前窗口的标签页。<br>Alt+Shift+1 窗口分屏，恢复默认1屏（非小键盘的数字）<br>Alt+Shift+2 左右分屏-2列<br>Alt+Shift+3 左右分屏-3列<br>Alt+Shift+4 左右分屏-4列<br>Alt+Shift+5 等分4屏<br>Alt+Shift+8 垂直分屏-2屏<br>Alt+Shift+9 垂直分屏-3屏<br>Ctrl+K+B 开启/关闭侧边栏。<br>F11 全屏模式<br>Shift+F11 免打扰模式</p>
+<h1 id="微信小程序的一些简单简介："><a href="#微信小程序的一些简单简介：" class="headerlink" title="微信小程序的一些简单简介："></a>微信小程序的一些简单简介：</h1><p>微信小程序中没有关联或者引入标签，只能靠相同的命名来产生关联，比如：index.wxml–index.wxss–index.js–index.json;只能命名相同的名字，然后微信页面就会自动找相同名字来进行关联了。自动进行绑定关联，根据命名把一些东西捆绑在一起。<br>rpx：就是最开始是为了不让在苹果手机上失真而人为设置的一种与真实的px（像素）所在不同手机上的换算关系。所以rpx也就具有了根据不同屏幕进行自适应的功能了。<br>wxml上并没有通配符选择器，但是有json配置文件。没有body标签，但是有pages标签就相当于html中的body标签了。<br>wxml中有很多强大的内置标签，也就是人为封装的组件，恩，很强大的。例如：轮播图组件<swiper>标签，下面有<swiper-item>，<swiper>上有autoplay属性，并伴随着interval=”时间”，是否采用衔接滑动circular=”true”;<br>图标<icon>组件：上面有不同的类型：type=’success/info/..’ color=”color”;<br>地图<map>组件：map组件上还有很多其他的标签和属性方法。总之很强大了！</map></icon></swiper></swiper-item></swiper></p>
+<p>wxml没有dom节点，不能像JavaScript一样操作dom元素。但是wxml给了我们一个数据绑定的.js文件。里面有page({});函数调用的形式。通过调用page()这个函数，来注册了一个页面，通过改变page()这个函数来影响UI层面的东西。page()函数里面有一些函数来监听页面的渲染。<br>生命周期函数：<code>onLoad:function(options){}</code>–监听页面加载。<br>生命周期函数：<code>onReady:function(){}</code>–监听页面初次渲染完成。<br>生命周期函数：<code>onShow:function(){}</code>–监听页面显示<br>生命周期函数：<code>onHide:function(){}</code>–监听页面隐藏<br>生命周期函数：<code>onUnload:function(){}</code>–监听页面卸载<br>生命周期函数执行的顺序为：页面先加载触发<code>onLoad</code>函数；再调用<code>onShow</code>函数；之后再调用onReady函数。</p>
+<p>两个层—一个给用户看的视图层，另一个应用层js操作视图层。<br>首先是视图层的初始化init..和应用层的创建creat..一个实例<br>视图层向应用层要一些初始化是数据。切换页面，那么这个页面生命周期就结束了，调用<code>onUnload</code>函数。this就代表这个页面实例。</p>
+<h2 id="编写微信小程序的简单步骤："><a href="#编写微信小程序的简单步骤：" class="headerlink" title="编写微信小程序的简单步骤："></a>编写微信小程序的简单步骤：</h2><p>首先会在app.json文件下查找我们所配置的东西，创建的页面，页面之间的关联还有页面的导航栏（最顶上的一栏）的设置和底边的tabpar分页的切换设置等等都是在这儿实现的。在app.json中配置好了主页面和分页面之后就可以开始编写代码了。<br>如何在微信地图上添加功能按钮：因为在地图上添加<code>&lt;button&gt;</code>按钮是显示不出来的，因为map组件的层级永远在最上面，只能用map组价提供好的controls属性，配合监听对control的点击的回调函数。然后在.js文件中有wx.getSystemInfo这个方法监听设备信息来获取需要设置的相应数据。<br>bindcontroltap，在onShow函数内定义一个app-map执行器上下文（类似canvas的执行期上下文），这个执行器上下文中有一个方法是moveToLocaltion方法，定义一个movetoCenter方法就是执行moveToLocation方法的，然后在switch case中，case到指定的controlId就调用定义好的movetoCenter方法。</p>
+<p>模拟假数据的一个很好用的网站，easy-mock网站，恩，很有年头了。简单的使用：直接进去没有用户名他直接会让你登录，没有的话就会直接帮你注册成功了。注册成功直接创建项目就行了。非常简单就能使用的。假数据写成JSON形式的，然后窗口打开，复制窗口URL地址，然后就能使用这个假数据了。</p>
+<p><a href="https://easy-mock.com/mock/5983e3d1a1d30433d852e683/ofo/getbike">https://easy-mock.com/mock/5983e3d1a1d30433d852e683/ofo/getbike</a></p>
+<h2 id="a-和-a-的区别："><a href="#a-和-a-的区别：" class="headerlink" title="a++ 和 ++a 的区别："></a>a++ 和 ++a 的区别：</h2><pre><code>他们都是已经执行了代码，也就是都已经加一了。但是++a是显示的加上去了，也就是说显示出来了，但是a++是到下一次执行才显示出来，但是上一次的代码已经执行了。ok？
+</code></pre><h2 id="命名上的一些英文单词："><a href="#命名上的一些英文单词：" class="headerlink" title="命名上的一些英文单词："></a>命名上的一些英文单词：</h2><p>wrapper：包装；<br>navigation：航行（学），航海（术），海上交通；<br>contain：内容；<br>footer: 页脚；<br>header： 页头；<br>未完待续…</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/others/">others</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/npm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/npm.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.726Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/npm.html">Npm相关问题</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Npm相关问题：</strong> <excerpt in index | 首页摘要><br>简单的来说npm就是nodejs的包管理工具。</excerpt></p>
+<p>所以说到它就不得不提一下nodejs这个前端发展中出现的里程碑式的后端JavaScript语言。让我们摆脱了浏览器这一个单一的环境限制，开始向后端迈进。</p>
+<p>正是由于nodejs的火爆发展，也带动着前端JavaScript模块化的步伐。由于后端开发是非常复杂的，所以必须使用模块化的开发模式，而随着前端也越来越复杂的应用开发，所以类似后端开发中的模块化开发不得不应用到前端中来了。</p>
+<h1 id="前端模块化开发带来的好处"><a href="#前端模块化开发带来的好处" class="headerlink" title="前端模块化开发带来的好处"></a>前端模块化开发带来的好处</h1><h2 id="命名冲突"><a href="#命名冲突" class="headerlink" title="命名冲突"></a>命名冲突</h2><p>随着前端开发应用的复杂度越来越高，应用开发的团队成员也越来越多，不可避免的就有了命名上的一些冲突，为了解决命名冲突所带来的问题，我们可以用模块化的思想，把各个功能封装在一个模块中。</p>
+<h2 id="文件依赖"><a href="#文件依赖" class="headerlink" title="文件依赖"></a>文件依赖</h2><p>在JavaScript中，由于语言的单线程性质，如果要加载一个js文件，而这个文件依赖于很多个其他的js文件，那么就要很小心的处理加载的先后顺序问题，先把依赖加载进来，在加载依赖这些js的js文件。说起来很拗口哦~（没办法，就这个表达能力啊~）比如：<br>`<script src="util.js"></script></p>
+<p><script src="dialog.js"></script></p>
+<p><script><br>  org.CoolSite.Dialog.init({ /<em> 传入配置 </em>/ });<br></script><code>dialog.js依赖util.js文件中的一些方法，所以必须先要加载完成util.js文件才能正常使用dialog.js中的方法。
+上面讲的是最简单的文件依赖问题的一些使用方法。但是像上面那样使用很麻烦，所以借鉴后端node的模块化方法，前端引入了类似YUI3库的加载方法，简单实用还美观，如下：</code>YUI.add(‘my-module’, function (Y) {<br>  // …<br>}, ‘0.0.1’, {<br>    requires: [‘node’, ‘event’]<br>});`</p>
+<p>上面的代码，通过 requires 等方式来指定当前模块的依赖。这很大程度上可以解决依赖问题，但不够优雅。当模块很多，依赖很复杂时，烦琐的配置会带来不少隐患。</p>
+<p>命名冲突和文件依赖，是前端开发过程中的两个经典问题。下来我们看如何通过模块化开发来解决。为了方便描述，我们使用 Sea.js 来作为模块化开发框架。</p>
+<h1 id="使用Sea-js来解决"><a href="#使用Sea-js来解决" class="headerlink" title="使用Sea.js来解决"></a>使用Sea.js来解决</h1><p>先说一下这些模块的发展吧。前面说了前端模块化是借鉴的node后端模块化的思想。而node又是遵循的服务器端模块的规范–&gt;CommonJs。</p>
+<h2 id="CommonJS-（服务器端的模块化规范）"><a href="#CommonJS-（服务器端的模块化规范）" class="headerlink" title="CommonJS （服务器端的模块化规范）"></a>CommonJS （服务器端的模块化规范）</h2><p>根据CommonJs规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。如下：</p>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">1&gt; </span>math.js</span><br><span class="line">exports.add = function() &#123;</span><br><span class="line">    var sum = <span class="number">0</span>, i = <span class="number">0</span>, args = arguments, l = args.length;</span><br><span class="line">    while (i &lt; l) &#123;</span><br><span class="line">        sum += args[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">2&gt; </span>increment.js</span><br><span class="line">var add = require(<span class="string">'math'</span>).add;</span><br><span class="line">exports.increment = function(val) &#123;</span><br><span class="line">    return add(val, <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">3&gt; </span>main.js，该文件为入口文件</span><br><span class="line">var inc = require(<span class="string">'increment'</span>).increment;</span><br><span class="line">var a = <span class="number">1</span>;</span><br><span class="line">inc(a); // <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>CommonJS 加载模块是同步的，所以只有加载完成才能执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般都已经存在本地硬盘，所以加载起来比较快，不用考虑异步加载的方式，所以CommonJS规范比较适用。但如果是浏览器环境，要从服务器加载模块，网络请求资源的方式，速度相对较慢，就必须采用异步加载的模式。所以就有了 AMD  CMD 的解决方案。<br>模块的要求如下：</p>
+<blockquote>
+<p>标示符require，为一个函数，它仅有一个参数为字符串，该字符串须遵守Module Identifiers的6点规定<br>require方法返回指定的模块API<br>如果存在依赖的其它模块，那么依次加载<br>require不能返回，则抛异常<br>仅能使用标示符exports导出API</p>
+</blockquote>
+<h2 id="AMD（Asynchromous-Module-Definition）异步模块定义"><a href="#AMD（Asynchromous-Module-Definition）异步模块定义" class="headerlink" title="AMD（Asynchromous Module Definition）异步模块定义"></a>AMD（Asynchromous Module Definition）异步模块定义</h2><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。<br>AMD异步加载模块。它的模块支持 对象、 函数、 构造器、 字符串、 JSON 等各种类型的模块。 </p>
+<p>使用AMD规范适用define方法定义模块。如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过数组引入依赖 ，回调函数通过形参传入依赖 </span></span><br><span class="line">define([<span class="string">'someModule1'</span>, ‘someModule2’], <span class="function"><span class="keyword">function</span> (<span class="params">someModule1, someModule2</span>) </span>&#123; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">/// something </span></span><br><span class="line">        someModule1.test(); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">foo</span>: foo&#125; </span><br><span class="line">&#125;); </span><br><span class="line">AMD规范允许输出模块兼容CommonJS规范，这时define方法如下： </span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123; </span><br><span class="line">     </span><br><span class="line">    <span class="keyword">var</span> reqModule = <span class="built_in">require</span>(<span class="string">"./someModule"</span>); </span><br><span class="line">    requModule.test(); </span><br><span class="line">     </span><br><span class="line">    exports.asplode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">//something </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>定义模块用module变量，它有一个方法declare<br>declare接受一个函数类型的参数，如称为factory<br>factory有三个参数分别为require、exports、module<br>factory使用返回值和exports导出API<br>factory如果是对象类型，则将该对象作为模块输出</p>
+</blockquote>
+<p>目前，实现AMD的库有 RequireJS  、 curl  、 Dojo  、 bdLoad 、 JSLocalnet  、 Nodules  等。</p>
+<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><p>CMD是SeaJS 在推广过程中对模块定义的规范化产出。<br>Sea.js 是国内前端大神玉伯写出来的一个成熟的开源项目，核心目标是给前端开发提供简单、极致的模块化开发体验。这里不多做介绍，有兴趣的可以访问 seajs.org 查看官方文档。</p>
+<p>使用 Sea.js，在书写文件时，需要遵守 CMD （Common Module Definition）模块定义规范。一个文件就是一个模块。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  exports.each = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  exports.log = <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">通过 exports 就可以向外提供接口。这样，dialog.js 的代码变成</span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'./util.js'</span>);</span><br><span class="line"></span><br><span class="line">  exports.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>关键部分到了！我们通过 require(‘./util.js’) 就可以拿到 util.js 中通过 exports 暴露的接口。这里的 require 可以认为是 Sea.js 给 JavaScript 语言增加的一个语法关键字，通过 require 可以获取其他模块提供的接口。</p>
+<p>这其实一点也不神奇。作为前端工程师，对 CSS 代码一定也不陌生。</p>
+<p><code>@import url(&quot;base.css&quot;);</code></p>
+<p><code>#id { ... }
+.class { ... }</code><br>Sea.js 增加的 require 语法关键字，就如 CSS 文件中的 @import 一样，给我们的源码赋予了依赖引入功能。</p>
+<h1 id="CMD和AMD的区别有以下几点："><a href="#CMD和AMD的区别有以下几点：" class="headerlink" title="CMD和AMD的区别有以下几点："></a>CMD和AMD的区别有以下几点：</h1><ol>
+<li><p>对于依赖的模块AMD是提前执行，CMD是延迟执行。不过RequireJS从2.0开始，也改成可以延迟执行（根据写法不同，处理方式也不同）。 </p>
+</li>
+<li><p>AMD推崇依赖前置，CMD推崇依赖就近。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AMD </span></span><br><span class="line">define([<span class="string">'./a'</span>,<span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; </span><br><span class="line">    <span class="comment">//依赖一开始就写好 </span></span><br><span class="line">    a.test(); </span><br><span class="line">    b.test(); </span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line"><span class="comment">//CMD </span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123; </span><br><span class="line">    <span class="comment">//依赖可以就近书写 </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>); </span><br><span class="line">    a.test(); </span><br><span class="line">    ... </span><br><span class="line">    <span class="comment">//软依赖 </span></span><br><span class="line">    <span class="keyword">if</span> (status) &#123; </span><br><span class="line">        <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>); </span><br><span class="line">        b.test(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>虽然 AMD也支持CMD写法，但依赖前置是官方文档的默认模块定义写法。 </p>
+<ol start="3">
+<li>AMD的API默认是一个当多个用，CMD严格的区分推崇职责单一。例如：AMD里require分全局的和局部的。CMD里面没有全局的 require ,提供 seajs.use()来实现模块系统的加载启动。CMD里每个API都简单纯粹。 </li>
+</ol>
+<hr>
+<hr>
+<p>好了，说完了上面的介绍，该正式讲一下正文了~</p>
+<h1 id="npm-三个版本的区别简介"><a href="#npm-三个版本的区别简介" class="headerlink" title="npm 三个版本的区别简介"></a>npm 三个版本的区别简介</h1><p>如今npm包管理已经有3个版本了，那就来讲一下他们之间的区别吧~</p>
+<h2 id="npm-v2解析包的依赖关系"><a href="#npm-v2解析包的依赖关系" class="headerlink" title="npm v2解析包的依赖关系"></a>npm v2解析包的依赖关系</h2><p>想像一下现在有三个模块module A、module B、module C。A依赖B的V1版本，C依赖于B的V2版本。 npm采取的方式是把依赖的模块包嵌入子目录。</p>
+<h2 id="npm-V3-解析包的依赖关系"><a href="#npm-V3-解析包的依赖关系" class="headerlink" title="npm V3 解析包的依赖关系"></a>npm V3 解析包的依赖关系</h2><p>npm3和npm2的不同之处在于：</p>
+<blockquote>
+<p>npm2使用嵌套的方式来管理依赖包，npm3尝试缓和过长的包依赖路径问题。 把二级依赖的包安装在同一级目录下。</p>
+</blockquote>
+<p>假设我们有一个模块A依赖模块B。我们在安装模块A的时候，在项目的node_modules文件夹下： 可以看到 npm v2与npm v3的差异是npm v3中A和B是再同一层文件夹中的，而npm v2中B是再A文件夹下嵌套的。</p>
+<p>现在我们需要安装一个模块C，模块C依赖模块B但是版本与模块A依赖的不同。</p>
+<p>由于B v1.0已经安装在node_modules目录的根目录下了，不能把B v2.0也安装在根目录下。这个时候npm v3的处理方式和npm v2类似。</p>
+<p>通过 npm ls 查看当前项目所有包的依赖关系。如果只是想看顶级包的依赖关系可以执行npm ls –depth=0。</p>
+<h2 id="npm-v3去重"><a href="#npm-v3去重" class="headerlink" title="npm v3去重"></a>npm v3去重</h2><p>也正因为npm v3版本中的新特性，所以就会出现一些重复的包下载，我们可以用提供给我们的API来进行删除重复的包。<br><strong>npm dedupe</strong></p>
+<p>该命令会删除node_modules顶级目录下没有被使用的模块，并且把被重复依赖的模块移动到顶级目录下。</p>
+<p>接下来看一下最新版的npm的一些命令用法吧~</p>
+<h1 id="npm-最新用法"><a href="#npm-最新用法" class="headerlink" title="npm 最新用法"></a>npm 最新用法</h1><h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><p>用过npm的对这个命令一定熟悉的不能再熟悉了吧~<br><code>$ npm install &lt;packageName&gt;</code><br>安装之前，npm install会先检查，node_modules目录之中是否已经存在制定模块。如果存在，就不再重新安装，既是运程仓库已经有了一个新版本，也是如此。</p>
+<p>如果你希望，一个模块不管是狗安装过，npm都要强制重新安装，可以使用-f或者–force命令参数。<br><code>$ npm install &lt;packageName&gt; --force</code></p>
+<h2 id="npm-update"><a href="#npm-update" class="headerlink" title="npm update"></a>npm update</h2><p>如果想更新已安装模块，就要用到npm update命令了。<br><code>$ npm update &lt;packageName&gt;</code><br>它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本有更新，就会安装最新版本。</p>
+<h2 id="registry"><a href="#registry" class="headerlink" title="registry"></a>registry</h2><p>npm update命令怎么知道每个模块的最新版本呢？<br>答案是npm模块仓库提供了一个查询服务，叫做registry。以npmjs.org为例，它的查询网址是<a href="https://registry.npmjs.org/。">https://registry.npmjs.org/。</a></p>
+<p>这个网址后面跟上模块名，就会得到一个 JSON 对象，里面是该模块所有版本的信息。比如，访问 <a href="https://registry.npmjs.org/react，就会看到">https://registry.npmjs.org/react，就会看到</a> react 模块所有版本的信息。</p>
+<p>它跟下面命令的效果是一样的。</p>
+<p>`$ npm view react</p>
+<h1 id="npm-view-的别名"><a href="#npm-view-的别名" class="headerlink" title="npm view 的别名"></a>npm view 的别名</h1><p>$ npm info react<br>$ npm show react<br>$ npm v react`</p>
+<p>registry 网址的模块名后面，还可以跟上版本号或者标签，用来查询某个具体版本的信息。比如， 访问 <a href="https://registry.npmjs.org/react/v0.14.6">https://registry.npmjs.org/react/v0.14.6</a> ，就可以看到 React 的 0.14.6 版。</p>
+<h1 id="npm-的常用命令行代码："><a href="#npm-的常用命令行代码：" class="headerlink" title="npm 的常用命令行代码："></a>npm 的常用命令行代码：</h1><ol>
+<li>npm install moduleNames：安装Node包（moduleNames包名称）<br>（1）npm install moduleNames -g 为全局安装<br>（2）npm install <a href="mailto:moduleNames@5.1.1">moduleNames@5.1.1</a>  安装特定版本插件<br>（3）npm install moduleNames –save 会在package.json的dependencies属性下添加moduleNames  即发布依赖时候任依赖的插件<br>（4）npm install moduleNames –save-dev  会在package.json的devDependencies属性下添加moduleNames依赖 即开发依赖插件<br>总结：npm install 在安装 npm 包时，有两种命令参数可以把它们的信息写入 package.json 文件，一个是npm install –save另一个是 npm install –save-dev，他们表面上的区别是–save 会把依赖包名称添加到 package.json 文件 dependencies 键下，–save-dev 则添加到 package.json 文件 devDependencies 键下。<br>真正跑在用户浏览器中的代码，比如jquery,react这些，是需要安装到dependencies中的。<br>–save是对生产环境所需依赖的声明(开发应用中使用的框架，库),–save-dev是对开发环境所需依赖的声明(构建工具，测试工具).正常使用npm install时，会下载dependencies和devDependencies中的模块，当使用npm install –production或者注明NODE_ENV变量值为production时，只会下载dependencies中的模块。</li>
+<li>npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a>  修改包下载源，此例修改为了淘宝镜像</li>
+<li>npm config get prefix  查看全局安装路径</li>
+<li>npm config set prefix G:/node_modules_global  修改全局安装路径</li>
+<li>npm init  初始化目录</li>
+<li>npm install -g gulp  全局安装（如gulp）</li>
+<li>npm uninstall -g gulp    全局包卸载（如gulp）</li>
+<li>npm uninstall gulp –save-dev  项目本地卸载（如gulp）</li>
+<li>npm ls –global    会查看到安装包所包含的所有依赖文件   npm ls –global -depth 0  只查看顶级安装包</li>
+<li>npm ls  查看本地安装包</li>
+<li>npm cache clean  删除安装包缓存</li>
+<li>npm  update xxx  更新安装包</li>
+<li>npm search xxx  查找验证某个包是否已经存在</li>
+<li>npm root 查看当前包安装路径  npm root -g  查看全局包安装路径</li>
+<li>npm outdated：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</li>
+<li>npm view xxx engines：查看包所依赖的Node的版本</li>
+<li>npm view xxx repository.url：查看包的源文件地址</li>
+<li>npm view xxxpendencies：查看包的依赖关系</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/开发工具/">开发工具</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/js笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/js笔记.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.724Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/js笔记.html">Js笔记</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Js笔记：</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h2 id="js笔记"><a href="#js笔记" class="headerlink" title="js笔记"></a>js笔记</h2><p>typeof 识别不了Object与Array与null（历史遗留性问题）<br>返回六种数据类型number、string、booblean、undefined、object、function。</p>
+<p>隐示类型转化：Number()类型的数据转化，typeof之后会把true返回数值1，false返回值为0。“123”转化成123。undefined转化成数值NaN。null转化成数值0。“”空字符串转化成0。</p>
+<p>parseInt(“123abc”)会把字符串类型的转换成整数类型Number类型的123，并且在非数字位置截断。但是只会把其它的undefined和null和true、false等转化NaN。    parseInt（“123”，radix）radix是基底，取值范围是2–36（0也行，有的浏览器中会把0当做10进制的数）。填上第二位的话会把前面的123按照所填的基底转化成10进制的数。</p>
+<p>只有六个值转化成booblean值为false，分别是undefined、null、0、””、false、NaN。其它所有转化成boollean值都为true。</p>
+<p>&amp;&amp; 与运算符，找到一个false就返回。如0 &amp;&amp; 1；直接返回值0。1 &amp;&amp; 2 &amp;&amp; 3；返回值为3。全真才为真，有一个假就是假；</p>
+<p>|| 或运算符， 找到一个真就返回。如0 || 1 || 2，返回值为1。1 || 0，返回值为1。全假才为假，有一个真就是真。</p>
+<p>parseFloat(“10.234”)可以把字符串类型的转化成小数类型的数值类型，即浮点型。</p>
+<p>String（undefined）–&gt; “undefined”  会把一切东西转化成字符串类型的。</p>
+<p>对象.toString方法，与String相似，只不过他是一种方法。只有undefined和null没有这个方法，不能调用这个方法。toString(radix),这个radix跟parseInt中的radix正好相反。按照10进制转换成所填基底的数。</p>
+<p>数学符号有隐式类型转换，只有+号特别，会与字符形式的连接起来。</p>
+<p>null == undefined返回结果为true。 0 == “”返回结果为true。</p>
+<p>对象.toFixed(3)方法表示的是保留小数点后3位有效数字，科学计数法。</p>
+<p>作用域：当函数执行时，会创建一个称为执行期上下文的内部对象。一个执行期上下文定义了一个函数执行时的环境，函数每次执行时对应的执行期上下文都是独一无二的，所以多次调用一个函数会导致创建多个执行期上下文，当函数执行完毕，   ！！它所产生的！！！  执行期上下文被销毁。<br>   查找变量：从作用域的顶端依次向下查找。</p>
+<p> <code>function a() {
+    function b() {
+        console.log(b);    
+    }
+      var a = 123;
+    b();
+  }
+  var glob = 100;
+  a();</code><br>函数a的执行也就是函数b定义的开始，函数b在刚定义的时候就保存了函数a的劳动成果。变量只有在执行的时候才会被赋值。</p>
+<p>   闭包<br><code>function a() {
+    var arr = [];
+    for(var i = 0; i &lt; 10; i++) {
+        arr[i] = function () {
+            console.log(i + &quot;,&quot;);
+        }
+    }
+    return arr;
+   }
+   var demo = a();
+   for(var j = 0; j &lt; 10; j++) {
+    demo[j]();
+   }</code><br>上题中的i与函数形成闭包，所以结果会打印出10个10。题中的i在函数还没执行时不会被赋值，要等到函数最后执行的时候才会进行赋值，函数执行时for循环就已经转了10圈了，所以i直接进行赋值就成了10个10。运用立即执行函数可以每一圈都让i赋值。<br>我们想要依次打印出i从0到9，但是这样的话就打印不出来我们想要的结果。所以只能靠闭包才能实现我们想要的结果。如下：</p>
+<p><code>function a() {
+  var arr = [];
+  for(var i = 0; i &lt; 10; i++) {
+    (function (j) {
+      arr[j] = function () {
+        console.log(j);
+      }
+    }(i))
+  }
+  return arr;
+   }
+   var demo = a();
+   for(var j = 0; j &lt; 10; j++) {
+  demo[j]();
+   }</code><br>值得注意的是这个函数中的demo是一个数组，执行时不能像demo()这样，需要如上题那样进行。</p>
+<pre><code>闭包会导致原有作用域链不释放，造成内存泄露。闭包会导致多个执行函数共用一个公有变量，如果不是特殊需要，应尽量防止这种情况放生。
+</code></pre><p>一个函数连续执行的话会在他之前形成的作用域链上再作用。</p>
+<p>闭包的作用：1、公有变量   累加器（多次调用的是一个变量）<br>       2、可以做缓存，存储变量   （操作的是同一个变量，把变量放在那儿，多个函数都使用它）   3、模块化开发，防止污染全局变量   4、私有化变量<br><code>function Deng () {
+  var prepareWife = &quot;xiaozhang&quot;;
+  var obj = {
+    name : &quot;dengxuming&quot;,
+    age : 40,
+    sex : &quot;male&quot;,
+    wife : &quot;xiaoliu&quot;,
+    divorce : function () {
+      delete this.wife;
+    },
+     getMarried : function () {
+      this.wife = prepareWife;  
+    },
+    changePrepare : function (someone) {
+      prepareWife = someone;
+    },
+    sayMyWife : function () {
+      return this.wife;    }
+    }
+    return obj;
+    }
+    var deng = Deng();</code></p>
+<p>  立即执行函数：此类函数没有声明，在一次执行过后即释放。适合做初始化工作。<br>（function () {}）()  就是长这个样子。执行完就被销毁，所以一般不写名。    只有表达式才能被执行。123就是一个表达式。函数声明不能被执行。成等式就是表达式。表达式被执行完了它就会被销毁，就找不到了。例如下面这个例子：<br>`  var a = function () {<br>                              console.log(‘a’);<br>                            }()  </p>
+<pre><code>+ function () {
+  console.log(&apos;a&apos;);
+}()  `                          (在函数声明之前加上+ - ！之后也能执行)
+</code></pre><p>这个函数执行完之后就不能找到a函数了。</p>
+<p>  认识对象<br><code>var mrYao = {
+  firstName : &quot;xiaoyao&quot;,
+  lastName : &quot;yao&quot;,
+  age : 99,
+  handsome : false, 
+  son : {
+    name : wang,
+    age : 180
+  }
+  wife : {
+    name : zhou,
+    age : 90    
+  }
+  smoke : function () {
+    console.log(&#39;I am smoking, cool&#39;);  
+  }
+  drink: function () {
+    console.log(&#39;I am drinking&#39;);
+  }
+  }</code><br>  对象可以增删改查！<br>  delete后面加空格，就是使用这个方法，可以把对象的属性和方法删除。</p>
+<p>对象的创建方法有  1、字面量   2、构造函数  （系统自带 new Object（）；Array（）；Boolean（）；String（）；自定义）  3、</p>
+<p>系统的构造方法 var obj = new Object();就相当于var obj = {};叫：对象字面量/对象直接量</p>
+<p>系统的构造方法不够好，可以自定义构造函数。</p>
+<p>`function Person() {</p>
+<p>}<br>var person = new Person;`<br>自定义构造函数大头风原则。</p>
+<p>构造函数内部原理。使用new操作符会在内部隐式的进行三部曲。<br>1、在函数最前面隐式的加上this = {}  2、执行 this.xxx = xxx;<br>  3、隐式的(return)返回this<br>通过new出来的对象，如果你手动的加上return返回一个引用值的时候，那么系统的new隐式进行的三部曲中的第三步就不能返回this了，而会返回手动加上的return的东西。但是只要你手动加上的return返回的结果不是引用值，而是原始值的话不影响构造函数的内部原理的。</p>
+<p>包装类。给原始值加属性、方法，访问原始值的属性、方法等等，都是包装类干的。系统内部自动给你加的。例如：<br><code>var num = 123;
+  num.abc = &#39;a&#39;;
+  console.log(num.abc);</code>结果为：undefined<br>因为num是一个原始值，数字类型的，系统会在内部隐式的给你转换成系统内部的Number对象，给你new出来。不过系统隐式的给你new出来之后没有保存他，只是没有让他报错，也并没有保存起来，所以访问不到他。再例如：<br><code>var str = &#39;abcd&#39;;
+  str.lenth = 2;
+  console.log(str.length);</code>结果为：4<br>因为str是一个字符串类型的原始值，他上面并没有.length方法，但是系统会把它隐式的new出来，new String（str）.length也就是4了。</p>
+<p>原型  ：原型是对象function的一种属性，它定义了构造函数制造出的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。原型也是对象。<br>利用原型特点和概念，可以提取共有属性。<br>对象如何查看对象的构造函数，constructor。<br><code>Person.prototype.name = &quot;abc&quot;;
+function Person() {
+}
+var person = new Person();
+Person.prototype.name = &quot;bcd&quot;;
+console.log(person.name);</code><br>结果为：bcd   (因为这是直接赋值的。注意跟下一题的区别。这个是原始值也就是在栈里面存着)</p>
+<p><code>Person.prototype = {
+ name : &quot;abc&quot;
+}
+function Person() {
+}
+var person = new Person();
+Person.prototype = {
+   name : &quot;bcd&quot;
+}
+console.log(person.name);</code><br>结果为：abc     (因为这个是引用值也就是在堆内存里面存着。而且这个person是Person  new出来的，所以有隐式的三步，在this里面会有<strong>proto</strong>=Person.prototype。而new又在第二次引用赋值之前，所以并不会改变name的值，因为<strong>proto</strong>已经提取到第一个name的值了)</p>
+<p> `  Son.prototype = {<br>      eat : function () {<br>        this.height ++;<br>        card : [100, 200]<br>      }</p>
+<pre><code> };
+ function Son() {
+this.height = 100;
+ }
+ var son = new Son;
+ son.eat();   101
+ son.eat();   102
+ son.card.pop();`   200   拿出来200，原型里面就没有200了
+</code></pre><p>  son 可以调用父亲Son的值，但是并不能改变父亲Son中的值。也就是说son.<strong>proto</strong>.height的值永远都是100。</p>
+<p>绝大数对象的最终都会继承自Object.prototype<br><code>var demo = {
+  name : &#39;abc&#39;,
+  age :234
+  }
+var obj = Object.create(demo);</code><br>创建一个obj对象是以demo为原型的对象。括号里必须填东西，想要创建一个没有原型的对象里面要填null。</p>
+<p>一个对象上的<strong>proto</strong>是追到他的父级的原型链上的，所有的对象的<strong>proto</strong>都会追到系统的Object上的，所以Object上就没有<strong>proto</strong>了。如果改变了一个对象上的<strong>proto</strong>就相当于改变了他的原型链，也就是改了他的父级的.prototype原型链了。原型链是一个对象，对象是引用值，修改的话就是换地址的，原先的空间并不会换的。比如：<br><code>var obj = {name:&quot;a&quot;}; var obj1 = obj; obj = {name:&quot;b&quot;};console.log(obj1.name)</code>;结果为：a    ()</p>
+<p><code>var obj = {};
+ document.write(obj);</code> 打印结果为：[object Object]   因为打印一个文档流的话会隐式的把obj上的toString方法的结果给你打印出来。例如：<code>var obj = Object.create(null);obj.toString = function () {return &#39;邓哥身体好&#39;；}  document.write(obj);</code>  结果为：邓哥身体好<br>但是数字类型的，布尔类型的，数组类型的他们toString出来的就不是[object Object]形式的，因为他们的原型上就有重写的toString方法。    </p>
+<p>toString方法是在原型链上的，所以一般都有，可以完全的分别出来对象，数组等等。但是undefined和null没有toString，因为他俩没有原型链。数字有toString，但是不能直接123.toString，因为数字后面跟着小数点会把这个小数点当做是浮点类型的小数点的。</p>
+<p>浏览器有一个存在的bug。就比如0.14<em>100结果就为140.0000000002；精度不准的问题。<br>Math.radom().这是生成0-1之间的随机数，比如：for(var i = 0; i &lt; 10; i ++) {var num = Math.random().toFixed(2) </em> 100;<br>console.log(num);} 这个就会出现精度不准的问题，就说因为计算机的精度不准，在处理小数不准是因为计算机是基于二进制编码的原因，无法修改的bug。toFixed()就有这个问题。上一题解决的办法就是不用toFixed()在最后取整用floor。比如：for(var i = 0; i &lt; 10; i ++) {var num = Math.floor(Math.random() * 100);  console.log(num);}这次取整就不会出现不精准的问题了。</p>
+<p>函数.call方法的使用。test()其实就是test.call();这个方法可以改变this的指向。括号里面的第一位参数就是this指向的对象，第二位开始可以放正常的参数了。缺点就是还调用了另一个函数，如下：<br><code>function Wheel(wheelSize, style) {
+  this.style = style;
+  this.wheelSize = wheelSize;
+}
+function Sit(c, sitColor) {
+  this.c = c;
+  this.sitColor = sitColor;
+}
+function Model(height, width, leng) {
+  this.height = height;
+  this.width = width;
+  this.leng = leng;
+}
+function Car(wheelSize, style, c, sitColor, height, width, leng) {
+  Wheel.call(this, wheelSite, style);
+  Sit.call(this, c, sitColor);
+  Model.call(this, height, width, len);
+}
+var car = new Car(100, &#39;花里胡哨的&#39;, &#39;真皮座椅舒适&#39;， &#39;red&#39;, 1800, 1900, 4900);</code><br>企业开发的模块化，最后完工的成品是多个拼接起来的。</p>
+<p>call 和apply的区别：call需要把实参按照形参的个数传进去；   apply需要传一个arguments数组。<br>call和apply都是改变this指向，区别就是传参列表不同。</p>
+<p>typeof (new Array).<strong>proto</strong>.constructor()<br>结果为：”object”     解析：先算括号里面的，再算点。优先级顺序。形式上又有typeof的两种形式的用法。</p>
+<p>计算输入变量的字节长度，汉字的Unicode长度大于255，英文字母的Unicode长度小于等于255；<br><code>var str = &quot;kjfhasdkjf生命在于学习&quot;
+function bytestLength(str) {
+   var count = str.length;
+   for(var i = 0; i &lt; str.length; i++) {
+  if(str.charCodeAt(i) &gt; 255) {
+     count ++;
+  }
+  }
+  return count;
+}
+或者
+var str = &quot;aldshfuioasdhf&quot;;
+function bytestLength(str) {
+   var count = 0;
+   for(var i = 0, len = str.length; i &lt; len; i ++) {
+  if(str.charCodeAt(i) &gt; 255) {
+     count += 2;
+  }else {
+     count ++;
+  }
+   }
+   return count;
+}</code></p>
+<p>继承发展史：<br>1、传统形式—-&gt;原型链    缺点：过多的继承了没用的属性<br>2、借用构造函数   也就是用call或者apply的方法，其实是调用跟自己完全囊括的属性才能使用的，多调用了一次构造函数浪费效率了。    缺点：不能继承借用构造函数的原型； 每次构造函数都要多走一个函数<br>3、共享原则，共有原型。     缺点：不能随便改动自己的原型</p>
+<p>圣杯模式：(构造函数想完全继承自父亲的原型，并且还可以添加自己特有的原型)<br>`Father.prototype.lastName = “Deng”;<br>Father.prototype.sex = “male”;<br>function Father() {</p>
+<p>}<br>function Son() {</p>
+<p>}<br>function inherit(Target, Origin) {<br>   function F() {};<br>   F.prototype = Origin.prototype;<br>   Target.prototype = new F();<br>   Target.prototype.constuctor = Target;<br>   Target.prototype.uber = Origin.prototype;<br>}<br>inherit(Son, Father)<br>var son = new Son();<br>var father = new Father();`</p>
+<p>yahoo的YUI3库现在不用这个了。现在都用jQuery库了。YUI3库是这样写的<br><code>var inherit = (function () {
+      var F = function () {};
+      return function (Target, Origin) {
+      F.prototype = Origin.prototype;
+      Target.prototype = new F();
+      Target.prototype.constuctor = Target;
+      Target.prototype.uber = Origin.prototype;
+      }
+    }());</code>    运用闭包的私有化变量属性。必须熟练掌握闭包的属性特点。</p>
+<p>命名空间的问题。防止污染全局变量。一般解决办法就是使用立即执行函数，在立即执行函数里命名变量，变量会成为私有化变量，也就是利用闭包的特点。init初始化、入口。</p>
+<p>对象还有一种访问属性的方法，除了obj.name访问对象obj的name属性，还可以obj[‘name’];浏览器在执行obj.name的时候回隐形的转换成name转换成字符串类型的形式执行，所以用字符串的形式更加快，有效率。而且使用字符串的形式这种方法更加的方便，在以后的使用中，字符串的使用频率更加高的。</p>
+<p>对象、数组的遍历、枚举；<code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]; for(var i = 0; i &lt; arr.length; i++) {console.log(arr[i]);}</code></p>
+<p>遍历对象的话就要用到for-in 循环了；<br>  <code>var obj = {
+       name : &#39;abc&#39;,
+       age : 123,
+       sex : &#39;male&#39;,
+       height : 180,
+       weight : 75
+     }
+     for(var prop in obj) {
+     console.log(obj.prop);</code> 这里有一个错误哦~！应该写成obj[prop]的形式。<br>  }<br> obj.prop—-&gt;就相当于obj[“prop”]，因为系统会隐式的把前面的改成后面的这种形式。<br>  这里有一个问题，用对象.prop的话，会访问这个对象上的属性。不过这个对象上并没有prop的属性，所以最后会打印出5个undefined。所以应该写成对象[name]属性的形式。记住哦~！！！</p>
+<p>  这样遍历对象的话会把原型上的属性也会给遍历出来，但是不包括系统自己原型上本来就有的，只是自己手动设的才会连着打印出来的。所以要是只想遍历这个对象本身的属性的话，应该先判断一下是否属于自身的属性，用到的方法就是对象.hasOwnProperty</p>
+<p>还有一个跟hasOwnProperty差不多的方法就是in，他的作用就是看一下对象上有没有这个这个属性，比如看一下对象是否有name的属性，就是：’name’ in obj;属性值必须是字符串形式的。返回值是布尔类型的值。但是有一个缺点就是不管这个属性是不是你本身的，你父亲的他返回值也是true。</p>
+<p>instanceof</p>
+<p>eg:<br><code>function Person() {};
+  var person = new Person();
+  person instanceof Person;</code>  返回结果为：true  看person是不是Person构造出来的；但是   person instanceof Object;  返回结果也为：true；   结论：看A的原型链上有没有B的原型，在原型链上的也认为是，所以这是往原型链上找的。</p>
+<p>instanceof 方法检测一个对象A是不是另一个对象B的实例的原理是：查看对象B的prototype指向的对象是否在对象A的[[prototype]]链上。如果在，则返回true，如果不在怎返回false。不过有一个特殊的情况，当对象B的prototype为null将会报错（类似空指针异常）。<br>还有一个方法很像in的方法，他就是instanceof。官方给出的解释是 A对象是不是B构造函数构造出来的。 比如：A insftanceof B。<br>但是官方的解释是远远不够的，只要是在原来对象原型链之上的他的返回结果都是true。所以其实他的意思应该是：看一下A对象的原型链上有没有B的原型，也就是找祖先的，往原型链之上找到。所以instanceof解决了一个问题，就是typeof方法不能精确判断出来的问题。<br>eg：var arr = [] || {};<br>传进去一个变量，这个变量有可能是数组也有可能是对象，如何判断出来；有三种区分方法：</p>
+<ol>
+<li>用constructor可以区分出来<br>[].constructor   返回结果为：function Array() {  {native code}  }<br>var obj = {};<br>obj.constructor   返回结果为：function Object() {  {native code}  }  </li>
+<li>用instanceof可以区分出来<br>[] instanceof Array<br>返回结果为：true<br>var obj = {};<br>obj instanceof Array<br>返回结果为：false</li>
+<li>用toString方法可以区分出来（一般也都是用这种方法区分的）<br>数组、对象等等都有自己的toString方法<br>Object.prototype.toString.call([]);调用数组的toString方法  返回结果为：”[object Array]”<br>Object.prototype.toString.call({});调用对象的toString方法  返回结果为：”[object Object]”<br>Object.prototype.toString.call(123);调用数字的toString方法  返回结果为：”[object Number]”<br>toString方法可以准确区别出来数组和对象。并且在有父子页面的情况下也能准确识别出来，其他的两种方法就不能在子页面中识别出来父页面下类型了。所以一般我们都是用toString方法来区分的。</li>
+</ol>
+<p>深度克隆：遍历对象  for(var prop in obj)</p>
+<pre><code>1. 判断是不是原始值   typeof()  object
+2. 判断是数组还是对象，有三种方法：instanceof   toString  constructor  一般用toString方法，因为如果在原先的页面上再引入一个页面的话，引入进来的页面中的数组和对象就不符合原先的原则了，而toString方法则不会发生这种引用错误。
+3. 建立相应的数组或对象
+递归的方法。(必须找出口)
+</code></pre><p>`var obj = {<br>  name : ‘abc’,<br>  age : 123,<br>  card : [‘vasa’, ‘master’],<br>  wife : {<br>  name : ‘bcd’,<br>  son : {<br>    name : ‘aaa’<br>  }<br>  }<br>}</p>
+<p>function deepClone(origin, target) {<br>  var target = target || {},<br>      toStr = Object.prototype.toString,<br>      arrStr = “[object Array]”;<br>  for(var prop in origin) {<br>      if(origin.hasOwnProperty(prop)) {<br>  if(origin[prop] !== ‘null’ &amp;&amp; typeof(origin[prop]) == ‘object’) {<br>    if(toStr.call(origin[prop]) == ‘arrStr’){<br>       target[prop] = [];<br>    }else{<br>       target[prop] = {};<br>    }<br>    deepClone(origin[prop], target[prop]);<br>    }else{<br>    target[prop] = origin[prop];<br>    }<br>  }<br>  }<br>  return target;<br>}<br>var target = deepClone(obj);`</p>
+<p>三步运算符：?:<br>  条件判断  ？  是  ： 否  表达式运算之后会返回值<br>条件判断？前面的，条件成立的话执行：前面的运算表达式，条件不成立的话执行：后面的运算表达式。<br>var num = 1 &gt; 0 ? (“10” &gt; “9” ? 1 : 0) : 2;<br>结果为：0   （字符串形式的数字比较是逐位比较ASCII（阿斯克码）表）</p>
+<p>数组<br>字面量 var arr = [];<br>var arr = [,,];  arr的结果为2个undefined。<br>var arr = [1,2,3,,,,7,8]</p>
+<p>系统的构造方法：var arr = new Array(10.2);这样会报错的。只填一位的话会形成稀松数组，也就是var arr = new Array(10);会形成10位值为undefined的数组。还可以溢出读和写。</p>
+<p>数组常用的方法：<br>改变原数组：push,pop,shift,unshift,sort,reverse<br>       splic</p>
+<p>push方法是在数组的最后添加参数，可以添加多位；<br>pop方法是在数组的最后剪切一位出来，并且（）里面不支持添加参数，添加也没啥用，所以每次只能剪切一位出来；<br>shift方法是在数组的最前面剪切一位出来；<br>unshift方法是在数组的最前面添加参数，并且可以添加多位；<br>reverse方法会把原数组逆转顺序。<br>splice()括号里填参数：第一位参数是从第几位开始，第二位参数是截取多少的长度，再往后面填的参数就是在切口处添加的参数，可以无穷多个了。切的刀口就在光标处，一般splice方法用的是添加数组的比较多。而且还可以在负数位开始截取。</p>
+<p>sort方法是给数组按照升序排序的方法，而且是按照字符串阿斯克码进行排序的。所以一般是我们自己给sort()方法设置他的排序方法。<br>1、必须写两个形参   2、看返回值（1）当返回值为负数是，那么前面的数放在前面（2）为正数，那么后面的数在前 （3）为0，则不动<br>   冒泡排序的规则；<br>arr.sort(function(a, b) {<br>if(a &gt; b) {<br>  return 1;<br>}else {<br>  return -1;<br>}<br>});</p>
+<p>简写这个代码的话就是;<br><code>arr.sort(function(a, b) {
+  return a - b;   升序
+  return b - a;   降序
+})</code></p>
+<p>给一个有序的数组，乱序<br><code>var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+arr.sort(function() {
+  return Math.random() - 0.5;
+});</code><br>按照对象的年龄升序排列；<br><code>var cheng = {
+  name : &quot;cheng&quot;,
+  age : 18,
+  sex : &#39;male&#39;,
+  face : &quot;handsome&quot;
+}
+var deng = {
+  name : &quot;deng&quot;,
+  age : 40,
+  sex : undefined,
+  face : &#39;amazing&#39;
+}
+var zhang = {
+  name : &quot;zhang&quot;,
+  age : 20,
+  sex : &quot;female&quot;
+}
+var arr = [cheng, deng, zhang];
+arr.sort(function(a, b) {
+  return a.age - b.age;
+})</code></p>
+<p>不可改变原数组<br>concat,join—&gt;split,toString,slice  </p>
+<p>concat连接  arr.concat(arr1)  把数组arr1加到数组arr后面。<br>数组的toString是把数组变成字符串。<br>slice(从该位开始截取，截取到该位)<br>join(“-“)方法可以再数组的每一位之间加上-连接成一个字符串。<br>split(“-“)方法可以根据”-“把数组的字符串拆成单个的。可以根据任意的字符串拆分。</p>
+<p>例题：<br><code>var str = &quot;alibaba&quot;;
+var str1 = &quot;baidu&quot;;
+var str2 = &quot;tencent&quot;;
+var str3 = &quot;toutiao&quot;;
+var str4 = &quot;wangyi&quot;;
+var str5 = &quot;xiaowang&quot;;
+var str6 = &quot;nvsheng&quot;;
+var strFinal = &quot;&quot;;
+var arr = [str, str1, str2, str3, str4, str5, str6];</code><br>字符串放在栈内存里存储，first in, last out;所以字符串的连接是调用每一个字符串进行连接，效率低下，一般我们把字符串先保存到数组中进行调用的，这样效率更高，因为数组的散列结构。</p>
+<p>类数组 arguments<br>例：<br><code>var obj = {
+  &quot;0&quot; : &#39;a&#39;,
+  &quot;1&quot; : &#39;b&#39;,
+  &quot;2&quot; : &#39;c&#39;,
+  &quot;length&quot; : 3,
+  &quot;push&quot; : Array.prototype.push,
+  &quot;splice&quot; : Array.prototype.splice
+}</code><br>属性要为索引(数字)属性，必须有length属性，最好加上push方法。</p>
+<p>例题：<br><code>var obj = {
+  &quot;2&quot; : &#39;a&#39;,
+  &quot;3&quot; : &#39;b&#39;,
+  &quot;length&quot; : 2,
+  &quot;push&quot; : Array.prototype.push
+}
+obj.push(&#39;c&#39;);
+obj.push(&#39;d&#39;);
+console.log(obj);</code><br>结果为：obj{<br>  “2” : “c”,<br>  “3” : “d”,<br>  “length” : 4,<br>  “push” : Array.prototype.push<br>}</p>
+<p>完美区别各种类型的函数对象</p>
+<p><code>function type(target) {
+  var ret = typeof(target),
+  template = {
+    &quot;[object Array]&quot; : &quot;array - object&quot;,
+    &quot;[object String]&quot; : &quot;string - object&quot;,
+    &quot;[object Number]&quot; : &quot;number - object&quot;,
+    &quot;[object Boolean]&quot; : &quot;boolean - object&quot;,
+    &quot;[object Object]&quot; : &quot;object - object&quot;
+  }
+  if(target === null) {
+  return &quot;null&quot;;
+  }else if(ret == &quot;object&quot;) {
+  var str = Object.prototype.toString.call(target);
+  return template[str];
+  }else{
+  return ret;
+  }
+}</code></p>
+<p>数组去重的方法：hash哈希的方法：基于的就是对象的命名规则就是相同的命名会覆盖，所以达到了数组去重的作用。与当年阿里巴巴考的类数组的例题有点儿相似。<br><code>var arr = [1, 2, 3, 4, 1, 3, 4, 2, 4, 5, 6, 4, 0, 0, 0];
+Array.prototype.unique = function () {
+  var temp = {},
+      arr = [],
+      len = this.length;
+  for(var i = 0; i &lt; len; i ++){
+  if(!temp[this[i]]) {
+    temp[this[i]] = &quot;abc&quot;;
+    arr.push(this[i]);
+  }
+  }
+  return arr;
+}</code><br>this[i]代表数组的第i位。随意取名的话“abc”不能换成this[i],因为要是数组里面有undefined或者0等其他为false的值的话，这个去重就失败了。</p>
+<p>this问题的例题：谁调用的this方法this就指向谁。<br><code>var name = &quot;window&quot;;
+var obj = {
+  name : &#39;obj&#39;,
+  say : function (){
+  console.log(this.name);
+  }
+}
+var fun = obj.say();</code><br>console.log(obj.say);    结果为：obj<br>console.log(obj.say.call(window));    结果为：window<br>console.log(fun());      结果为：window<br>console.log(fun.call(obj));    结果为：obj</p>
+<p>闭包形成的原因：一个函数套着另一个函数，并且必须要把里面的函数保存到最外面函数的外面才能形成闭包的。把里面的函数保存出来不一定非要用return。也可以在外部调用也可以的。例如：<br><code>var obj = {};
+    function a() {
+      var aa = 123;
+      function b() {
+      console.log(aa);
+      }
+      obj.fun = b;
+    }
+    a();
+    obj.fun();</code>    结果就为：123    因为把里面的函数保存到了外部，会形成闭包，所以就能访问到a函数已经销毁的变量。</p>
+<p>1、一个字符串[a-z]组成，请找出该字符串第一个只出现一次的字母<br>2、字符串去重；</p>
+<p>`var str =  “adshqwertyuioonpqwertmyuiopasdfghjklasdfghjklzxcvb”;<br>function sayFirst(target) {<br>  var len = target.length,<br>      count = 0;<br>  for(var i = 0; i &gt; len; i ++) {<br>  if(target) {</p>
+<p>  }<br>  }<br>}`</p>
+<p>企业开发中为了防止出错的，出错的话之后的代码就不会执行了；如果网速不好话，代码里有的数据没有下载完就会报错的；<br>try{}里面的代码有错误的话，如下：不会执行错误代码，而且错误代码下面的正确代码也不会执行了，但是不会报错的。<br>而try里面有错误的话会直接跳到catch里面执行catch里面的代码，catch就是为了容错，而且是返回错误信息的。e可以随便写。<br><code>try{
+  console.log(&quot;a&quot;);
+  console.log(b);
+  console.log(&quot;c&quot;);
+}catch(e) {
+  alert(e.name + &quot; : &quot; + e.message);
+}</code></p>
+<p>Error.name的六种值对应的信息：</p>
+<ol>
+<li>EvalErron:eval()的使用与定义不一致</li>
+<li>RangeErron:数值越界</li>
+<li>ReferenceError:非法或不能识别的引用数值（没定义就使用的原因）</li>
+<li>SyntaxError:发生语法解析错误（代码中有中文的标点符号，在解析是就会报错）</li>
+<li>TypeError:操作书类型错误</li>
+<li>URLError:URL处理函数使用不当</li>
+</ol>
+<p>es5.0严格模式   es3.0 和 es5.0产生冲突的部分，就用es5.0，否则使用es3.0的；严格模式优点是减少了编程错误的发生。</p>
+<p>es5.0的启用：”use strict”可以写在一个函数里，那么就在这个函数里只能使用严格模式了。在严格模式中不能使用with（改变函数作用域）,arguments.callee(代替匿名函数的作用),func.caller（函数执行时才能调用，也是代替匿名函数的作用）等等方法；而且还有变量赋值前必须声明。this必须被赋值，预编译之前局部为undefined，不再是指向window了。拒绝重复属性和参数。</p>
+<p>with()可以改变作用域链，先找括号里面填写的对象的作用域链，没有的话才会找自己的作用域链上的。命名空间的应用，代码简化的作用。但是更改作用域链的话，会使效率降低。</p>
+<p>eval()括号里能把字符串当代码使用。是魔鬼！还可以改变作用域，他还有自己独立的作用域。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/js模式-读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/11/js模式-读书笔记.html" class="article-date">
+      <time datetime="2019-04-13T07:26:18.723Z" itemprop="datePublished">2019-04-13</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/js模式-读书笔记.html">Js模式读书笔记</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong> Js模式读书笔记：</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h2 id="js模式笔记"><a href="#js模式笔记" class="headerlink" title="js模式笔记"></a>js模式笔记</h2><p>  模式：广义上是重现事件或用来生产者对象是主题···它是一个可以用来生产其他事物的模板或者模型。在软件开发过程中，模式是指一个通用问题的解决方案。一个模式不仅仅是一个可以用来复制粘贴的代码解决方案，更多的是提供了一个更好的实践经验、有用的抽象化表示和解决一类问题的模板。<br>在JS中，一旦定义好了变量，同时也就已经正在处理对象向了。该变量会成为内置对象的一个属性，成为激活对象。第二，该变量实际上也是伪类，因为他拥有其自身的属性（attributes），该属性决定了该变量是否可以被修改、被删除和在一个for-in循环中进行枚举。<br>一个对象仅仅是一个容器，该容器包含了命名的属性、健-值对（大多数）的列表。这里面的属性可以是函数（函数对象），这种情形下我们称其为方法。对象有两种类型：原生的（Native）：内置对象（例数组、日期对象等）和用户自定义对象（例var a={}）   主机的（Host）：Windows对象和所有的DOM对象。</p>
+<p>尽量少用全局变量！尽量使用var声明变量。<br>使用var创建的全局变量不能删除。不适用var创建的隐含全局变量可以删除。这表明隐含全局变量严格来讲不是真正的变量，而是全局的属性。属性可以通过delete操作符删除，但变量不可以。<br>尽量使用一个var声明全部变量，这样可以减少逻辑错误和提高代码的可读性。<br>凌散变量的提升。不管在函数的任何地方声明变量，效果都等同于在函数顶部进行声明。</p>
+<p>for-in循环应该用来遍历非数组对象。一般用for循环遍历数组。使用for-in遍历非数组对象时都要结合.hasOwnProperty（）。</p>
+<p>不要增加内置的原型。容易引发混乱，引起错误等。</p>
+<p><code>var inspect_me = 0,
+      result = &#39;&#39;;
+  switch（inspect_me）{
+  case 0：
+     result = “zero”；
+     break；
+  case 1：
+     result = “one”；
+     break；
+  default：
+     result = “unknown”；
+  }</code></p>
+<p>避免使用隐式类型转换。false==0或”” == 0这类比较语句后会返回true。</p>
+<p>避免使用eval（），他可以将任意字符串当做一个JavaScripe代码来执行。</p>
+<p>parseInt()的数值约定。传的第二个参数是一个进制参数，尽量不要省略该参数。还有截断字符只返回数字类型的功能。</p>
+<p>关于分号的使用，尽管解析器会在代码的每行的结尾隐式的加上分号，但是一般情况下我们还是不应该省略，这不仅是严格记录和代码编写方式，也会有助于避免之前范例中含糊不清的情况。</p>
+<p>使用空格，例如：<code>for (var i = 0; i &lt; 10; i += 1){...}   var a = [1, 2, 3];   var o = {a: 1, b: 2};</code><br>命名约定：构造函数的首字母大写。其他命名模式，有时候开发者采用将变量名全部大写的约定来表明该变量在程序生命周期中不可改变，例如：var PI = 3.14,表示是精确的常量，请不要修改。<br>还有的程序员使用一种约定来模仿功能性的做法是私有成员函数约定。使用一个下划线前缀来标识私有方法或者私有属性是更为简单的一种方法。例如：var person = {<br>   _getFirst: function () { }表示私有函数，使用下划线前缀的表示方法可以提醒使用person对象的用户，告诉他们这些方法在其他地方不能确定一定能够正常工作，不能直接调用。<br>}</p>
+<p>下面是一些使用下划线约定的变量：<br>使用下划线结尾来表明是私有变量，例如name_和getElements_()。<br>使用一个下划线前缀来标识受保护属性，使用两个下划线前缀来标识私有属性。<br>在Firefox中有一些属性，这些属性技术上不是JavaScript语言的一部分，它们采用两个下划线前缀和两个下划线后缀来命名。例如<strong>proto</strong>and__parent__。</p>
+<p>编写注释。因为人的记忆力不是永久的，过了一段时间你自己写的代码可能你都不能认识了。最重要的习惯，也是最难遵循的习惯就是不断更新注释，因为过期的注释可能会误导阅读者，这比没有注释还可怕。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/book/">book</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    </nav>
+  
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Dexinser
+            </div>
+            <div class="footer-right">
+                <a href="https://hexo.io/" target="_blank">Hexo</a><a href="https://github.com/dexinser" target="_blank">Blog</a> by Dexinser
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit">极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?GfXd51JLTr";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

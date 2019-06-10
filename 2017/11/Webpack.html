@@ -9,20 +9,20 @@
   
   <title>Webpack学习笔记 | To die or not to die, this is a question~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Webpack学习笔记：  什么是Webpack？Webpack的中文叫法–我更愿意叫它“前端自动化构建工具”，是用来进行模块化加载并且打包的，它能把各种资源，例如图片、js文件、css预处理语言等等，统统进行处理，打包成符合生产环境部署的前端资源。 模块化的问题解决之后，webpack 就能把各种资源模块打包合并成一个文件输出给浏览器。在打包的过程中还能对这些资源进行处理，比如压缩减少体积，把">
+  <meta name="description" content="Webpack学习笔记： webpack可真是一门大学问，没去深究，感觉很复杂，所以只是拿来简单的使用。">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Webpack学习笔记">
 <meta property="og:url" content="https://indexcode.cn/2017/11/Webpack.html">
 <meta property="og:site_name" content="To die or not to die, this is a question~">
-<meta property="og:description" content="Webpack学习笔记：  什么是Webpack？Webpack的中文叫法–我更愿意叫它“前端自动化构建工具”，是用来进行模块化加载并且打包的，它能把各种资源，例如图片、js文件、css预处理语言等等，统统进行处理，打包成符合生产环境部署的前端资源。 模块化的问题解决之后，webpack 就能把各种资源模块打包合并成一个文件输出给浏览器。在打包的过程中还能对这些资源进行处理，比如压缩减少体积，把">
+<meta property="og:description" content="Webpack学习笔记： webpack可真是一门大学问，没去深究，感觉很复杂，所以只是拿来简单的使用。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://outwcl4zh.bkt.clouddn.com/webpack.jpg">
 <meta property="og:image" content="https://outwcl4zh.bkt.clouddn.com/gulp+grunt.png">
-<meta property="og:updated_time" content="2019-04-13T07:50:08.293Z">
+<meta property="og:updated_time" content="2019-06-10T03:07:56.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Webpack学习笔记">
-<meta name="twitter:description" content="Webpack学习笔记：  什么是Webpack？Webpack的中文叫法–我更愿意叫它“前端自动化构建工具”，是用来进行模块化加载并且打包的，它能把各种资源，例如图片、js文件、css预处理语言等等，统统进行处理，打包成符合生产环境部署的前端资源。 模块化的问题解决之后，webpack 就能把各种资源模块打包合并成一个文件输出给浏览器。在打包的过程中还能对这些资源进行处理，比如压缩减少体积，把">
+<meta name="twitter:description" content="Webpack学习笔记： webpack可真是一门大学问，没去深究，感觉很复杂，所以只是拿来简单的使用。">
 <meta name="twitter:image" content="https://outwcl4zh.bkt.clouddn.com/webpack.jpg">
   
     <link rel="alternative" href="/atom.xml" title="To die or not to die, this is a question~" type="application/atom+xml">
@@ -322,7 +322,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Webpack学习笔记：</strong> <excerpt in index | 首页摘要></excerpt></p>
+        <p><strong> Webpack学习笔记：</strong> <excerpt in index | 首页摘要><br>webpack可真是一门大学问，没去深究，感觉很复杂，所以只是拿来简单的使用。<br><a id="more"></a></excerpt></p>
+<p><the rest of contents | 余下全文></the></p>
 <h1 id="什么是Webpack？"><a href="#什么是Webpack？" class="headerlink" title="什么是Webpack？"></a>什么是Webpack？</h1><p>Webpack的中文叫法–我更愿意叫它“前端自动化构建工具”，是用来进行模块化加载并且打包的，它能把各种资源，例如图片、js文件、css预处理语言等等，统统进行处理，打包成符合生产环境部署的前端资源。</p>
 <p>模块化的问题解决之后，webpack 就能把各种资源模块打包合并成一个文件输出给浏览器。在打包的过程中还能对这些资源进行处理，比如压缩减少体积，把 sass 编译成 css, coffee 编译成 js。所以它在某些程度上，跟 grunt/gulp 的功能有些相同。<br><img src="https://outwcl4zh.bkt.clouddn.com/webpack.jpg" alt="Webpack工作模式"></p>
 <h1 id="与grunt-gulp的区别"><a href="#与grunt-gulp的区别" class="headerlink" title="与grunt/gulp的区别"></a>与grunt/gulp的区别</h1><p>grunt/gulp 强调的是前端开发的工作流程，我们可以通过配置一系列的 task，定义 task 处理的事务（例如文件压缩合并、雪碧图、启动 server、版本控制等），然后定义执行顺序，来让 grunt/gulp 执行这些 task，从而构建项目的整个前端开发流程。<br><img src="https://outwcl4zh.bkt.clouddn.com/gulp+grunt.png" alt="grunt/gulp"></p>
@@ -337,7 +338,7 @@
         <p><span>本文标题:</span><a href="/2017/11/Webpack.html">Webpack学习笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Dexinser 的个人博客">Dexinser</a></p>
         <p><span>发布时间:</span>2019年04月13日 - 15时26分</p>
-        <p><span>最后更新:</span>2019年04月13日 - 15时50分</p>
+        <p><span>最后更新:</span>2019年06月10日 - 11时07分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/Webpack.html" title="Webpack学习笔记">https://indexcode.cn/2017/11/Webpack.html</a>
             <span class="copy-path" data-clipboard-text="原文: https://indexcode.cn/2017/11/Webpack.html　　作者: Dexinser" title></span>

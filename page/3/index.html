@@ -307,96 +307,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Npm相关问题：</strong> <excerpt in index | 首页摘要><br>简单的来说npm就是nodejs的包管理工具。</excerpt></p>
-<p>所以说到它就不得不提一下nodejs这个前端发展中出现的里程碑式的后端JavaScript语言。让我们摆脱了浏览器这一个单一的环境限制，开始向后端迈进。</p>
-<p>正是由于nodejs的火爆发展，也带动着前端JavaScript模块化的步伐。由于后端开发是非常复杂的，所以必须使用模块化的开发模式，而随着前端也越来越复杂的应用开发，所以类似后端开发中的模块化开发不得不应用到前端中来了。</p>
-<h1 id="前端模块化开发带来的好处"><a href="#前端模块化开发带来的好处" class="headerlink" title="前端模块化开发带来的好处"></a>前端模块化开发带来的好处</h1><h2 id="命名冲突"><a href="#命名冲突" class="headerlink" title="命名冲突"></a>命名冲突</h2><p>随着前端开发应用的复杂度越来越高，应用开发的团队成员也越来越多，不可避免的就有了命名上的一些冲突，为了解决命名冲突所带来的问题，我们可以用模块化的思想，把各个功能封装在一个模块中。</p>
-<h2 id="文件依赖"><a href="#文件依赖" class="headerlink" title="文件依赖"></a>文件依赖</h2><p>在JavaScript中，由于语言的单线程性质，如果要加载一个js文件，而这个文件依赖于很多个其他的js文件，那么就要很小心的处理加载的先后顺序问题，先把依赖加载进来，在加载依赖这些js的js文件。说起来很拗口哦~（没办法，就这个表达能力啊~）比如：<br>`<script src="util.js"></script></p>
-<p><script src="dialog.js"></script></p>
-<p><script><br>  org.CoolSite.Dialog.init({ /<em> 传入配置 </em>/ });<br></script><code>dialog.js依赖util.js文件中的一些方法，所以必须先要加载完成util.js文件才能正常使用dialog.js中的方法。
-上面讲的是最简单的文件依赖问题的一些使用方法。但是像上面那样使用很麻烦，所以借鉴后端node的模块化方法，前端引入了类似YUI3库的加载方法，简单实用还美观，如下：</code>YUI.add(‘my-module’, function (Y) {<br>  // …<br>}, ‘0.0.1’, {<br>    requires: [‘node’, ‘event’]<br>});`</p>
-<p>上面的代码，通过 requires 等方式来指定当前模块的依赖。这很大程度上可以解决依赖问题，但不够优雅。当模块很多，依赖很复杂时，烦琐的配置会带来不少隐患。</p>
-<p>命名冲突和文件依赖，是前端开发过程中的两个经典问题。下来我们看如何通过模块化开发来解决。为了方便描述，我们使用 Sea.js 来作为模块化开发框架。</p>
-<h1 id="使用Sea-js来解决"><a href="#使用Sea-js来解决" class="headerlink" title="使用Sea.js来解决"></a>使用Sea.js来解决</h1><p>先说一下这些模块的发展吧。前面说了前端模块化是借鉴的node后端模块化的思想。而node又是遵循的服务器端模块的规范–&gt;CommonJs。</p>
-<h2 id="CommonJS-（服务器端的模块化规范）"><a href="#CommonJS-（服务器端的模块化规范）" class="headerlink" title="CommonJS （服务器端的模块化规范）"></a>CommonJS （服务器端的模块化规范）</h2><p>根据CommonJs规范，一个单独的文件就是一个模块。加载模块使用require方法，该方法读取一个文件并执行，最后返回文件内部的exports对象。如下：</p>
-<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">1&gt; </span>math.js</span><br><span class="line">exports.add = function() &#123;</span><br><span class="line">    var sum = <span class="number">0</span>, i = <span class="number">0</span>, args = arguments, l = args.length;</span><br><span class="line">    while (i &lt; l) &#123;</span><br><span class="line">        sum += args[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">2&gt; </span>increment.js</span><br><span class="line">var add = require(<span class="string">'math'</span>).add;</span><br><span class="line">exports.increment = function(val) &#123;</span><br><span class="line">    return add(val, <span class="number">1</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="meta">3&gt; </span>main.js，该文件为入口文件</span><br><span class="line">var inc = require(<span class="string">'increment'</span>).increment;</span><br><span class="line">var a = <span class="number">1</span>;</span><br><span class="line">inc(a); // <span class="number">2</span></span><br></pre></td></tr></table></figure>
-<p>CommonJS 加载模块是同步的，所以只有加载完成才能执行后面的操作。像Node.js主要用于服务器的编程，加载的模块文件一般都已经存在本地硬盘，所以加载起来比较快，不用考虑异步加载的方式，所以CommonJS规范比较适用。但如果是浏览器环境，要从服务器加载模块，网络请求资源的方式，速度相对较慢，就必须采用异步加载的模式。所以就有了 AMD  CMD 的解决方案。<br>模块的要求如下：</p>
-<blockquote>
-<p>标示符require，为一个函数，它仅有一个参数为字符串，该字符串须遵守Module Identifiers的6点规定<br>require方法返回指定的模块API<br>如果存在依赖的其它模块，那么依次加载<br>require不能返回，则抛异常<br>仅能使用标示符exports导出API</p>
-</blockquote>
-<h2 id="AMD（Asynchromous-Module-Definition）异步模块定义"><a href="#AMD（Asynchromous-Module-Definition）异步模块定义" class="headerlink" title="AMD（Asynchromous Module Definition）异步模块定义"></a>AMD（Asynchromous Module Definition）异步模块定义</h2><p>AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。<br>AMD异步加载模块。它的模块支持 对象、 函数、 构造器、 字符串、 JSON 等各种类型的模块。 </p>
-<p>使用AMD规范适用define方法定义模块。如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过数组引入依赖 ，回调函数通过形参传入依赖 </span></span><br><span class="line">define([<span class="string">'someModule1'</span>, ‘someModule2’], <span class="function"><span class="keyword">function</span> (<span class="params">someModule1, someModule2</span>) </span>&#123; </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">foo</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">/// something </span></span><br><span class="line">        someModule1.test(); </span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="attr">foo</span>: foo&#125; </span><br><span class="line">&#125;); </span><br><span class="line">AMD规范允许输出模块兼容CommonJS规范，这时define方法如下： </span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123; </span><br><span class="line">     </span><br><span class="line">    <span class="keyword">var</span> reqModule = <span class="built_in">require</span>(<span class="string">"./someModule"</span>); </span><br><span class="line">    requModule.test(); </span><br><span class="line">     </span><br><span class="line">    exports.asplode = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">//something </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>定义模块用module变量，它有一个方法declare<br>declare接受一个函数类型的参数，如称为factory<br>factory有三个参数分别为require、exports、module<br>factory使用返回值和exports导出API<br>factory如果是对象类型，则将该对象作为模块输出</p>
-</blockquote>
-<p>目前，实现AMD的库有 RequireJS  、 curl  、 Dojo  、 bdLoad 、 JSLocalnet  、 Nodules  等。</p>
-<h2 id="CMD"><a href="#CMD" class="headerlink" title="CMD"></a>CMD</h2><p>CMD是SeaJS 在推广过程中对模块定义的规范化产出。<br>Sea.js 是国内前端大神玉伯写出来的一个成熟的开源项目，核心目标是给前端开发提供简单、极致的模块化开发体验。这里不多做介绍，有兴趣的可以访问 seajs.org 查看官方文档。</p>
-<p>使用 Sea.js，在书写文件时，需要遵守 CMD （Common Module Definition）模块定义规范。一个文件就是一个模块。如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  exports.each = <span class="function"><span class="keyword">function</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  exports.log = <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br><span class="line">通过 exports 就可以向外提供接口。这样，dialog.js 的代码变成</span><br><span class="line"></span><br><span class="line">define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">'./util.js'</span>);</span><br><span class="line"></span><br><span class="line">  exports.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 实现代码</span></span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>关键部分到了！我们通过 require(‘./util.js’) 就可以拿到 util.js 中通过 exports 暴露的接口。这里的 require 可以认为是 Sea.js 给 JavaScript 语言增加的一个语法关键字，通过 require 可以获取其他模块提供的接口。</p>
-<p>这其实一点也不神奇。作为前端工程师，对 CSS 代码一定也不陌生。</p>
-<p><code>@import url(&quot;base.css&quot;);</code></p>
-<p><code>#id { ... }
-.class { ... }</code><br>Sea.js 增加的 require 语法关键字，就如 CSS 文件中的 @import 一样，给我们的源码赋予了依赖引入功能。</p>
-<h1 id="CMD和AMD的区别有以下几点："><a href="#CMD和AMD的区别有以下几点：" class="headerlink" title="CMD和AMD的区别有以下几点："></a>CMD和AMD的区别有以下几点：</h1><ol>
-<li><p>对于依赖的模块AMD是提前执行，CMD是延迟执行。不过RequireJS从2.0开始，也改成可以延迟执行（根据写法不同，处理方式也不同）。 </p>
-</li>
-<li><p>AMD推崇依赖前置，CMD推崇依赖就近。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AMD </span></span><br><span class="line">define([<span class="string">'./a'</span>,<span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123; </span><br><span class="line">    <span class="comment">//依赖一开始就写好 </span></span><br><span class="line">    a.test(); </span><br><span class="line">    b.test(); </span><br><span class="line">&#125;); </span><br><span class="line"></span><br><span class="line"><span class="comment">//CMD </span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">require, exports, module</span>) </span>&#123; </span><br><span class="line">    <span class="comment">//依赖可以就近书写 </span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>); </span><br><span class="line">    a.test(); </span><br><span class="line">    ... </span><br><span class="line">    <span class="comment">//软依赖 </span></span><br><span class="line">    <span class="keyword">if</span> (status) &#123; </span><br><span class="line">        <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>); </span><br><span class="line">        b.test(); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>虽然 AMD也支持CMD写法，但依赖前置是官方文档的默认模块定义写法。 </p>
-<ol start="3">
-<li>AMD的API默认是一个当多个用，CMD严格的区分推崇职责单一。例如：AMD里require分全局的和局部的。CMD里面没有全局的 require ,提供 seajs.use()来实现模块系统的加载启动。CMD里每个API都简单纯粹。 </li>
-</ol>
-<hr>
-<hr>
-<p>好了，说完了上面的介绍，该正式讲一下正文了~</p>
-<h1 id="npm-三个版本的区别简介"><a href="#npm-三个版本的区别简介" class="headerlink" title="npm 三个版本的区别简介"></a>npm 三个版本的区别简介</h1><p>如今npm包管理已经有3个版本了，那就来讲一下他们之间的区别吧~</p>
-<h2 id="npm-v2解析包的依赖关系"><a href="#npm-v2解析包的依赖关系" class="headerlink" title="npm v2解析包的依赖关系"></a>npm v2解析包的依赖关系</h2><p>想像一下现在有三个模块module A、module B、module C。A依赖B的V1版本，C依赖于B的V2版本。 npm采取的方式是把依赖的模块包嵌入子目录。</p>
-<h2 id="npm-V3-解析包的依赖关系"><a href="#npm-V3-解析包的依赖关系" class="headerlink" title="npm V3 解析包的依赖关系"></a>npm V3 解析包的依赖关系</h2><p>npm3和npm2的不同之处在于：</p>
-<blockquote>
-<p>npm2使用嵌套的方式来管理依赖包，npm3尝试缓和过长的包依赖路径问题。 把二级依赖的包安装在同一级目录下。</p>
-</blockquote>
-<p>假设我们有一个模块A依赖模块B。我们在安装模块A的时候，在项目的node_modules文件夹下： 可以看到 npm v2与npm v3的差异是npm v3中A和B是再同一层文件夹中的，而npm v2中B是再A文件夹下嵌套的。</p>
-<p>现在我们需要安装一个模块C，模块C依赖模块B但是版本与模块A依赖的不同。</p>
-<p>由于B v1.0已经安装在node_modules目录的根目录下了，不能把B v2.0也安装在根目录下。这个时候npm v3的处理方式和npm v2类似。</p>
-<p>通过 npm ls 查看当前项目所有包的依赖关系。如果只是想看顶级包的依赖关系可以执行npm ls –depth=0。</p>
-<h2 id="npm-v3去重"><a href="#npm-v3去重" class="headerlink" title="npm v3去重"></a>npm v3去重</h2><p>也正因为npm v3版本中的新特性，所以就会出现一些重复的包下载，我们可以用提供给我们的API来进行删除重复的包。<br><strong>npm dedupe</strong></p>
-<p>该命令会删除node_modules顶级目录下没有被使用的模块，并且把被重复依赖的模块移动到顶级目录下。</p>
-<p>接下来看一下最新版的npm的一些命令用法吧~</p>
-<h1 id="npm-最新用法"><a href="#npm-最新用法" class="headerlink" title="npm 最新用法"></a>npm 最新用法</h1><h2 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a>npm install</h2><p>用过npm的对这个命令一定熟悉的不能再熟悉了吧~<br><code>$ npm install &lt;packageName&gt;</code><br>安装之前，npm install会先检查，node_modules目录之中是否已经存在制定模块。如果存在，就不再重新安装，既是运程仓库已经有了一个新版本，也是如此。</p>
-<p>如果你希望，一个模块不管是狗安装过，npm都要强制重新安装，可以使用-f或者–force命令参数。<br><code>$ npm install &lt;packageName&gt; --force</code></p>
-<h2 id="npm-update"><a href="#npm-update" class="headerlink" title="npm update"></a>npm update</h2><p>如果想更新已安装模块，就要用到npm update命令了。<br><code>$ npm update &lt;packageName&gt;</code><br>它会先到远程仓库查询最新版本，然后查询本地版本。如果本地版本不存在，或者远程版本有更新，就会安装最新版本。</p>
-<h2 id="registry"><a href="#registry" class="headerlink" title="registry"></a>registry</h2><p>npm update命令怎么知道每个模块的最新版本呢？<br>答案是npm模块仓库提供了一个查询服务，叫做registry。以npmjs.org为例，它的查询网址是<a href="https://registry.npmjs.org/。">https://registry.npmjs.org/。</a></p>
-<p>这个网址后面跟上模块名，就会得到一个 JSON 对象，里面是该模块所有版本的信息。比如，访问 <a href="https://registry.npmjs.org/react，就会看到">https://registry.npmjs.org/react，就会看到</a> react 模块所有版本的信息。</p>
-<p>它跟下面命令的效果是一样的。</p>
-<p>`$ npm view react</p>
-<h1 id="npm-view-的别名"><a href="#npm-view-的别名" class="headerlink" title="npm view 的别名"></a>npm view 的别名</h1><p>$ npm info react<br>$ npm show react<br>$ npm v react`</p>
-<p>registry 网址的模块名后面，还可以跟上版本号或者标签，用来查询某个具体版本的信息。比如， 访问 <a href="https://registry.npmjs.org/react/v0.14.6">https://registry.npmjs.org/react/v0.14.6</a> ，就可以看到 React 的 0.14.6 版。</p>
-<h1 id="npm-的常用命令行代码："><a href="#npm-的常用命令行代码：" class="headerlink" title="npm 的常用命令行代码："></a>npm 的常用命令行代码：</h1><ol>
-<li>npm install moduleNames：安装Node包（moduleNames包名称）<br>（1）npm install moduleNames -g 为全局安装<br>（2）npm install <a href="mailto:moduleNames@5.1.1">moduleNames@5.1.1</a>  安装特定版本插件<br>（3）npm install moduleNames –save 会在package.json的dependencies属性下添加moduleNames  即发布依赖时候任依赖的插件<br>（4）npm install moduleNames –save-dev  会在package.json的devDependencies属性下添加moduleNames依赖 即开发依赖插件<br>总结：npm install 在安装 npm 包时，有两种命令参数可以把它们的信息写入 package.json 文件，一个是npm install –save另一个是 npm install –save-dev，他们表面上的区别是–save 会把依赖包名称添加到 package.json 文件 dependencies 键下，–save-dev 则添加到 package.json 文件 devDependencies 键下。<br>真正跑在用户浏览器中的代码，比如jquery,react这些，是需要安装到dependencies中的。<br>–save是对生产环境所需依赖的声明(开发应用中使用的框架，库),–save-dev是对开发环境所需依赖的声明(构建工具，测试工具).正常使用npm install时，会下载dependencies和devDependencies中的模块，当使用npm install –production或者注明NODE_ENV变量值为production时，只会下载dependencies中的模块。</li>
-<li>npm config set registry <a href="https://registry.npm.taobao.org">https://registry.npm.taobao.org</a>  修改包下载源，此例修改为了淘宝镜像</li>
-<li>npm config get prefix  查看全局安装路径</li>
-<li>npm config set prefix G:/node_modules_global  修改全局安装路径</li>
-<li>npm init  初始化目录</li>
-<li>npm install -g gulp  全局安装（如gulp）</li>
-<li>npm uninstall -g gulp    全局包卸载（如gulp）</li>
-<li>npm uninstall gulp –save-dev  项目本地卸载（如gulp）</li>
-<li>npm ls –global    会查看到安装包所包含的所有依赖文件   npm ls –global -depth 0  只查看顶级安装包</li>
-<li>npm ls  查看本地安装包</li>
-<li>npm cache clean  删除安装包缓存</li>
-<li>npm  update xxx  更新安装包</li>
-<li>npm search xxx  查找验证某个包是否已经存在</li>
-<li>npm root 查看当前包安装路径  npm root -g  查看全局包安装路径</li>
-<li>npm outdated：检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</li>
-<li>npm view xxx engines：查看包所依赖的Node的版本</li>
-<li>npm view xxx repository.url：查看包的源文件地址</li>
-<li>npm view xxxpendencies：查看包的依赖关系</li>
-</ol>
-
+              <p><strong> Npm相关问题：</strong> <excerpt in index | 首页摘要><br>简单的来说npm就是nodejs的包管理工具。<br>所以说到它就不得不提一下nodejs这个前端发展中出现的里程碑式的后端JavaScript语言。让我们摆脱了浏览器这一个单一的环境限制，开始向后端迈进。<br>
+          
       
-    </div>
+    </excerpt></p></div>
     
     <div class="article-info article-info-index">
       
@@ -411,6 +325,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/11/npm.html#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -459,41 +377,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="服务器的自白"><a href="#服务器的自白" class="headerlink" title="服务器的自白"></a>服务器的自白</h2><blockquote>
-<p>hello，大家好，我叫服务器，承载了全世界互联网行业的光荣与梦想。最近，听说居然有人敢质疑我的权威，说我会不会宕机？明确告诉你，你可以骂我卡，但就是不让你看见我宕机！</p>
-</blockquote>
-<h2 id="不是不想休息，而是不能宕机"><a href="#不是不想休息，而是不能宕机" class="headerlink" title="不是不想休息，而是不能宕机"></a>不是不想休息，而是不能宕机</h2><p>我们服务器是每一家互联网企业的支撑，如果支柱倒塌那会是怎样的灾难？所以我们不是不想休息，而是绝对不能宕机！服务器存在的目的是与家用电脑是完全不同的两种，家用电脑存在着不需要使用的时间点，而且这个时间点往往很长，因此家用电脑可以有很长的休眠时间。而服务器则不然，不同公司的服务器对使用时间段不同，这也就使得部分服务器根本不允许有休眠的时间。</p>
-<h2 id="夜深人静，依然奋斗的服务器"><a href="#夜深人静，依然奋斗的服务器" class="headerlink" title="夜深人静，依然奋斗的服务器"></a>夜深人静，依然奋斗的服务器</h2><p>  根据数据显示，金融企业每次宕机的平均损失约为1000万美金，这还不让无法统计的无形资产损失。一些大型的网站通常会有登录的高峰阶段，例如12306的春运、电商平台的购物街、新型电子产品的发布等都会给服务器带来巨大的压力，宕机对企业就是灾难性的打击。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/1.jpg" alt="f1"><br>               烧香拜佛难免服务器崩溃<br>  我们不是不想宕机，而是使命的存在让我们不能宕机。此外，又制定外部环境，过硬的自身素质和纯净的软件环境是保障我们稳定运行绝不宕机的条件。</p>
-<h2 id="只有住的好，才能不显老"><a href="#只有住的好，才能不显老" class="headerlink" title="只有住的好，才能不显老"></a>只有住的好，才能不显老</h2><p>  我们的服务器的触觉比你们人类更加挑剔，工作时间比人类更长，因为良好的工作环境是必要条件。</p>
-<h3 id="谷歌的数据中心"><a href="#谷歌的数据中心" class="headerlink" title="谷歌的数据中心"></a>谷歌的数据中心</h3><p>  在恒湿恒温准无尘的环境，没错，那就是我们最习惯的地方。我们这样挑剔的电子设备，工作环境必须常年保持在18℃到30℃之间，温度过高或者过低都将对我们的使用有所影响，加速我们的老化。空气的流通也是非常重要的，在我们所居住的地方，24小时空调是不能停。但是空调不能保障我们的体温的。每当我们服务器工作时间长了，浑身上下都会发热。因此大量的冷却水给我们进行贴身服务降温，保障服务器散热和机身温度的稳定。</p>
-<h2 id="谷歌数据中心，不同颜色的冷却水"><a href="#谷歌数据中心，不同颜色的冷却水" class="headerlink" title="谷歌数据中心，不同颜色的冷却水"></a>谷歌数据中心，不同颜色的冷却水</h2><p>  我们的工作运行环境，要求至少达到准无尘标准。一般来讲，经过长期正常维护的服务器运行十年以上，主板上的积尘比用几个月的家用电脑服务器少。只有这样才能最大限度避免静电灰对服务器工作可靠性的影响。</p>
-<h2 id="整洁、干净、无尘"><a href="#整洁、干净、无尘" class="headerlink" title="整洁、干净、无尘"></a>整洁、干净、无尘</h2><p>  更重要的是，我们的运维人员都非常专业，经常加班加点的对服务器的运行状况进行监测。以便于一旦发现任何问题，及时处理。否则，宕机也是在所难免。<br>  只为不宕机，硬件更专业，我们服务器的设计就是为了不宕机而出现的，这一点和家用电脑有着千差万别。<br>  没有完全不会坏的服务器，我们也会有故障。一次服务器在设计的时候做了大量的备份冗余，维护不会影响到正常工作。以谷歌的数据中心为例，大量的数据服务器都采取了即插即用模块化的方式设计。每个模块服务器有着自己的电源。如果某一模块发生故障，直接换上新的模块就可以，而不会影响到其他模块。</p>
-<h2 id="模块化设计都有独立的电源"><a href="#模块化设计都有独立的电源" class="headerlink" title="模块化设计都有独立的电源"></a>模块化设计都有独立的电源</h2><p>  而且，服务器大多数设计为集群架构，即以双机或者多机热备。同时运行一个业务时，一台或者多台服务器的离线并不会对整体业务造成严重的影响。而这也是平时一些人在玩网游是会感觉卡的原因之一，很可能就是某台服务器偷懒启用了备用服务器的原因。</p>
-<h2 id="模块维修，没想象的那么难"><a href="#模块维修，没想象的那么难" class="headerlink" title="模块维修，没想象的那么难"></a>模块维修，没想象的那么难</h2><p>  家用电脑可能会有生产商偷工减料节约成本，降低整体价格的现象存在。但是我们服务器领域却不会这样。CPU内置多种容错纠错机制；内存带有ECC校验芯片，数据干扰出错风险比非ECC内存低很多，采用优质方案是不宕机的关键所在。<br>  比家用服务器的商业级别的配件好太多，我们所有的零件都是工业级配件。而且从电子元件到电路板都经历了包括老化测试（高温高电压）、振动测试、高温高湿测试等几十项可靠性测试。经历了暴风雨的洗礼的我们却在温室中被供养，这就是常年不宕机的秘诀。</p>
-<h3 id="服务器出厂要经过各种测试"><a href="#服务器出厂要经过各种测试" class="headerlink" title="服务器出厂要经过各种测试"></a>服务器出厂要经过各种测试</h3><h2 id="一生只做一件事，软件更纯粹"><a href="#一生只做一件事，软件更纯粹" class="headerlink" title="一生只做一件事，软件更纯粹"></a>一生只做一件事，软件更纯粹</h2><p>  我们所运行的系统和普通的家用系统有着本质的区别。无论是windows server、Linux或者更强大的Unix，这些系统本身具有高精确度、简单化、稳定可靠等特点。</p>
-<p>  而这些服务器系统的精简程度简直令人发指。由于服务器不需要外接显示器，所以一些图形化的界面服务程序通通被砍掉，甚至连声卡都不要开启。</p>
-<p>  相比普通的家用操作系统，这些图形化的程序往往占用了大量的空间，计算量和复杂程度较高，导致电脑服务器运行缓慢。而大量多余运行项目排除，使得服务器级别操作系统的目的性更明确，甚至有的服务器穷其一生都是在运行一款Apache，压力比家用电脑小太多。</p>
-<h3 id="Unix系统没有图形化界面，这是搭配的CDE桌面"><a href="#Unix系统没有图形化界面，这是搭配的CDE桌面" class="headerlink" title="Unix系统没有图形化界面，这是搭配的CDE桌面"></a>Unix系统没有图形化界面，这是搭配的CDE桌面</h3><p>  而对于高端的服务器来讲，操作系统的容错性也是完爆家用级别服务器。在家用服务器运行时，一个error弹框就能让整台电脑重启。而服务器如果出现错误，后台自动生成详细的错误分析日志，寻求最佳解决方案保障程序继续运行下去。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/2.jpg" alt="f2"><br>   让人目眩的大规模集群架构</p>
-<p>   做单一的工作虽然简单，但是服务器的处理量是巨大的，这时，大型集群架构就可以发挥他的作用了。一旦服务器负载量增大，大规模集群会让负载均衡化，保障单个服务器不会过载崩溃，整个系统稳定运行。</p>
-<h2 id="其实我也宕机，只是不让你看见"><a href="#其实我也宕机，只是不让你看见" class="headerlink" title="其实我也宕机，只是不让你看见"></a>其实我也宕机，只是不让你看见</h2><p>  当然，我们服务器家族个头有高有矮，情况不一。一些比较低端的服务器只是针对小范围的受众，一旦超出了承载范畴，系统崩溃宕机的事情时有发生。而高端产品也不能完全例外，但是宕机几率和风险要小太多。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/3.jpg" alt="f3"><br>    不同类型的服务器</p>
-<p>  让服务器宕机的原因大致可以分为三种。一，天灾。服务器所处环境不良，维护不够及时，甚至供电不良等；二，人祸。各种应用的设置不当，人为操作失误和破坏以及最常见的大量访问超出了服务上限，导致服务器崩溃。 三，服务器本身原因。服务器质量的差距归根结底是投入的差距。也就是说，服务器的质量越好，成本越高，相应的价格也就越贵。比如，普通的商业级别服务器价格在3000到10万间，而Unix服务器的价格则在30万到3000万。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/4.jpg" alt="f4"><br>        戴尔Unix服务器</p>
-<p>  价格的提升带来的是服务器稳定性的提升。高端的Unix服务器已经达到了可用性99.99%的指标。即具备故障自动恢复能力，年停机时间不超过53分钟。但其超高成本和维护费用也使得很多企业望而却步。目前，也仅有银行、证券保险和电信等行业才会采用。</p>
-<p>  那么如此高端的服务器就可以永不宕机了么？事实恐怕并非如此，此类服务器中比较著名的当属IBM的Z系列服务器。这一款号称“永不宕机”的服务器在2013年也走下了神坛。中国银行所使用IBM的Z系列服务器出现了长达4小时的宕机，造成了巨大的损失。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/5.jpg" alt="f5"><br>    银行所用的IBM Z系列服务器</p>
-<p>  那么大型机也宕机，云服务器宕机么？也会有的。不久前谷歌云刚刚全面中断18分钟，而亚马逊云也曾在2013年出现了40分钟的宕机。而且相比普通的服务器宕机问题，云服务器会显得更为严重。由于公有云用户并不具有控制权，所以能做到就只剩下等待和祈祷了。</p>
-<p>  世界上真的完全没有不宕机的服务器吗？也是有的，美国2004年发射的机遇号火星探测器，从登陆火星到现在已经十余年，从未发生任何故障。该探测器便是采用双机冗余接口的方式搭载了两台IBM P series服务器。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/6.jpg" alt="f6"><br>   机遇号火星探测器</p>
-<p>  如果说宕机是偶尔的风雨，那么不宕机才是服务器支撑起整个互联网行业的脊梁。文章最后，用一张表来为大家总结一下为什么服务器能够不宕机。</p>
-<p><img src="https://outwcl4zh.bkt.clouddn.com/7.jpg" alt="f7"></p>
-<p>  永不宕机在生活中或许只是一个神话，并非每台服务器都能陪你到老。在经历了太多的风霜后，宕机在所难免。我们不是不会宕机，只是在努力不想让你们看见，谁让我们的名字叫做“服务”呢。</p>
-<p>文章转载自<a href="https://blog.sina.com.cn/s/blog_162fcae490102wf94.html">大篆科技</a></p>
-
+              <p><strong> 那年那器那些事：</strong> <excerpt in index | 首页摘要><br>讲讲服务器的那些故事。<br>
+          
       
-    </div>
+    </excerpt></p></div>
     
     <div class="article-info article-info-index">
       
@@ -508,6 +395,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/认知提升/">认知提升</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/11/What is the server.html#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -556,13 +447,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong> Webpack学习笔记：</strong> <excerpt in index | 首页摘要></excerpt></p>
-<h1 id="什么是Webpack？"><a href="#什么是Webpack？" class="headerlink" title="什么是Webpack？"></a>什么是Webpack？</h1><p>Webpack的中文叫法–我更愿意叫它“前端自动化构建工具”，是用来进行模块化加载并且打包的，它能把各种资源，例如图片、js文件、css预处理语言等等，统统进行处理，打包成符合生产环境部署的前端资源。</p>
-<p>模块化的问题解决之后，webpack 就能把各种资源模块打包合并成一个文件输出给浏览器。在打包的过程中还能对这些资源进行处理，比如压缩减少体积，把 sass 编译成 css, coffee 编译成 js。所以它在某些程度上，跟 grunt/gulp 的功能有些相同。<br><img src="https://outwcl4zh.bkt.clouddn.com/webpack.jpg" alt="Webpack工作模式"></p>
-<h1 id="与grunt-gulp的区别"><a href="#与grunt-gulp的区别" class="headerlink" title="与grunt/gulp的区别"></a>与grunt/gulp的区别</h1><p>grunt/gulp 强调的是前端开发的工作流程，我们可以通过配置一系列的 task，定义 task 处理的事务（例如文件压缩合并、雪碧图、启动 server、版本控制等），然后定义执行顺序，来让 grunt/gulp 执行这些 task，从而构建项目的整个前端开发流程。<br><img src="https://outwcl4zh.bkt.clouddn.com/gulp+grunt.png" alt="grunt/gulp"></p>
-
+              <p><strong> Webpack学习笔记：</strong> <excerpt in index | 首页摘要><br>webpack可真是一门大学问，没去深究，感觉很复杂，所以只是拿来简单的使用。<br>
+          
       
-    </div>
+    </excerpt></p></div>
     
     <div class="article-info article-info-index">
       
@@ -577,6 +465,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/11/Webpack.html#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -625,21 +517,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="Math-floor-方法的深层解析"><a href="#Math-floor-方法的深层解析" class="headerlink" title="Math.floor()方法的深层解析"></a>Math.floor()方法的深层解析</h2><p>  大家都知道这是一个JavaScript的基础的方法—向下取整，但是你们有没有遇到过这个方法不听话呢？哈哈，接下来就让我们来领教一下这个方法什么时候才会出现不听话吧！<br>  <code>!function test(){
-            var is = 100;
-            window.setInterval(function(){
-                is = is/7;
-                Math.floor(is);
-                console.log(is)
-            },10)
-        }()</code><br>        这个方法之后的结果为14.124235…<br>这段代码中就用到了Math.floor()这个方法，但是这个方法就在这个时候不听话了，is这个变量居然一直取到了小数点后好多好多位。这是为什么呢？其实并不是这个方法不好用了，只是我们把这个方法用错了而已，因为is这个变量是一个Number类型的数字，是一个原始值（栈类型）不可改变。所以上面的代码我们访问的其实还是原来的is的值，并没有访问Math.floor()之后的is值。<br>我们可以这样访问到Math.floor()之后的is值。代码如下：<br><code>!function test(){
-            var is = 100;
-            window.setInterval(function(){
-                is = is/7;
-                console.log(Math.floor(is);)
-            },10)
-        }()</code><br>这样之后的结果就是14了。<br>通过这篇文章，只是想告诉你，JavaScript语言的一些值的类型，有引用值和原始值，引用值也就是堆数据类型的值，原始值在JavaScript语言中有undefined、Number、Boolean、String等，并且不同的值类型之间的不同的区别是什么，尤其重要的是千万不要试图去改变原始值，因为你真的拗不过他们的！哈哈，好了，就这样了。</p>
-
+              <p><strong> Math.floor()等方法的用法：</strong> <excerpt in index | 首页摘要></excerpt></p>
+<h1 id="Math-floor-方法的深层解析"><a href="#Math-floor-方法的深层解析" class="headerlink" title="Math.floor()方法的深层解析"></a>Math.floor()方法的深层解析</h1>
+          
       
     </div>
     
@@ -656,6 +536,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2017/11/Math.floor()方法.html#more">查看更多 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -775,7 +659,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <p><strong>狩猎-影评</strong>   <excerpt in index | 首页摘要><br>好几天没更博了，想着总要写点儿什么，锻炼一下我的写作能力，嘿嘿嘿~<br>不得不说的是，这几天我过的很爽哈，一下看了好几天的电影，都是名气很高的电影，看完电影之后就想着写一下影评抒发一下我的看法~<br>
+              <p><strong> 狩猎-影评：</strong> <excerpt in index | 首页摘要><br>刷电影一时爽，一直刷电影一直爽，美滋滋。看完就忘，看了影评一时能记住，过段时间还是忘。羡慕那些过目不忘的人。<br>
           
       
     </excerpt></p></div>

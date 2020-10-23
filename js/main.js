@@ -1,1 +1,217 @@
-require([],function(){var i=!1,e=function(){require(["/js/mobile.js"],function(e){e.init(),i=!0})},n=!1,a=function(){require(["/js/pc.js"],function(i){i.init(),n=!0})},t={versions:function(){var i=window.navigator.userAgent;return{trident:i.indexOf("Trident")>-1,presto:i.indexOf("Presto")>-1,webKit:i.indexOf("AppleWebKit")>-1,gecko:i.indexOf("Gecko")>-1&&i.indexOf("KHTML")==-1,mobile:!!i.match(/AppleWebKit.*Mobile.*/),ios:!!i.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:i.indexOf("Android")>-1||i.indexOf("Linux")>-1,iPhone:i.indexOf("iPhone")>-1||i.indexOf("Mac")>-1,iPad:i.indexOf("iPad")>-1,webApp:i.indexOf("Safari")==-1,weixin:i.indexOf("MicroMessenger")==-1}}()};$(window).bind("resize",function(){if(i&&n)return void $(window).unbind("resize");var t=$(window).width();t>=700?a():e()}),t.versions.mobile===!0||$(window).width()<700?e():a(),yiliaConfig.fancybox===!0&&require(["/fancybox/jquery.fancybox.js"],function(i){var e=$(".isFancy");if(0!=e.length){for(var n=$(".article-inner img"),a=0,t=n.length;a<t;a++){var r=n.eq(a).attr("src"),o=n.eq(a).attr("alt");n.eq(a).replaceWith("<a href='"+r+"' title='"+o+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+r+"' title='"+o+"'></a>")}$(".article-inner .fancy-ctn").fancybox()}}),yiliaConfig.animate===!0&&(require(["/js/jquery.lazyload.js"],function(){$(".js-avatar").attr("src",$(".js-avatar").attr("lazy-src")),$(".js-avatar")[0].onload=function(){$(".js-avatar").addClass("show")}}),yiliaConfig.isHome===!0?require(["//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"],function(i){function e(){$(".article").each(function(){$(this).offset().top<=$(window).scrollTop()+$(window).height()&&!$(this).hasClass("show")?($(this).removeClass("hidden").addClass("show"),$(this).addClass("is-hiddened")):$(this).hasClass("is-hiddened")||$(this).addClass("hidden")})}var n=["pulse","fadeIn","fadeInRight","flipInX","lightSpeedIn","rotateInUpLeft","slideInUp","zoomIn"],a=n.length,t=n[Math.ceil(Math.random()*a)-1];return window.requestAnimationFrame?void i({duration:0,afterReveal:function(i){$(i).addClass("animated "+t).css({opacity:1})}}).reveal(".body-wrap > article"):($(".body-wrap > article").css({opacity:1}),void(navigator.userAgent.match(/Safari/i)&&($(window).on("scroll",function(){e()}),e())))}):$(".body-wrap > article").css({opacity:1})),1==yiliaConfig.open_in_new&&($(".article a[href]").attr("target","_blank"),$(".archive-article-title").attr("target","_blank"))});
+(function($) {
+
+	'use strict';
+
+	// bootstrap dropdown hover
+
+  // loader
+  var loader = function() {
+    setTimeout(function() { 
+      if($('#loader').length > 0) {
+        $('#loader').removeClass('show');
+      }
+    }, 1);
+  };
+  loader();
+
+	
+	$('nav .dropdown').hover(function(){
+		var $this = $(this);
+		$this.addClass('show');
+		$this.find('> a').attr('aria-expanded', true);
+		$this.find('.dropdown-menu').addClass('show');
+	}, function(){
+		var $this = $(this);
+			$this.removeClass('show');
+			$this.find('> a').attr('aria-expanded', false);
+			$this.find('.dropdown-menu').removeClass('show');
+	});
+
+
+  var offcanvas_toggle = $('.js-offcanvas-toggle');
+  offcanvas_toggle.on('click', function() {
+
+
+    if ( $('body').hasClass('offcanvas-open') ) {
+      $('body').removeClass('offcanvas-open');
+    } else {
+      $('body').addClass('offcanvas-open');
+    }
+
+  });
+
+
+  $(document).click(function(e) {
+    var container = $('.js-offcanvas-toggle, #offcanvas_menu');
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+      if ( $('body').hasClass('offcanvas-open') ) {
+        $('body').removeClass('offcanvas-open');
+      }
+    }
+  });
+
+
+  $('#date-countdown').countdown('2020/10/10', function(event) {
+  var $this = $(this).html(event.strftime(''
+    + '<span class="countdown-block"><span class="label">%w</span> weeks </span>'
+    + '<span class="countdown-block"><span class="label">%d</span> days </span>'
+    + '<span class="countdown-block"><span class="label">%H</span> hr </span>'
+    + '<span class="countdown-block"><span class="label">%M</span> min </span>'
+    + '<span class="countdown-block"><span class="label">%S</span> sec</span>'));
+});
+
+	// home slider
+	$('.home-slider').owlCarousel({
+    loop:true,
+    autoplay: true,
+    margin:10,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    nav:true,
+    autoplayHoverPause: false,
+    items: 1,
+    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
+    responsive:{
+      0:{
+        items:1,
+        nav:false
+      },
+      600:{
+        items:1,
+        nav:false
+      },
+      1000:{
+        items:1,
+        nav:true
+      }
+    }
+	});
+
+
+  // home slider
+  $('.testimony-slider').owlCarousel({
+    loop:true,
+    autoplay: true,
+    margin:10,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    nav:false,
+    autoplayHoverPause: false,
+    items: 1,
+    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
+    responsive:{
+      0:{
+        items:1,
+        nav:false
+      },
+      600:{
+        items:1,
+        nav:false
+      },
+      1000:{
+        items:1,
+        nav:false
+      }
+    }
+  });
+
+	// owl carousel
+	var majorCarousel = $('.js-carousel-1');
+	majorCarousel.owlCarousel({
+    loop:true,
+    autoplay: true,
+    stagePadding: 7,
+    margin: 20,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    nav: true,
+    autoplayHoverPause: true,
+    items: 3,
+    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
+    responsive:{
+      0:{
+        items:1,
+        nav:false
+      },
+      600:{
+        items:2,
+        nav:false
+      },
+      1000:{
+        items:3,
+        nav:true,
+        loop:false
+      }
+  	}
+	});
+
+	// owl carousel
+	var major2Carousel = $('.js-carousel-2');
+	major2Carousel.owlCarousel({
+    loop:true,
+    autoplay: true,
+    stagePadding: 7,
+    margin: 20,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    nav: true,
+    autoplayHoverPause: true,
+    items: 4,
+    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
+    responsive:{
+      0:{
+        items:1,
+        nav:false
+      },
+      600:{
+        items:3,
+        nav:false
+      },
+      1000:{
+        items:4,
+        nav:true,
+        loop:false
+      }
+  	}
+	});
+
+
+	var contentWayPoint = function() {
+		var i = 0;
+		$('.element-animate').waypoint( function( direction ) {
+
+			if( direction === 'down' && !$(this.element).hasClass('element-animated') ) {
+				
+				i++;
+
+				$(this.element).addClass('item-animate');
+				setTimeout(function(){
+
+					$('body .element-animate.item-animate').each(function(k){
+						var el = $(this);
+						setTimeout( function () {
+							var effect = el.data('animate-effect');
+							if ( effect === 'fadeIn') {
+								el.addClass('fadeIn element-animated');
+							} else if ( effect === 'fadeInLeft') {
+								el.addClass('fadeInLeft element-animated');
+							} else if ( effect === 'fadeInRight') {
+								el.addClass('fadeInRight element-animated');
+							} else {
+								el.addClass('fadeInUp element-animated');
+							}
+							el.removeClass('item-animate');
+						},  k * 100);
+					});
+					
+				}, 100);
+				
+			}
+
+		} , { offset: '95%' } );
+	};
+	contentWayPoint();
+
+
+
+})(jQuery);

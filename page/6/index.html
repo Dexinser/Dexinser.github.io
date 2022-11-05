@@ -12,7 +12,7 @@
   <meta name="description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
 <meta property="og:type" content="website">
 <meta property="og:title" content="To die or not to die, this is a question~">
-<meta property="og:url" content="https://indexcode.cn/page/6/index.html">
+<meta property="og:url" content="https://dexinser.github.io/page/6/index.html">
 <meta property="og:site_name" content="To die or not to die, this is a question~">
 <meta property="og:description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
 <meta property="og:locale" content="zh-Hans">
@@ -577,6 +577,74 @@
 
 
   
+    <article id="post-2017/11/2017.11.12-前端开发相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/11/2017.11.12-前端开发相关.html" class="article-date">
+      <time datetime="2017-11-11T16:00:00.000Z" itemprop="datePublished">2017-11-12</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/11/2017.11.12-前端开发相关.html">前端开发相关</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>前端开发相关</strong> <Excerpt in index | 首页摘要></p>
+<h1 id="js中多维数组转换成一维数组"><a href="#js中多维数组转换成一维数组" class="headerlink" title="js中多维数组转换成一维数组"></a>js中多维数组转换成一维数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, [<span class="number">2</span>], [[[<span class="number">3</span>]]], [<span class="number">4</span>, [<span class="number">5</span>] ] ];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unidimensionalArray</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> (arr + <span class="string">''</span>).split(<span class="string">','</span>).map(<span class="function"><span class="params">x</span> =&gt;</span> <span class="built_in">Number</span>(x));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 先转换成字符串，在转换成数字类型的。</span></span><br><span class="line"><span class="built_in">console</span>.log(unidimensionalArray(arr)); <span class="comment">// [ 1, 2, 3, 4, 5 ]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 以上针对数字数组的， 下面是一个针对多类型的</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> u = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> nan = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'boy'</span>;</span><br><span class="line"><span class="keyword">var</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> arr = [bool, [str], [[num]], u, [[[nan, func]]], obj];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> unidimensionalArray = <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">p1, p2</span>) =&gt;</span> p1.concat(<span class="built_in">Array</span>.isArray(p2) ? unidimensionalArray(p2) : p2), []);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(unidimensionalArray(arr)); <span class="comment">// [ true, 'boy', 1, undefined, NaN, [Function: func], &#123;&#125; ]</span></span><br></pre></td></tr></table></figure>
+<h1 id="求数组中的最大值"><a href="#求数组中的最大值" class="headerlink" title="求数组中的最大值"></a>求数组中的最大值</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> arr = [[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>], <span class="number">4</span>, <span class="number">-1</span>, [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">45</span>, [<span class="number">7</span>, <span class="number">123</span>, <span class="number">1</span>]],<span class="number">98</span>, [[<span class="number">123</span>]]];  </span><br><span class="line">            </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//目标数组, 一维数组</span></span><br><span class="line">        <span class="keyword">var</span> targetArr = [];  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//展开多维数组为一维数组的函数,递归调用  </span></span><br><span class="line">        <span class="comment">//forEach 为 ES5的数组迭代方法  </span></span><br><span class="line">        <span class="keyword">var</span> fnExpandArray = <span class="function"><span class="keyword">function</span> <span class="params">(arr)</span> </span>&#123;  </span><br><span class="line">            arr.<span class="keyword">forEach</span>( <span class="function"><span class="keyword">function</span> <span class="params">(item)</span> </span>&#123;  </span><br><span class="line">                <span class="keyword">if</span> ( <span class="keyword">Array</span>.isArray(item) ) &#123;  </span><br><span class="line">                fnExpandArray(item);  </span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                targetArr.push(item);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//展开数组到 targetArr中  </span></span><br><span class="line">        fnExpandArray(arr);  </span><br><span class="line">        console.log(targetArr);  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//求出最大值的函数,假设第一个值为最大值, 并且与后面的值进行比较  </span></span><br><span class="line">        <span class="keyword">var</span> fnMax = <span class="function"><span class="keyword">function</span> <span class="params">(arr)</span> </span>&#123;  </span><br><span class="line">            <span class="keyword">var</span> max = arr[<span class="number">0</span>];  </span><br><span class="line">            arr.<span class="keyword">forEach</span>( <span class="function"><span class="keyword">function</span> <span class="params">(item)</span> </span>&#123;  </span><br><span class="line">            <span class="keyword">if</span> (item &gt; max) &#123;  </span><br><span class="line">                max = item;  </span><br><span class="line">            &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">            <span class="keyword">return</span> max;  </span><br><span class="line">        &#125;;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//最终答案  </span></span><br><span class="line">        alert(<span class="string">'最大值是:'</span> + fnMax(targetArr));  </span><br><span class="line">        </span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-2017/11/后端网络笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -633,74 +701,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/后端/">后端</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2017/11/2017.11.12-前端开发相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2017/11/2017.11.12-前端开发相关.html" class="article-date">
-      <time datetime="2017-11-11T16:00:00.000Z" itemprop="datePublished">2017-11-12</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2017/11/2017.11.12-前端开发相关.html">前端开发相关</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><strong>前端开发相关</strong> <Excerpt in index | 首页摘要></p>
-<h1 id="js中多维数组转换成一维数组"><a href="#js中多维数组转换成一维数组" class="headerlink" title="js中多维数组转换成一维数组"></a>js中多维数组转换成一维数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [ <span class="number">1</span>, [<span class="number">2</span>], [[[<span class="number">3</span>]]], [<span class="number">4</span>, [<span class="number">5</span>] ] ];</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">unidimensionalArray</span> (<span class="params">arr</span>) </span>&#123;</span><br><span class="line">　　<span class="keyword">return</span> (arr + <span class="string">''</span>).split(<span class="string">','</span>).map(<span class="function"><span class="params">x</span> =&gt;</span> <span class="built_in">Number</span>(x));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 先转换成字符串，在转换成数字类型的。</span></span><br><span class="line"><span class="built_in">console</span>.log(unidimensionalArray(arr)); <span class="comment">// [ 1, 2, 3, 4, 5 ]</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 以上针对数字数组的， 下面是一个针对多类型的</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> u = <span class="literal">undefined</span>;</span><br><span class="line"><span class="keyword">var</span> nan = <span class="literal">NaN</span>;</span><br><span class="line"><span class="keyword">var</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'boy'</span>;</span><br><span class="line"><span class="keyword">var</span> bool = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">var</span> arr = [bool, [str], [[num]], u, [[[nan, func]]], obj];</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> unidimensionalArray = <span class="function"><span class="keyword">function</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">p1, p2</span>) =&gt;</span> p1.concat(<span class="built_in">Array</span>.isArray(p2) ? unidimensionalArray(p2) : p2), []);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(unidimensionalArray(arr)); <span class="comment">// [ true, 'boy', 1, undefined, NaN, [Function: func], &#123;&#125; ]</span></span><br></pre></td></tr></table></figure>
-<h1 id="求数组中的最大值"><a href="#求数组中的最大值" class="headerlink" title="求数组中的最大值"></a>求数组中的最大值</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">~<span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">var</span> arr = [[<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>], <span class="number">4</span>, <span class="number">-1</span>, [<span class="number">11</span>, <span class="number">22</span>, <span class="number">33</span>, <span class="number">45</span>, [<span class="number">7</span>, <span class="number">123</span>, <span class="number">1</span>]],<span class="number">98</span>, [[<span class="number">123</span>]]];  </span><br><span class="line">            </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//目标数组, 一维数组</span></span><br><span class="line">        <span class="keyword">var</span> targetArr = [];  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//展开多维数组为一维数组的函数,递归调用  </span></span><br><span class="line">        <span class="comment">//forEach 为 ES5的数组迭代方法  </span></span><br><span class="line">        <span class="keyword">var</span> fnExpandArray = <span class="function"><span class="keyword">function</span> <span class="params">(arr)</span> </span>&#123;  </span><br><span class="line">            arr.<span class="keyword">forEach</span>( <span class="function"><span class="keyword">function</span> <span class="params">(item)</span> </span>&#123;  </span><br><span class="line">                <span class="keyword">if</span> ( <span class="keyword">Array</span>.isArray(item) ) &#123;  </span><br><span class="line">                fnExpandArray(item);  </span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">                targetArr.push(item);  </span><br><span class="line">                &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">        &#125;;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//展开数组到 targetArr中  </span></span><br><span class="line">        fnExpandArray(arr);  </span><br><span class="line">        console.log(targetArr);  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//求出最大值的函数,假设第一个值为最大值, 并且与后面的值进行比较  </span></span><br><span class="line">        <span class="keyword">var</span> fnMax = <span class="function"><span class="keyword">function</span> <span class="params">(arr)</span> </span>&#123;  </span><br><span class="line">            <span class="keyword">var</span> max = arr[<span class="number">0</span>];  </span><br><span class="line">            arr.<span class="keyword">forEach</span>( <span class="function"><span class="keyword">function</span> <span class="params">(item)</span> </span>&#123;  </span><br><span class="line">            <span class="keyword">if</span> (item &gt; max) &#123;  </span><br><span class="line">                max = item;  </span><br><span class="line">            &#125;  </span><br><span class="line">            &#125;);  </span><br><span class="line">            <span class="keyword">return</span> max;  </span><br><span class="line">        &#125;;  </span><br><span class="line">        </span><br><span class="line">        <span class="comment">//=================================  </span></span><br><span class="line">        <span class="comment">//最终答案  </span></span><br><span class="line">        alert(<span class="string">'最大值是:'</span> + fnMax(targetArr));  </span><br><span class="line">        </span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
     </div>
 
       

@@ -12,7 +12,7 @@
   <meta name="description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
 <meta property="og:type" content="website">
 <meta property="og:title" content="To die or not to die, this is a question~">
-<meta property="og:url" content="https://indexcode.cn/page/4/index.html">
+<meta property="og:url" content="https://dexinser.github.io/page/4/index.html">
 <meta property="og:site_name" content="To die or not to die, this is a question~">
 <meta property="og:description" content="分享Web前端开发，自我提升，前端工程师必备技能使用方法等的原创或者转载文章~">
 <meta property="og:locale" content="zh-Hans">
@@ -765,89 +765,6 @@ PARENTNODE.insertBefore(a, b);</code><br>例如：页面中有<code>&lt;div&gt;<
 
 
   
-    <article id="post-2017/11/CSS3-选择器的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a  href="/2017/11/CSS3-选择器的使用.html" class="article-date">
-      <time datetime="2022-11-05T14:53:17.294Z" itemprop="datePublished">2022-11-05</time>
-</a>
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a  class="article-title" href="/2017/11/CSS3-选择器的使用.html">CSS3选择器的使用方法</a>
-    </h1>
-  
-
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>增加了可以使用正则匹配属性名的方法：<br>E[att^=“val”] {…}  选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串<br>E[att$=“val”]{…}选择匹配元素E, 且E元素定义了属性att, 其属性值以val结尾的任何字符串<br>E[att*=“val”]{…}选择匹配元素E, 且E元素定义了属性att, 其属性值任意位置出现了“val”。即属性值包含了“val”，位置不限。</p>
-<h2 id="初级伪类选择器：伪类用于向某些选择器添加特殊的效果。"><a href="#初级伪类选择器：伪类用于向某些选择器添加特殊的效果。" class="headerlink" title="初级伪类选择器：伪类用于向某些选择器添加特殊的效果。"></a>初级伪类选择器：伪类用于向某些选择器添加特殊的效果。</h2><h3 id="1-root-根标签选择器"><a href="#1-root-根标签选择器" class="headerlink" title="1.root 根标签选择器"></a>1.root 根标签选择器</h3><p>“:root”选择器等同于<html>元素，简单点说：<br>:root{background:orange}<br>html{background:orange}<br>得到的效果等同<br>建议使用:root（xml等）</p>
-<h3 id="2-not-否定选择器"><a href="#2-not-否定选择器" class="headerlink" title="2.not 否定选择器"></a>2.not 否定选择器</h3><p>用法和jQuery 中的not类似，可以排除某些特定条件的元素<br>div:not([class=“demo”]){<br>background-color:red;<br>}<br>意思为除了class为demo的div以外，所有的div的背景颜色都变红</p>
-<h3 id="3-empty-空标签选择器"><a href="#3-empty-空标签选择器" class="headerlink" title="3.empty 空标签选择器"></a>3.empty 空标签选择器</h3><p>用来选择没有内容的元素、不在文档树中的元素，这里的没有内容指的是一点内容都没有，哪怕是一个空格。</p>
-<h3 id="4-target-目标元素选择器"><a href="#4-target-目标元素选择器" class="headerlink" title="4.target 目标元素选择器"></a>4.target 目标元素选择器</h3><p>用来匹配被location.hash 选中的元素(即锚点元素)<br>选择器可用于选取当前活动的目标元素，被设置为锚点的元素被锚点之后就可以显示相应的css样式。</p>
-<h3 id="5-first-child-第一个子元素"><a href="#5-first-child-第一个子元素" class="headerlink" title="5.:first-child 第一个子元素"></a>5.:first-child 第一个子元素</h3><p>:last-child 最后一个子元素<br>:nth-child(){} 第xxx个子元素，n代表变量自然数<br>:nth-last-child(){}  从后往前数<br>以上四个选择器均有弊端，即如果当前位置元素不是前面所修饰的元素，那么无效<br>注：其父元素的第 N 个子元素，不论元素的类型。</p>
-<h3 id="6-first-of-type-第一个子元素"><a href="#6-first-of-type-第一个子元素" class="headerlink" title="6.:first-of-type 第一个子元素"></a>6.:first-of-type 第一个子元素</h3><p>:last-of-type 最后一个子元素<br>:nth-of-type(){} 第xxx个子元素，n代表变量自然数<br>:nth-last-of-type(){}  从后往前数<br>此种选择器，限制了类型，即在所修饰元素的类型下选择特定位置的元素。</p>
-<h3 id="7-only-child-唯一子元素选择器"><a href="#7-only-child-唯一子元素选择器" class="headerlink" title="7 :only-child  唯一子元素选择器"></a>7 :only-child  唯一子元素选择器</h3><p>选择是独生子的子元素，即该子元素不能有兄弟元素，它的父元素只有他一个直接子元素。<br>注意：选择的元素是独生子子元素，而非有唯一子元素的父元素。<br>:only-of-type<br>如果要选择第某类特定的子元素(p) 在兄弟节点中是此类元素唯一个的话 就需要用到这个属性了</p>
-<h3 id="8-enabled-可用的元素-disabled-不可用的元素"><a href="#8-enabled-可用的元素-disabled-不可用的元素" class="headerlink" title="8 :enabled  可用的元素   :disabled 不可用的元素"></a>8 :enabled  可用的元素   :disabled 不可用的元素</h3><p>在web的表单中，有些表单元素有可用（“enabled”）和不可用（“disabled”）状态，比如输入框，密码框，复选框等。在默认情况下，这些表单元素都处在可用状态。那么我们可以通过伪类选择器 enabled 进行选择，disabled则相反。</p>
-<h3 id="9-checked-选择框的被选中状态"><a href="#9-checked-选择框的被选中状态" class="headerlink" title="9:checked  选择框的被选中状态"></a>9:checked  选择框的被选中状态</h3><p>注：checkbox, radio 的一些默认状态不可用属性进行改变，如宽高颜色。</p>
-<h3 id="10-read-only-选中只读的元素"><a href="#10-read-only-选中只读的元素" class="headerlink" title="10:read-only  选中只读的元素"></a>10:read-only  选中只读的元素</h3><p>eg:<code>&lt;input type=“text” readonly=“readonly”/&gt;</code><br>:read-write 选中非只读的元素<br>eg:<code>&lt;input type=“text”/&gt;</code></p>
-<h5 id="扩张内容：伪类与伪元素的区别"><a href="#扩张内容：伪类与伪元素的区别" class="headerlink" title="扩张内容：伪类与伪元素的区别"></a>扩张内容：伪类与伪元素的区别</h5><blockquote>
-<p>伪类的效果可以通过添加一个实际的类来达到。<br>伪元素的效果则需要通过添加一个实际的元素才能达到。<br>这也是为什么他们一个称为伪类，一个称为伪元素的原因。</p>
-</blockquote>
-<h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><p>CSS3对伪元素进行了一定的调整，在以前的基础上增加了一个:也就是现在变成了::first-letter,::first-line,::before,::after<br>另外还增加了一个::selection</p>
-<h3 id="1-selection"><a href="#1-selection" class="headerlink" title="1.::selection"></a>1.::selection</h3><p>“::selection” 选择器是用来匹配突出显示的文本（用鼠标选择文本的时候）。浏览器默认情况下，用鼠标选择网页文本是以“蓝色的北京，白色的字体”显示的。<br>属性：user-select: none;<br>注：火狐下必须加-moz-<br>-moz-::selection</p>
-<h2 id="条件选择"><a href="#条件选择" class="headerlink" title="条件选择"></a>条件选择</h2><p>E &gt; F  an F element child of an E element<br>直接子元素<br>E + F an F element immediately preceded by an E element<br>后面的紧挨着的兄弟节点<br>E ~ F an F element preceded by an E element<br>后面的兄弟节点</p>
-<pre><code>Author:By--Dexinser
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/必备知识/">必备知识</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-
-
-  
     <article id="post-2017/11/CSS3中transform的加速问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -912,6 +829,89 @@ PARENTNODE.insertBefore(a, b);</code><br>例如：页面中有<code>&lt;div&gt;<
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/学习笔记/">学习笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/">CSS3</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-2017/11/CSS3-选择器的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/11/CSS3-选择器的使用.html" class="article-date">
+      <time datetime="2022-11-05T14:53:17.294Z" itemprop="datePublished">2022-11-05</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a  class="article-title" href="/2017/11/CSS3-选择器的使用.html">CSS3选择器的使用方法</a>
+    </h1>
+  
+
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h2><p>增加了可以使用正则匹配属性名的方法：<br>E[att^=“val”] {…}  选择匹配元素E, 且E元素定义了属性att, 其属性值以val开头的任何字符串<br>E[att$=“val”]{…}选择匹配元素E, 且E元素定义了属性att, 其属性值以val结尾的任何字符串<br>E[att*=“val”]{…}选择匹配元素E, 且E元素定义了属性att, 其属性值任意位置出现了“val”。即属性值包含了“val”，位置不限。</p>
+<h2 id="初级伪类选择器：伪类用于向某些选择器添加特殊的效果。"><a href="#初级伪类选择器：伪类用于向某些选择器添加特殊的效果。" class="headerlink" title="初级伪类选择器：伪类用于向某些选择器添加特殊的效果。"></a>初级伪类选择器：伪类用于向某些选择器添加特殊的效果。</h2><h3 id="1-root-根标签选择器"><a href="#1-root-根标签选择器" class="headerlink" title="1.root 根标签选择器"></a>1.root 根标签选择器</h3><p>“:root”选择器等同于<html>元素，简单点说：<br>:root{background:orange}<br>html{background:orange}<br>得到的效果等同<br>建议使用:root（xml等）</p>
+<h3 id="2-not-否定选择器"><a href="#2-not-否定选择器" class="headerlink" title="2.not 否定选择器"></a>2.not 否定选择器</h3><p>用法和jQuery 中的not类似，可以排除某些特定条件的元素<br>div:not([class=“demo”]){<br>background-color:red;<br>}<br>意思为除了class为demo的div以外，所有的div的背景颜色都变红</p>
+<h3 id="3-empty-空标签选择器"><a href="#3-empty-空标签选择器" class="headerlink" title="3.empty 空标签选择器"></a>3.empty 空标签选择器</h3><p>用来选择没有内容的元素、不在文档树中的元素，这里的没有内容指的是一点内容都没有，哪怕是一个空格。</p>
+<h3 id="4-target-目标元素选择器"><a href="#4-target-目标元素选择器" class="headerlink" title="4.target 目标元素选择器"></a>4.target 目标元素选择器</h3><p>用来匹配被location.hash 选中的元素(即锚点元素)<br>选择器可用于选取当前活动的目标元素，被设置为锚点的元素被锚点之后就可以显示相应的css样式。</p>
+<h3 id="5-first-child-第一个子元素"><a href="#5-first-child-第一个子元素" class="headerlink" title="5.:first-child 第一个子元素"></a>5.:first-child 第一个子元素</h3><p>:last-child 最后一个子元素<br>:nth-child(){} 第xxx个子元素，n代表变量自然数<br>:nth-last-child(){}  从后往前数<br>以上四个选择器均有弊端，即如果当前位置元素不是前面所修饰的元素，那么无效<br>注：其父元素的第 N 个子元素，不论元素的类型。</p>
+<h3 id="6-first-of-type-第一个子元素"><a href="#6-first-of-type-第一个子元素" class="headerlink" title="6.:first-of-type 第一个子元素"></a>6.:first-of-type 第一个子元素</h3><p>:last-of-type 最后一个子元素<br>:nth-of-type(){} 第xxx个子元素，n代表变量自然数<br>:nth-last-of-type(){}  从后往前数<br>此种选择器，限制了类型，即在所修饰元素的类型下选择特定位置的元素。</p>
+<h3 id="7-only-child-唯一子元素选择器"><a href="#7-only-child-唯一子元素选择器" class="headerlink" title="7 :only-child  唯一子元素选择器"></a>7 :only-child  唯一子元素选择器</h3><p>选择是独生子的子元素，即该子元素不能有兄弟元素，它的父元素只有他一个直接子元素。<br>注意：选择的元素是独生子子元素，而非有唯一子元素的父元素。<br>:only-of-type<br>如果要选择第某类特定的子元素(p) 在兄弟节点中是此类元素唯一个的话 就需要用到这个属性了</p>
+<h3 id="8-enabled-可用的元素-disabled-不可用的元素"><a href="#8-enabled-可用的元素-disabled-不可用的元素" class="headerlink" title="8 :enabled  可用的元素   :disabled 不可用的元素"></a>8 :enabled  可用的元素   :disabled 不可用的元素</h3><p>在web的表单中，有些表单元素有可用（“enabled”）和不可用（“disabled”）状态，比如输入框，密码框，复选框等。在默认情况下，这些表单元素都处在可用状态。那么我们可以通过伪类选择器 enabled 进行选择，disabled则相反。</p>
+<h3 id="9-checked-选择框的被选中状态"><a href="#9-checked-选择框的被选中状态" class="headerlink" title="9:checked  选择框的被选中状态"></a>9:checked  选择框的被选中状态</h3><p>注：checkbox, radio 的一些默认状态不可用属性进行改变，如宽高颜色。</p>
+<h3 id="10-read-only-选中只读的元素"><a href="#10-read-only-选中只读的元素" class="headerlink" title="10:read-only  选中只读的元素"></a>10:read-only  选中只读的元素</h3><p>eg:<code>&lt;input type=“text” readonly=“readonly”/&gt;</code><br>:read-write 选中非只读的元素<br>eg:<code>&lt;input type=“text”/&gt;</code></p>
+<h5 id="扩张内容：伪类与伪元素的区别"><a href="#扩张内容：伪类与伪元素的区别" class="headerlink" title="扩张内容：伪类与伪元素的区别"></a>扩张内容：伪类与伪元素的区别</h5><blockquote>
+<p>伪类的效果可以通过添加一个实际的类来达到。<br>伪元素的效果则需要通过添加一个实际的元素才能达到。<br>这也是为什么他们一个称为伪类，一个称为伪元素的原因。</p>
+</blockquote>
+<h2 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h2><p>CSS3对伪元素进行了一定的调整，在以前的基础上增加了一个:也就是现在变成了::first-letter,::first-line,::before,::after<br>另外还增加了一个::selection</p>
+<h3 id="1-selection"><a href="#1-selection" class="headerlink" title="1.::selection"></a>1.::selection</h3><p>“::selection” 选择器是用来匹配突出显示的文本（用鼠标选择文本的时候）。浏览器默认情况下，用鼠标选择网页文本是以“蓝色的北京，白色的字体”显示的。<br>属性：user-select: none;<br>注：火狐下必须加-moz-<br>-moz-::selection</p>
+<h2 id="条件选择"><a href="#条件选择" class="headerlink" title="条件选择"></a>条件选择</h2><p>E &gt; F  an F element child of an E element<br>直接子元素<br>E + F an F element immediately preceded by an E element<br>后面的紧挨着的兄弟节点<br>E ~ F an F element preceded by an E element<br>后面的兄弟节点</p>
+<pre><code>Author:By--Dexinser
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/必备知识/">必备知识</a>
     </div>
 
 

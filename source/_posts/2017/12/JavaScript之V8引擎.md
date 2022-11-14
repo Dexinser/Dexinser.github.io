@@ -2,7 +2,7 @@
 title: JavaScript之V8引擎
 tags: JavaScript
 categories: 认知提升
-date: 2017-11-25
+date: 2017-12-13
 ---
 **{{title}}**     <Excerpt in index | 首页摘要>
 

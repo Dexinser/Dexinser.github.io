@@ -12,7 +12,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'https://yoursite.com/child' and root as '/child/'
-url: https://indexcode.cn
+url: https://dexinser.github.io
 root: /
 permalink: :title.html
 permalink_defaults:
@@ -26,7 +26,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render: 
-  - CNAME
+  # - CNAME
   - README.md
   - baidu_verify_GfXd51JLTr.html
 
@@ -63,13 +63,9 @@ category_map:
   - 编程语言
   - 学习笔记
   - 个人随笔
-  - algorithm
-  - 数据库
   - 设计模式
   - 网络协议
   - 资源分享
-  - digital
-  - cognition
 tag_map:
   - node
   - java
@@ -80,7 +76,6 @@ tag_map:
   - others
   - http/https
   - book
-  - 数码设计
   - 认知提升
   - 算法
   - 后端
@@ -126,18 +121,18 @@ search:
 
 sitemap:
   path: sitemap.xml
-baidusitemap:
-  path: baidusitemap.xml
+# baidusitemap:
+#   path: baidusitemap.xml
 
 baidu_url_submit:
   count: 100 ## 比如3，代表提交最新的3个链接
-  host: indexcode.cn  ## 在百度站长平台中注册的域名
+  host: dexinser.github.io  ## 在百度站长平台中注册的域名
   token: LPpxYn7H6WBz9ZuE ## 请注意这个是您的秘钥，请不要发布在公众仓库里！
   path: urls.txt  ## 文本文档的地址，新链接会保存在此文本文档里 
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: baidu_url_submitter
+# - type: baidu_url_submitter
 - type: git
   repo: git@github.com:Dexinser/dexinser.github.io.git,master

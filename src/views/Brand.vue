@@ -100,53 +100,52 @@
 <script>
 import '@/assets/js/flexible'
 import '@/assets/js/china'
-import countTo from 'vue-count-to'
+// import countTo from 'vue-count-to'
 
 export default {
   name: 'Brand',
-  components: {
-    countTo
-  },
+  // components: {
+  //   countTo
+  // },
   data() {
   	return {
       nowTime: '',
       week: '',
       date: '',
-      timer: null,
-      imgSrc: '',
-      weatcherData: {},
-      startVal: 0,
+      // timer: null,
+      // imgSrc: '',
+      // weatcherData: {},
+      // startVal: 0,
       geoCoordMap: {},
       BJData: [
         [{ name: "北京" }, { name: "长春", value: 30, trueName: '吉林' }],
-        [{ name: "北京" }, { name: "上海", value: 23 }],
-        [{ name: "北京" }, { name: "哈尔滨", value: 21 }],
-        [{ name: "北京" }, { name: "石家庄", value: 19 }],
-        [{ name: "北京" }, { name: "郑州", value: 16 }],
+        [{ name: "北京" }, { name: "上海", value: 23, trueName: '上海', total: 23 + 12 }],
+        [{ name: "北京" }, { name: "哈尔滨", value: 21, trueName: '黑龙江' }],
+        [{ name: "北京" }, { name: "石家庄", value: 19, trueName: '河北' }],
+        [{ name: "北京" }, { name: "郑州", value: 16 + 2, trueName: '河南' }],
       ],
       GZData: [
-        [{ name: "广州" }, { name: "杭州", value: 42 }],
-        [{ name: "广州" }, { name: "昆明", value: 27 }],
-        [{ name: "广州" }, { name: "上海", value: 12 }],
-        [{ name: "广州" }, { name: "南昌", value: 7 }],
-        [{ name: "广州" }, { name: "成都", value: 7 }]
+        [{ name: "广州" }, { name: "杭州", value: 42, trueName: '浙江', total: 42 + 9 }],
+        [{ name: "广州" }, { name: "昆明", value: 27, trueName: '云南' }],
+        [{ name: "广州" }, { name: "上海", value: 12, trueName: '' }],
+        [{ name: "广州" }, { name: "南昌", value: 7, trueName: '江西' }],
+        [{ name: "广州" }, { name: "成都", value: 7, trueName: '四川' }],
       ],
       SHData: [
-        [{ name: "上海" }, { name: "北京", value: 23 }],
-        [{ name: "上海" }, { name: "广州", value: 10 }],
-        [{ name: "上海" }, { name: "杭州", value: 9 }],
-        [{ name: "上海" }, { name: "合肥", value: 5 }],
-        [{ name: "上海" }, { name: "郑州", value: 2 }]
+        [{ name: "上海" }, { name: "北京", value: 23, trueName: '北京' }],
+        [{ name: "上海" }, { name: "广州", value: 10, trueName: '广东' }],
+        [{ name: "上海" }, { name: "杭州", value: 9, trueName: '' }],
+        [{ name: "上海" }, { name: "合肥", value: 5, trueName: '安徽' }],
+        [{ name: "上海" }, { name: "郑州", value: 2, trueName: '' }],
       ],
       CDData: [
-        [{ name: "成都" }, { name: "昆明", value: 9 }],
-        [{ name: "成都" }, { name: "西安", value: 7 }],
-        [{ name: "成都" }, { name: "重庆", value: 7 }]
+        [{ name: "成都" }, { name: "昆明", value: 9, trueName: '云南' }],
+        [{ name: "成都" }, { name: "西安", value: 7, trueName: '陕西' }],
+        [{ name: "成都" }, { name: "重庆", value: 7, trueName: '重庆' }],
       ],
       SZData: [
-        [{ name: "深圳" }, { name: "广州", value: 3 }],
-        [{ name: "深圳" }, { name: "北京", value: 2 }],
-        [{ name: "深圳" }, { name: "西宁", value: 1 }]
+        [{ name: "深圳" }, { name: "北京", value: 2, trueName: '北京' }],
+        [{ name: "深圳" }, { name: "西宁", value: 1, trueName: '青海' }],
       ]
   	}
   },
@@ -156,10 +155,10 @@ export default {
   created() {
   },
   mounted() {
-    this.getWeather();
-    this.timer = setInterval(() => {
-      this.getWeather();
-    }, 1000 * 60 * 60)
+    // this.getWeather();
+    // this.timer = setInterval(() => {
+    //   this.getWeather();
+    // }, 1000 * 60 * 60)
 
     this.nowTimes();
     this.getEchart();
@@ -189,38 +188,38 @@ export default {
       clearInterval(this.nowTimes)
       this.nowTimes = null;
     },
-    getWeather() { // 第三方天气api接口
-      axios.get('https://www.tianqiapi.com/api/', {
-        params: {
-          appid: '26148275',
-          appsecret: '2id6H48Y',
-          version: 'v6'
-        }
-      }).then(res => {
-        if (res.data) {
-          if (res.data.wea_img == 'xue') {
-            this.imgSrc = require('../assets/img/brand/xue.png');
-          } else if (res.data.wea_img == 'yin') {
-            this.imgSrc = require('../assets/img/brand/yin.png');
-          } else if (res.data.wea_img == 'yu' || res.data.wea_img == 'bingbao') {
-            this.imgSrc = require('../assets/img/brand/yu.png');
-          } else if (res.data.wea_img == 'yun') {
-            this.imgSrc = require('../assets/img/brand/yun.png');
-          } else if (res.data.wea_img == 'wu') {
-            this.imgSrc = require('../assets/img/brand/wu.png');
-          } else if (res.data.wea_img == 'shachen') {
-            this.imgSrc = require('../assets/img/brand/shachen.png');
-          } else if (res.data.wea_img == 'lei') {
-            this.imgSrc = require('../assets/img/brand/lei.png');
-          } else {
-            this.imgSrc = require('../assets/img/brand/qing.png');
-          }
-          this.weatcherData = res.data;
-        }
-      }).catch(err => {
-        console.log(err)
-      })
-    },
+    // getWeather() { // 第三方天气api接口
+    //   axios.get('https://www.tianqiapi.com/api/', {
+    //     params: {
+    //       appid: '26148275',
+    //       appsecret: '2id6H48Y',
+    //       version: 'v6'
+    //     }
+    //   }).then(res => {
+    //     if (res.data) {
+    //       if (res.data.wea_img == 'xue') {
+    //         this.imgSrc = require('../assets/img/brand/xue.png');
+    //       } else if (res.data.wea_img == 'yin') {
+    //         this.imgSrc = require('../assets/img/brand/yin.png');
+    //       } else if (res.data.wea_img == 'yu' || res.data.wea_img == 'bingbao') {
+    //         this.imgSrc = require('../assets/img/brand/yu.png');
+    //       } else if (res.data.wea_img == 'yun') {
+    //         this.imgSrc = require('../assets/img/brand/yun.png');
+    //       } else if (res.data.wea_img == 'wu') {
+    //         this.imgSrc = require('../assets/img/brand/wu.png');
+    //       } else if (res.data.wea_img == 'shachen') {
+    //         this.imgSrc = require('../assets/img/brand/shachen.png');
+    //       } else if (res.data.wea_img == 'lei') {
+    //         this.imgSrc = require('../assets/img/brand/lei.png');
+    //       } else {
+    //         this.imgSrc = require('../assets/img/brand/qing.png');
+    //       }
+    //       this.weatcherData = res.data;
+    //     }
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // },
     convertData(data) { // 地图数据转换
       let res = [];
       for (let i = 0; i < data.length; i++) {
@@ -230,7 +229,7 @@ export default {
         if (fromCoord && toCoord) {
           res.push({
             fromName: dataItem[0].name,
-            toName: dataItem[1].name,
+            toName: dataItem[1].trueName,
             coords: [fromCoord, toCoord],
             value: dataItem[1].value
           });
@@ -358,7 +357,8 @@ export default {
         韶关: [113.7964, 24.7028]
       };
 
-      let planePath = "path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z";
+      let planePath = "path://M113.917 792.522C125.129 724.162 184.469 672 256.002 672c74.121 0 135.151 56.001 143.11 127.997h16.89V256H272.003c-92.002 0-90.504 26.499-128.004 80L64 469.998v233.998c0 46.147 16.646 75.649 49.917 88.526z m78.087-312.524h63.999v-80c0-17.67 14.326-31.996 31.996-31.996 17.676 0 32.003 14.326 32.003 31.996V512c0 17.671-14.326 31.996-32.003 31.996h-95.995c-17.676 0-32.002-14.325-32.002-31.996-0.001-17.676 14.325-32.002 32.002-32.002zM720 672c72.841 0 133.042 54.091 142.651 124.296C918.54 782.555 960 732.126 960 672V223.997C960 153.31 902.69 96 832.003 96H560.001c-70.694 0-127.997 57.31-127.997 127.997v576h144.887C584.849 728.001 645.879 672 720 672z m0 31.996c-61.855 0-112.002 50.147-112.002 112.002S658.145 928 720 928s112.002-50.147 112.002-112.002S781.855 703.996 720 703.996z m-463.998 0C194.146 703.996 144 754.143 144 815.998S194.146 928 256.002 928c61.855 0 111.996-50.147 111.996-112.002s-50.141-112.002-111.996-112.002z"
+      //"path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z";
 
       let color = ["#fff", "#fff", "#fff"]; //航线的颜色
       let series = [];
@@ -376,7 +376,7 @@ export default {
             effect: {
               show: true,
               period: 6,
-              trailLength: 0.7,
+              trailLength: 0.8,
               color: "red", //arrow箭头的颜色
               symbolSize: 3
             },
@@ -384,7 +384,7 @@ export default {
               normal: {
                 color: color[i],
                 width: 0,
-                curveness: 0.2
+                curveness: 0.3
               }
             },
             data: this.convertData(item[1])
@@ -407,7 +407,7 @@ export default {
                 color: color[i],
                 width: 1,
                 opacity: 0.6,
-                curveness: 0.2
+                curveness: 0.3
               }
             },
             data: this.convertData(item[1])
@@ -440,8 +440,8 @@ export default {
             },
             data: item[1].map((dataItem) => {
               return {
-                name: dataItem[1].trueName || dataItem[1].name,
-                value: this.geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                name: (dataItem[1].trueName) + (dataItem[1].total || dataItem[1].value),
+                value: this.geoCoordMap[dataItem[1].name].concat([(dataItem[1].total || dataItem[1].value)])
               };
             })
           }
@@ -452,24 +452,26 @@ export default {
         tooltip: {
           trigger: "item",
           formatter: (params, ticket, callback) => {
+            console.log(params, ticket, callback, 'params-------');
             if (params.seriesType == "effectScatter") {
-              return "线路：" + params.data.name + "" + params.data.value[2];
+              return //"线路：" + params.data.trueName + "" + params.data.value[2];
             } else if (params.seriesType == "lines") {
               return (
                 params.data.fromName +
                 ">" +
                 params.data.toName +
                 "<br />" +
-                params.data.value
+                (params.data.total || params.data.value)
               );
             } else {
-              return params.name;
+              return params.trueName;
             }
           }
         },
         geo: {
           map: "china",
           label: {
+            show: true,
             emphasis: {
               show: true,
               color: "#fff"
@@ -501,7 +503,7 @@ export default {
     }
   },
   beforeDestroy() {
-    clearInterval(this.timer);
+    // clearInterval(this.timer);
   }
 }
 </script>
@@ -529,22 +531,22 @@ export default {
         line-height: 0.75rem;
         letter-spacing: 1px;
       }
-      .weather {
-        position: absolute;
-        left: 1.375rem;
-        top: 0.35rem;
-        font-size: 0.25rem;
-        color: rgba(126, 240, 255, .7);
-        img {
-          width: .45rem;
-        }
-        span {
-          display: inline-block;
-        }
-        .tem {
-          margin: 0 .1rem 0 .2rem;
-        }
-      }
+      // .weather {
+      //   position: absolute;
+      //   left: 1.375rem;
+      //   top: 0.35rem;
+      //   font-size: 0.25rem;
+      //   color: rgba(126, 240, 255, .7);
+      //   img {
+      //     width: .45rem;
+      //   }
+      //   span {
+      //     display: inline-block;
+      //   }
+      //   .tem {
+      //     margin: 0 .1rem 0 .2rem;
+      //   }
+      // }
       .showTime {
         position: absolute;
         right: 1.375rem;
@@ -552,18 +554,18 @@ export default {
         color: rgba(126, 240, 255, .7);
         display: flex;
         .time {
-          font-size: .28rem;
+          font-size: .58rem;
           margin-right: .18rem;
         }
         .date {
           span {
             display: block;
             &:nth-child(1) {
-              font-size: .12rem;
+              font-size: .32rem;
               text-align: right;
             }
             &:nth-child(2) {
-              font-size: .14rem;
+              font-size: .34rem;
             }
           }
         }
@@ -575,7 +577,7 @@ export default {
       max-width: 1920px;
       padding: 0.125rem 0.125rem 0;
       display: flex;
-      height: calc(100% - 58px);
+      height: calc(100% - 66px);
       .item {
         flex: 3;
         &.center {
@@ -583,81 +585,81 @@ export default {
           margin: 0 0.125rem 0.1rem;
           overflow: hidden;
 
-          .resume {
-            background: rgba(101, 132, 226, 0.1);
-            padding: 0.1875rem;
-            .resume-hd {
-              position: relative;
-              border: 1px solid rgba(25, 186, 139, 0.17);
-              ul {
-                display: flex;
-                %li-line {
-                  content: "";
-                  position: absolute;
-                  height: 50%;
-                  width: 1px;
-                  background: rgba(255, 255, 255, 0.2);
-                  top: 25%;
-                }
-                li {
-                  position: relative;
-                  flex: 1;
-                  text-align: center;
-                  height: 1.2rem;
-                  line-height: 1.2rem;
-                  font-size: 0.65rem;
-                  color: #ffeb7b;
-                  padding: 0.05rem 0;
-                  font-family: 'DIGITALDREAMFAT';
-                  font-weight: bold;
-                  &:nth-child(2) {
-                    &:after {
-                      @extend %li-line;
-                      right: 0;
-                    }
-                    &:before {
-                      @extend %li-line;
-                      left: 0;
-                    }
-                  }
-                }
-              }
-              &:before {
-                content: "";
-                position: absolute;
-                width: 30px;
-                height: 10px;
-                border-top: 2px solid #02a6b5;
-                border-left: 2px solid #02a6b5;
-                top: 0;
-                left: 0;
-              }
-              &:after {
-                content: "";
-                position: absolute;
-                width: 30px;
-                height: 10px;
-                border-bottom: 2px solid #02a6b5;
-                border-right: 2px solid #02a6b5;
-                right: 0;
-                bottom: 0;
-              }
-            }
-            .resume-bd {
-              ul {
-                display: flex;
-                li {
-                  flex: 1;
-                  height: 0.5rem;
-                  line-height: 0.5rem;
-                  text-align: center;
-                  font-size: 0.225rem;
-                  color: rgba(255, 255, 255, 0.7);
-                  padding-top: 0.125rem;
-                }
-              }
-            }
-          }
+          // .resume {
+          //   background: rgba(101, 132, 226, 0.1);
+          //   padding: 0.1875rem;
+          //   .resume-hd {
+          //     position: relative;
+          //     border: 1px solid rgba(25, 186, 139, 0.17);
+          //     ul {
+          //       display: flex;
+          //       %li-line {
+          //         content: "";
+          //         position: absolute;
+          //         height: 50%;
+          //         width: 1px;
+          //         background: rgba(255, 255, 255, 0.2);
+          //         top: 25%;
+          //       }
+          //       li {
+          //         position: relative;
+          //         flex: 1;
+          //         text-align: center;
+          //         height: 1.2rem;
+          //         line-height: 1.2rem;
+          //         font-size: 0.65rem;
+          //         color: #ffeb7b;
+          //         padding: 0.05rem 0;
+          //         font-family: 'DIGITALDREAMFAT';
+          //         font-weight: bold;
+          //         &:nth-child(2) {
+          //           &:after {
+          //             @extend %li-line;
+          //             right: 0;
+          //           }
+          //           &:before {
+          //             @extend %li-line;
+          //             left: 0;
+          //           }
+          //         }
+          //       }
+          //     }
+          //     &:before {
+          //       content: "";
+          //       position: absolute;
+          //       width: 30px;
+          //       height: 10px;
+          //       border-top: 2px solid #02a6b5;
+          //       border-left: 2px solid #02a6b5;
+          //       top: 0;
+          //       left: 0;
+          //     }
+          //     &:after {
+          //       content: "";
+          //       position: absolute;
+          //       width: 30px;
+          //       height: 10px;
+          //       border-bottom: 2px solid #02a6b5;
+          //       border-right: 2px solid #02a6b5;
+          //       right: 0;
+          //       bottom: 0;
+          //     }
+          //   }
+          //   .resume-bd {
+          //     ul {
+          //       display: flex;
+          //       li {
+          //         flex: 1;
+          //         height: 0.5rem;
+          //         line-height: 0.5rem;
+          //         text-align: center;
+          //         font-size: 0.225rem;
+          //         color: rgba(255, 255, 255, 0.7);
+          //         padding-top: 0.125rem;
+          //       }
+          //     }
+          //   }
+          // }
         }
         
         %map-style {
@@ -704,78 +706,78 @@ export default {
             animation: rotate1 10s linear infinite;
           }
         }
-        .panel {
-          position: relative;
-          height: 3.875rem;
-          border: 1px solid rgba(25, 186, 139, 0.17);
-          background: rgba(255, 255, 255, 0.04) url(../assets/img/brand/line.png);
-          padding: 0 0.1875rem 0;
-          margin-bottom: 0.1875rem;
-          &:before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-left: 2px solid #02a6b5;
-          }
-          &:after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            content: "";
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-right: 2px solid #02a6b5;
-          }
+        // .panel {
+        //   position: relative;
+        //   height: 3.875rem;
+        //   border: 1px solid rgba(25, 186, 139, 0.17);
+        //   background: rgba(255, 255, 255, 0.04) url(../assets/img/brand/line.png);
+        //   padding: 0 0.1875rem 0;
+        //   margin-bottom: 0.1875rem;
+        //   &:before {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     content: "";
+        //     width: 10px;
+        //     height: 10px;
+        //     border-top: 2px solid #02a6b5;
+        //     border-left: 2px solid #02a6b5;
+        //   }
+        //   &:after {
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     content: "";
+        //     width: 10px;
+        //     height: 10px;
+        //     border-top: 2px solid #02a6b5;
+        //     border-right: 2px solid #02a6b5;
+        //   }
 
-          .panel-footer {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            &:before {
-              position: absolute;
-              bottom: 0;
-              left: 0;
-              content: "";
-              width: 10px;
-              height: 10px;
-              border-bottom: 2px solid #02a6b5;
-              border-left: 2px solid #02a6b5;
-            }
-            &:after {
-              position: absolute;
-              bottom: 0;
-              right: 0;
-              content: "";
-              width: 10px;
-              height: 10px;
-              border-bottom: 2px solid #02a6b5;
-              border-right: 2px solid #02a6b5;
-            }
-          }
+        //   .panel-footer {
+        //     position: absolute;
+        //     left: 0;
+        //     bottom: 0;
+        //     width: 100%;
+        //     &:before {
+        //       position: absolute;
+        //       bottom: 0;
+        //       left: 0;
+        //       content: "";
+        //       width: 10px;
+        //       height: 10px;
+        //       border-bottom: 2px solid #02a6b5;
+        //       border-left: 2px solid #02a6b5;
+        //     }
+        //     &:after {
+        //       position: absolute;
+        //       bottom: 0;
+        //       right: 0;
+        //       content: "";
+        //       width: 10px;
+        //       height: 10px;
+        //       border-bottom: 2px solid #02a6b5;
+        //       border-right: 2px solid #02a6b5;
+        //     }
+        //   }
 
-          h2 {
-            height: 0.6rem;
-            line-height: 0.6rem;
-            text-align: center;
-            color: #fff;
-            font-size: 0.225rem;
-            font-weight: 400;
-            a {
-              margin: 0 0.1875rem;
-              color: #fff;
-              text-decoration: none;
-            }
-          }
-          .chart {
-            height: 3rem;
-          }
-        }
+        //   h2 {
+        //     height: 0.6rem;
+        //     line-height: 0.6rem;
+        //     text-align: center;
+        //     color: #fff;
+        //     font-size: 0.225rem;
+        //     font-weight: 400;
+        //     a {
+        //       margin: 0 0.1875rem;
+        //       color: #fff;
+        //       text-decoration: none;
+        //     }
+        //   }
+        //   .chart {
+        //     height: 3rem;
+        //   }
+        // }
       }
 
     }

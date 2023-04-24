@@ -39,7 +39,7 @@
 	            立即登录
 	          </button>
 	          <div class="tip">
-							默认用户名：admin ，默认密码：123456
+							收货地图登录
 	          </div>
         	</div>
         </div>

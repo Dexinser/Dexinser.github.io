@@ -68,47 +68,39 @@ export default {
       date: "",
       geoCoordMap: {},
       BJData: [
-        [
-          { name: "北京" },
-          { name: "呼和浩特", value: 72 + 30, trueName: "华北" },
-        ],
-        [{ name: "北京" }, { name: "西宁", value: 5 + 8, trueName: "西北" }],
-        [{ name: "北京" }, { name: "成都", value: 7 + 11, trueName: "西南" }],
-        [{ name: "北京" }, { name: "上海", value: 6 + 59, trueName: "华东" }],
-        [{ name: "北京" }, { name: "南宁", value: 5 + 31, trueName: "华南" }],
-        [{ name: "北京" }, { name: "武汉", value: 4 + 13, trueName: "华中" }],
-        [{ name: "北京" }, { name: "哈尔滨", value: 3 + 8, trueName: "东北" }],
+        [{ name: "北京" }, { name: "呼和浩特", value: 72, trueName: "华北" }],
+        [{ name: "北京" }, { name: "西宁", value: 5, trueName: "西北" }],
+        [{ name: "北京" }, { name: "成都", value: 7, trueName: "西南" }],
+        [{ name: "北京" }, { name: "上海", value: 6, trueName: "华东" }],
+        [{ name: "北京" }, { name: "南宁", value: 5, trueName: "华南" }],
+        [{ name: "北京" }, { name: "石家庄", value: 4, trueName: "华中" }],
+        [{ name: "北京" }, { name: "哈尔滨", value: 3, trueName: "东北" }],
       ],
       GZData: [
-        [
-          { name: "广州" },
-          { name: "武汉", value: 13, trueName: "华中", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "成都", value: 11, trueName: "西南", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "南宁", value: 31, trueName: "华南", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "上海", value: 59, trueName: "华东", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "呼和浩特", value: 30, trueName: "华北", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "西宁", value: 8, trueName: "西北", hide: true },
-        ],
-        [
-          { name: "广州" },
-          { name: "哈尔滨", value: 8, trueName: "东北", hide: true },
-        ],
+        [{ name: "广州" }, { name: "石家庄", value: 13, trueName: "华中" }],
+        [{ name: "广州" }, { name: "成都", value: 11, trueName: "西南" }],
+        [{ name: "广州" }, { name: "南宁", value: 31, trueName: "华南" }],
+        [{ name: "广州" }, { name: "上海", value: 59, trueName: "华东" }],
+        [{ name: "广州" }, { name: "呼和浩特", value: 30, trueName: "华北" }],
+        [{ name: "广州" }, { name: "西宁", value: 8, trueName: "西北" }],
+        [{ name: "广州" }, { name: "哈尔滨", value: 8, trueName: "东北" }],
       ],
+      // SHData: [
+      //   [{ name: "上海" }, { name: "北京", value: 23, trueName: "北京" }],
+      //   [{ name: "上海" }, { name: "广州", value: 10, trueName: "广东" }],
+      //   [{ name: "上海" }, { name: "杭州", value: 9, trueName: "" }],
+      //   [{ name: "上海" }, { name: "合肥", value: 5, trueName: "安徽" }],
+      //   [{ name: "上海" }, { name: "郑州", value: 2, trueName: "" }],
+      // ],
+      // CDData: [
+      //   [{ name: "成都" }, { name: "昆明", value: 9, trueName: "云南" }],
+      //   [{ name: "成都" }, { name: "西安", value: 7, trueName: "陕西" }],
+      //   [{ name: "成都" }, { name: "重庆", value: 7, trueName: "重庆" }],
+      // ],
+      // SZData: [
+      //   [{ name: "深圳" }, { name: "北京", value: 2, trueName: "北京" }],
+      //   [{ name: "深圳" }, { name: "西宁", value: 1, trueName: "青海" }],
+      // ],
     };
   },
   computed: {},
@@ -311,58 +303,82 @@ export default {
         // ["上海", this.SHData],
       ].forEach((item, i) => {
         series.push(
-          {
-            type: "map",
-            mapType: "china",
-            roam: true,
-            geoIndex: 0,
-            aspectScale: 0.75,
-            data: [
-              { name: "北京", selected: false, value: 15 },
-              { name: "天津", selected: false, value: 15 },
-              { name: "河北", selected: false, value: 15 },
-              { name: "山西", selected: false, value: 15 },
-              { name: "内蒙古", selected: false, value: 15 },
+          // {
+          //   type: "map",
+          //   mapType: "china",
+          //   roam: true,
+          //   geoIndex: 0,
+          //   aspectScale: 0.75,
+          //   data: [
+          //     { name: "北京", selected: false, value: 15, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "河南", selected: false, value: 25 },
-              { name: "湖北", selected: false, value: 25 },
-              { name: "湖南", selected: false, value: 25 },
+          //     { name: "天津", selected: false, value: 2, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "辽宁", selected: false, value: 35 },
-              { name: "吉林", selected: false, value: 35 },
-              { name: "黑龙江", selected: false, value: 35 },
+          //     { name: "上海", selected: false, value: 3, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "安徽", selected: false, value: 45 },
-              { name: "上海", selected: false, value: 45 },
-              { name: "山东", selected: false, value: 45 },
-              { name: "江苏", selected: false, value: 45 },
-              { name: "浙江", selected: false, value: 45 },
-              { name: "江西", selected: false, value: 45 },
-              { name: "福建", selected: false, value: 45 },
+          //     { name: "重庆", selected: false, value: 4, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "海南", selected: false, value: 55 },
-              { name: "广东", selected: false, value: 55 },
-              { name: "广西", selected: false, value: 55 },
+          //     { name: "河北", selected: false, value: 5, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "新疆", selected: false, value: 65 },
-              { name: "甘肃", selected: false, value: 65 },
-              { name: "陕西", selected: false, value: 65 },
-              { name: "宁夏", selected: false, value: 65 },
-              { name: "青海", selected: false, value: 65 },
+          //     { name: "河南", selected: false, value: 6, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "云南", selected: false, value: 5 },
-              { name: "重庆", selected: false, value: 5 },
-              { name: "贵州", selected: false, value: 5 },
-              { name: "西藏", selected: false, value: 5 },
-              { name: "四川", selected: false, value: 5 },
+          //     { name: "云南", selected: false, value: 7, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "台湾", selected: false, value: 45 },
+          //     { name: "辽宁", selected: false, value: 8, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "香港", selected: false, value: 35 },
+          //     { name: "黑龙江", selected: false, value: 9, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
 
-              { name: "澳门", selected: false, value: 35 },
-            ],
-          },
+          //     { name: "湖南", selected: false, value: 10, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "安徽", selected: false, value: 11, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "山东", selected: false, value: 12, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "新疆", selected: false, value: 13, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "江苏", selected: false, value: 34, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "浙江", selected: false, value: 15, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "江西", selected: false, value: 16, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "湖北", selected: false, value: 17, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "广西", selected: false, value: 18, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "甘肃", selected: false, value: 19, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "山西", selected: false, value: 20, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "内蒙古", selected: false, value: 21, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "陕西", selected: false, value: 22, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "吉林", selected: false, value: 23, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "福建", selected: false, value: 24, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "贵州", selected: false, value: 25, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "广东", selected: false, value: 26, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "青海", selected: false, value: 27, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "西藏", selected: false, value: 28, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "四川", selected: false, value: 29, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "宁夏", selected: false, value: 30, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "海南", selected: false, value: 31, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "台湾", selected: false, value: 32, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "香港", selected: false, value: 33, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+          //     { name: "澳门", selected: false, value: 34, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+          //   ],
+          // },
           {
             name: item[0] + " Top3",
             type: "lines",
@@ -434,23 +450,35 @@ export default {
             },
             data: item[1].map((dataItem) => {
               return {
-                name: dataItem[1].hide
-                  ? ""
-                  : dataItem[1].trueName + dataItem[1].value,
-                label: {
-                  normal: {
-                    show: true,
-                    textStyle: {
-                      fontSize: 19,
-                    },
-                  },
-                },
+                name:
+                  dataItem[1].trueName +
+                  (dataItem[1].total || dataItem[1].value),
+                color: "red",
                 value: this.geoCoordMap[dataItem[1].name].concat([
                   dataItem[1].total || dataItem[1].value,
                 ]),
               };
             }),
-          }
+          },
+          // {
+          //   name: "东北",
+          //   type: "scatter",
+          //   coordinateSystem: "geo",
+          //   label: {
+          //     normal: {
+          //       show: true,
+          //       formatter: "{b}",
+          //       position: [-5, 15],
+          //       textStyle: {
+          //         color: "red",
+          //         fontSize: 19,
+          //         textBorderColor: "#fff",
+          //         textBorderWidth: 5,
+          //       },
+          //     },
+          //   },
+          //   data: echartsData[0],
+          // }
         );
       });
 
@@ -483,69 +511,57 @@ export default {
         //       color: ['#e6f7ff', '#1890FF','#0050b3'] // 渐变颜色 '#4183F0', '#F38F35', '#6C25DD', '#48B4B0', '#B438C9', '#5BCA60', '#EF4099',
         //     }
         //   },
-        visualMap: [
-          {
-            type: "piecewise",
-            x: "-1000 px",
-            y: "-1000 px",
-            seriesIndex: 0,
-            splitList: [
-              {
-                start: 190,
-                color: "#4183F0",
-                label: "111",
-              },
-              {
-                start: 70,
-                end: 100,
-                color: "#4183F0",
-                label: "111",
-              },
-              {
-                start: 60,
-                end: 70,
-                color: "#F38F35",
-                label: "222",
-              },
-              {
-                start: 50,
-                end: 60,
-                color: "#6C25DD",
-                label: "333",
-              },
-              {
-                start: 40,
-                end: 50,
-                color: "#48B4B0",
-                label: "444",
-              },
-              {
-                start: 30,
-                end: 40,
-                color: "#B438C9",
-                label: "555",
-              },
-              {
-                start: 20,
-                end: 30,
-                color: "#5BCA60",
-                label: "666",
-              },
-              {
-                start: 10,
-                end: 20,
-                color: "#EF4099",
-                label: "777",
-              },
-              {
-                start: 0,
-                end: 10,
-                color: "#1890FF",
-                label: "888",
-              },
-            ],
-          },
-        ],
+        // visualMap: [
+        //   {
+        //     type: "piecewise",
+        //     x: "-1000 px",
+        //     y: "-1000 px",
+        //     seriesIndex: 0,
+        //     splitList: [
+        //       {
+        //         start: 70,
+        //         color: "#4183F0",
+        //         label: "111",
+        //       },
+        //       {
+        //         start: 60,
+        //         end: 70,
+        //         color: "#F38F35",
+        //         label: "222",
+        //       },
+        //       {
+        //         start: 50,
+        //         end: 60,
+        //         color: "#6C25DD",
+        //         label: "333",
+        //       },
+        //       {
+        //         start: 40,
+        //         end: 50,
+        //         color: "#48B4B0",
+        //         label: "444",
+        //       },
+        //       {
+        //         start: 30,
+        //         end: 40,
+        //         color: "#B438C9",
+        //         label: "555",
+        //       },
+        //       {
+        //         start: 20,
+        //         end: 30,
+        //         color: "#5BCA60",
+        //         label: "666",
+        //       },
+        //       {
+        //         start: 10,
+        //         end: 20,
+        //         color: "#EF4099",
+        //         label: "777",
+        //       },
+        //     ],
+        //   },
+        // ],
         geo: {
           map: "china",
           label: {
@@ -553,17 +569,6 @@ export default {
             emphasis: {
               show: true,
               color: "#fff",
-            },
-            normal: {
-              show: true,
-              textStyle: {
-                fontSize: 19,
-              },
-              formatter: function (params) {
-                return params.name == "北京" || params.name == "广州"
-                  ? params.name
-                  : "";
-              },
             },
           },
           roam: false,
@@ -579,8 +584,134 @@ export default {
               areaColor: "#2B91B7",
             },
           },
+          regions: [
+              { name: "北京", selected: false, value: 15, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "天津", selected: false, value: 2, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "上海", selected: false, value: 3, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "重庆", selected: false, value: 4, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "河北", selected: false, value: 5, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "河南", selected: false, value: 6, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "云南", selected: false, value: 7, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "辽宁", selected: false, value: 8, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "黑龙江", selected: false, value: 9, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "湖南", selected: false, value: 10, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "安徽", selected: false, value: 11, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "山东", selected: false, value: 12, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "新疆", selected: false, value: 13, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "江苏", selected: false, value: 34, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "浙江", selected: false, value: 15, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "江西", selected: false, value: 16, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "湖北", selected: false, value: 17, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "广西", selected: false, value: 18, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "甘肃", selected: false, value: 19, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "山西", selected: false, value: 20, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "内蒙古", selected: false, value: 21, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "陕西", selected: false, value: 22, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "吉林", selected: false, value: 23, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "福建", selected: false, value: 24, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "贵州", selected: false, value: 25, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "广东", selected: false, value: 26, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "青海", selected: false, value: 27, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "西藏", selected: false, value: 28, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "四川", selected: false, value: 29, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "宁夏", selected: false, value: 30, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "海南", selected: false, value: 31, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "台湾", selected: false, value: 32, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "香港", selected: false, value: 33, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+
+              { name: "澳门", selected: false, value: 34, itemStyle: { normal: { areaColor: 'red', label: { show: true}}}, color: 'red' },
+            ]
         },
+        // regions: [
+        //   {
+        //     name: "东北",
+        //     itemStyle: {
+        //       color: "red",
+        //       areaColor: "red",
+        //       normal: { areaColor: "red" },
+        //     },
+        //   },
+        // ],
         series: series,
+        // dataRange: {
+        //   x: "-1000 px",
+        //   y: "-1000 px",
+        //   splitList: [
+        //     {
+        //       start: 70,
+        //       color: "#4183F0",
+        //       label: "111",
+        //     },
+        //     {
+        //       start: 60,
+        //       end: 70,
+        //       color: "#F38F35",
+        //       label: "222",
+        //     },
+        //     {
+        //       start: 50,
+        //       end: 60,
+        //       color: "#6C25DD",
+        //       label: "333",
+        //     },
+        //     {
+        //       start: 40,
+        //       end: 50,
+        //       color: "#48B4B0",
+        //       label: "444",
+        //     },
+        //     {
+        //       start: 30,
+        //       end: 40,
+        //       color: "#B438C9",
+        //       label: "555",
+        //     },
+        //     {
+        //       start: 20,
+        //       end: 30,
+        //       color: "#5BCA60",
+        //       label: "666",
+        //     },
+        //     {
+        //       start: 10,
+        //       end: 20,
+        //       color: "#EF4099",
+        //       label: "777",
+        //     },
+        //   ],
+        // },
       };
 
       myChart.setOption(option, true);
@@ -693,7 +824,7 @@ export default {
             left: 0;
             z-index: 5;
             height: 100%;
-            width: 100%;
+            width: 140%;
           }
           .map1 {
             @extend %map-style;

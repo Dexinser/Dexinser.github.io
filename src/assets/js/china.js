@@ -806,7 +806,7 @@
     ],
     UTF8Encoding: true
   });
-  echarts.registerMap("china", {
+  var chinaJson = {
     type: "FeatureCollection",
     features: [
       {
@@ -1585,5 +1585,158 @@
       }
     ],
     UTF8Encoding: true
-  });
+  };
+  var params = {
+    names: [
+      //把各个大区的省份用二维数组分开
+      ["北京", "天津", "河北", "山西", "内蒙古"],
+      ["黑龙江", "吉林", "辽宁"],
+      ["山东", "江苏", "安徽", "江西", "浙江", "福建", "上海", "台湾"],
+      ["河南", "湖北", "湖南"],
+      ["广东", "广西", "海南", "香港", "澳门"],
+      ["重庆", "四川", "云南", "西藏", "贵州"],
+      ["陕西", "甘肃", "青海", "宁夏", "新疆"],
+    ],
+    properties: {
+      //自定义大区的名字，要和上面的大区省份一一对应
+      name: ["华北", "东北", "华东", "华中", "华南", "西南", "西北"],
+      cp: [
+        //经纬度可以自己随意定义
+        [116.24, 39.54],
+        [126.32, 43.5],
+        [121.28, 31.13],
+        [114.2, 30.32],
+        [113.15, 23.08],
+        [104.04, 30.39],
+        [103.49, 36.03],
+      ],
+      areaColor: ['#4183F0', '#F38F35', '#6C25DD', '#48B4B0', '#B438C9', '#5BCA60', '#EF4099',],
+      color: ['#4183F0', '#F38F35', '#6C25DD', '#48B4B0', '#B438C9', '#5BCA60', '#EF4099',],
+      fillColor: ['#4183F0', '#F38F35', '#6C25DD', '#48B4B0', '#B438C9', '#5BCA60', '#EF4099',],
+      strokeColor: ['#4183F0', '#F38F35', '#6C25DD', '#48B4B0', '#B438C9', '#5BCA60', '#EF4099',],
+      fillOpacity: [0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8,],
+    },
+  };
+  var mergeProvinces = function (chinaJson, names, properties) {
+    //合并大区里省份的coordinates
+    var features = chinaJson.features;
+    var polygons = [];
+    var polygons2 = [];
+
+    for (var i = 0; i < names.length; i++) {
+      var polygonsCoordinates = [];
+      var polygonsEncodeOffsets = [];
+      for (var z = 0; z < names[i].length; z++) {
+        for (var j = 0; j < features.length; j++) {
+          if (features[j].properties.name == names[i][z]) {
+            if (features[j].geometry.coordinates[0].constructor == String) {
+              //合并coordinates
+              for (
+                var l = 0;
+                l < features[j].geometry.coordinates.length;
+                l++
+              ) {
+                polygonsCoordinates.push(features[j].geometry.coordinates[l]);
+              }
+            } else if (
+              features[j].geometry.coordinates[0].constructor == Array
+            ) {
+              for (
+                var k = 0;
+                k < features[j].geometry.coordinates.length;
+                k++
+              ) {
+                for (
+                  var d = 0;
+                  d < features[j].geometry.coordinates[k].length;
+                  d++
+                ) {
+                  polygonsCoordinates.push(
+                    features[j].geometry.coordinates[k][d]
+                  );
+                }
+              }
+            }
+
+            if (features[j].geometry.encodeOffsets[0].constructor == String) {
+              //合并encodeOffsets
+              polygonsEncodeOffsets.push(features[j].geometry.encodeOffsets);
+            } else if (
+              features[j].geometry.encodeOffsets[0].constructor == Array
+            ) {
+              for (
+                var k = 0;
+                k < features[j].geometry.encodeOffsets.length;
+                k++
+              ) {
+                if (
+                  features[j].geometry.encodeOffsets[k][0].constructor == Array
+                ) {
+                  for (
+                    var e = 0;
+                    e < features[j].geometry.encodeOffsets[k].length;
+                    e++
+                  ) {
+                    polygonsEncodeOffsets.push(
+                      features[j].geometry.encodeOffsets[k][e]
+                    );
+                  }
+                } else {
+                  polygonsEncodeOffsets.push(
+                    features[j].geometry.encodeOffsets[k]
+                  );
+                }
+              }
+            }
+
+            break;
+          }
+        }
+      }
+      polygons.push(polygonsCoordinates);
+      polygons2.push(polygonsEncodeOffsets);
+    }
+
+    // 构建新的合并区域
+    var _features = [];
+
+    for (var a = 0; a < names.length; a++) {
+      var feature = {
+        id: _features.length.toString(),
+        type: "FeatureCollection",
+        geometry: {
+          type: "Polygon",
+          coordinates: polygons[a],
+          encodeOffsets: polygons2[a],
+        },
+        properties: {
+          name: properties.name[a] || "",
+          color: properties.color[a] || '',
+          areaColor: properties.color[a] || '',
+          childNum: polygons[a].length,
+          selected: true,
+          select: true,
+        },
+      };
+      for(var attr in properties) {
+        if(attr == 'name') console.log(attr);
+        else if(attr == 'color') {
+          console.log(properties.itemStyle, 'itemStyle------');
+          properties.itemStyle = {areaColor: properties.color[a], color: properties.color[a]}
+        }
+        properties[attr] && (feature.properties[attr] = properties[attr][a]);
+      }
+      // if (properties.cp[a]) {
+      //   feature.properties.cp = properties.cp[a];
+      // }
+
+      // 将新的合并区域添加到地图中
+      _features.push(feature);
+      console.log(_features, '_____________');
+    }
+    chinaJson.features = _features;
+  };
+
+  mergeProvinces(chinaJson, params.names, params.properties);
+  echarts.registerMap("china", chinaJson);
 });

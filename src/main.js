@@ -9,10 +9,11 @@ import Toast from './components/toast'
 import '@/assets/styles/base.scss'
 import '@/assets/styles/common.scss'
 import '@/assets/iconfont/iconfont.css'
-
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(vueParticles)
 Vue.use(Vcomp)
-
+Vue.use(ElementUI);
 Vue.config.productionTip = false
 
 Vue.prototype.$Toast = Toast

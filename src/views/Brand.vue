@@ -8,11 +8,6 @@
   <div class="brand-container">
   	<div class="wrap">
       <header>
-        <!-- <div class="weather">
-          <img :src="imgSrc">
-          <span class="tem">{{ weatcherData.tem }}°C</span> 
-          <span class="wea">{{ weatcherData.wea }}</span>
-        </div> -->
         <h2>发货地图</h2>
         <div class="showTime">
           <span class="time">{{ nowTime }}</span>
@@ -22,49 +17,12 @@
           </span>
         </div>
       </header>
+      
+      <el-button @click="btnClick" class="el-btn">导入自定义数据</el-button>
 
       <section class="mainbox">
-        <!-- <div class="item left">
-          <div class="panel">
-            <h2>业务范围</h2>
-            <business />
-            <div class="panel-footer"></div>
-          </div>
-          <div class="panel">
-            <h2>人才队伍</h2>
-            <talent />
-            <div class="panel-footer"></div>
-          </div>
-          <div class="panel">
-            <h2>营收状况</h2>
-            <income />
-            <div class="panel-footer"></div>
-          </div>
-        </div> -->
 
         <div class="item center">
-          <!-- <div class="resume">
-            <div class="resume-hd">
-              <ul>
-                <li>
-                  <countTo :startVal='startVal' :endVal='490' :duration='6000' separator=""></countTo>
-                </li>
-                <li>
-                  <countTo :startVal='startVal' :endVal='75' :duration='6000' separator=""></countTo>
-                </li>
-                <li>
-                  <countTo :startVal='startVal' :endVal='3000' :duration='6000' separator=""></countTo>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-bd">
-              <ul>
-                <li>公司总人数（单位：人）</li>
-                <li>技术人员占比（单位：%）</li>
-                <li>产品投资额（单位：万元）</li>
-              </ul>
-            </div>
-          </div> -->
           <div class="map">
             <div class="chart" id="chart_map"></div>
             <div class="map1"></div>
@@ -72,27 +30,26 @@
             <div class="map3"></div>
           </div>
         </div>
-
-        <!-- <div class="item right">
-          <div class="panel">
-            <h2>产品热词</h2>
-            <wordCloud />
-            <div class="panel-footer"></div>
-          </div>
-          <div class="panel">
-            <h2>客户分布</h2>
-            <distribution />
-            <div class="panel-footer"></div>
-          </div>
-          <div class="panel">
-            <h2>发展历程</h2>
-            <history />
-            <div class="panel-footer"></div>
-          </div>
-        </div> -->
       </section>
   
     </div>
+
+    <el-dialog
+      v-if="showDialog"
+      :visible.sync="showDialog"
+      title="自定义数据"
+      :z-index="3000"
+      size="big"
+      :showFullscreenSwitch="true">
+        <el-input
+          type="textarea"
+          size="small"
+          :rows="12"
+          placeholder="请输入内容"
+          v-model="textarea"
+        >
+        </el-input>
+    </el-dialog>
     
   </div>
 </template>
@@ -104,18 +61,13 @@ import '@/assets/js/china'
 
 export default {
   name: 'Brand',
-  // components: {
-  //   countTo
-  // },
   data() {
   	return {
+      showDialog: false,
+      textarea: '',
       nowTime: '',
       week: '',
       date: '',
-      // timer: null,
-      // imgSrc: '',
-      // weatcherData: {},
-      // startVal: 0,
       geoCoordMap: {},
       BJData: [
         [{ name: "北京" }, { name: "长春", value: 30, trueName: '吉林' }],
@@ -155,15 +107,13 @@ export default {
   created() {
   },
   mounted() {
-    // this.getWeather();
-    // this.timer = setInterval(() => {
-    //   this.getWeather();
-    // }, 1000 * 60 * 60)
-
     this.nowTimes();
     this.getEchart();
   },
   methods: {
+    btnClick() {
+      this.showDialog = true;
+    },
     timeFormate(timeStamp) { //显示当前时间
       let newDate = new Date(timeStamp);
       let year = newDate.getFullYear();
@@ -188,38 +138,6 @@ export default {
       clearInterval(this.nowTimes)
       this.nowTimes = null;
     },
-    // getWeather() { // 第三方天气api接口
-    //   axios.get('https://www.tianqiapi.com/api/', {
-    //     params: {
-    //       appid: '26148275',
-    //       appsecret: '2id6H48Y',
-    //       version: 'v6'
-    //     }
-    //   }).then(res => {
-    //     if (res.data) {
-    //       if (res.data.wea_img == 'xue') {
-    //         this.imgSrc = require('../assets/img/brand/xue.png');
-    //       } else if (res.data.wea_img == 'yin') {
-    //         this.imgSrc = require('../assets/img/brand/yin.png');
-    //       } else if (res.data.wea_img == 'yu' || res.data.wea_img == 'bingbao') {
-    //         this.imgSrc = require('../assets/img/brand/yu.png');
-    //       } else if (res.data.wea_img == 'yun') {
-    //         this.imgSrc = require('../assets/img/brand/yun.png');
-    //       } else if (res.data.wea_img == 'wu') {
-    //         this.imgSrc = require('../assets/img/brand/wu.png');
-    //       } else if (res.data.wea_img == 'shachen') {
-    //         this.imgSrc = require('../assets/img/brand/shachen.png');
-    //       } else if (res.data.wea_img == 'lei') {
-    //         this.imgSrc = require('../assets/img/brand/lei.png');
-    //       } else {
-    //         this.imgSrc = require('../assets/img/brand/qing.png');
-    //       }
-    //       this.weatcherData = res.data;
-    //     }
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
-    // },
     convertData(data) { // 地图数据转换
       let res = [];
       for (let i = 0; i < data.length; i++) {
@@ -441,10 +359,118 @@ export default {
             data: item[1].map((dataItem) => {
               return {
                 name: (dataItem[1].trueName) + (dataItem[1].total || dataItem[1].value),
+                color: 'red',
                 value: this.geoCoordMap[dataItem[1].name].concat([(dataItem[1].total || dataItem[1].value)])
               };
             })
-          }
+          }, {
+            type: 'map',
+            mapType: 'china',
+            label: {
+                normal: {
+                    show: true, //显示省份标签
+                    textStyle: {
+                        color: "blue"
+                    } //省份标签字体颜色
+                },
+                emphasis: { //对应的鼠标悬浮效果
+                    show: false,
+                    textStyle: {
+                        color: "#800080"
+                    }
+                }
+            },
+            aspectScale: 0.75,
+            zoom: 1.2,
+            itemStyle: {
+                normal: {
+                    borderWidth: .5, //区域边框宽度
+                    borderColor: '#009fe8', //区域边框颜色
+                    areaColor: "#ffefd5", //区域颜色
+                },
+                emphasis: {
+                    borderWidth: .5,
+                    borderColor: '#4b0082',
+                    areaColor: "#ffdead",
+                }
+            },
+            data: [
+            { name: '北京', selected: true, value: 1 },
+            { name: '天津', selected: true, value: 2 },
+            { name: '上海', selected: true, value: 3 },
+            { name: '重庆', selected: true, value: 4 },
+            { name: '河北', selected: true, value: 5 },
+            { name: '河南', selected: true, value: 6 },
+            { name: '云南', selected: true, value: 7 },
+            { name: '辽宁', selected: true, value: 8 },
+            { name: '黑龙江', selected: true, value: 9 },
+            { name: '湖南', selected: true, value: 10 },
+            { name: '安徽', selected: true, value: 11 },
+            { name: '山东', selected: true, value: 12 },
+            { name: '新疆', selected: true, value: 13 },
+            { name: '江苏', selected: true, value: 14 },
+            { name: '浙江', selected: true, value: 15 },
+            { name: '江西', selected: true, value: 16 },
+            { name: '湖北', selected: true, value: 17 },
+            { name: '广西', selected: true, value: 18 },
+            { name: '甘肃', selected: true, value: 19 },
+            { name: '山西', selected: true, value: 20 },
+            { name: '内蒙古', selected: true, value: 21 },
+            { name: '陕西', selected: true, value: 22 },
+            { name: '吉林', selected: true, value: 23 },
+            { name: '福建', selected: true, value: 24 },
+            { name: '贵州', selected: true, value: 25 },
+            { name: '广东', selected: true, value: 26 },
+            { name: '青海', selected: true, value: 27 },
+            { name: '西藏', selected: true, value: 28 },
+            { name: '四川', selected: true, value: 29 },
+            { name: '宁夏', selected: true, value: 30 },
+            { name: '海南', selected: true, value: 31 },
+            { name: '台湾', selected: true, value: 32 },
+            { name: '香港', selected: true, value: 33 },
+            { name: '澳门', selected: true, value: 34 }
+          ],
+          dataRange: {
+                x: '-1000 px', //图例横轴位置
+                y: '-1000 px', //图例纵轴位置
+                splitList: [
+                    { start: 1, end: 1, label: '北京', color: '#cfc5de' },
+                    { start: 2, end: 2, label: '天津', color: '#f1ebd1' },
+                    { start: 3, end: 3, label: '上海', color: '#feffdb' },
+                    { start: 4, end: 4, label: '重庆', color: '#e0cee4' },
+                    { start: 5, end: 5, label: '河北', color: '#fde8cd' },
+                    { start: 6, end: 6, label: '河南', color: '#e4f1d7' },
+                    { start: 7, end: 7, label: '云南', color: '#fffed7' },
+                    { start: 8, end: 8, label: '辽宁', color: '#e4f1d7' },
+                    { start: 9, end: 9, label: '黑龙江', color: '#e4f1d7' },
+                    { start: 10, end: 10, label: '湖南', color: '#fffed7' },
+                    { start: 11, end: 11, label: '安徽', color: '#fffed8' },
+                    { start: 12, end: 12, label: '山东', color: '#dccee7' },
+                    { start: 13, end: 13, label: '新疆', color: '#fffed7' },
+                    { start: 14, end: 14, label: '江苏', color: '#fce8cd' },
+                    { start: 15, end: 15, label: '浙江', color: '#ddceeb' },
+                    { start: 16, end: 16, label: '江西', color: '#e4f1d3' },
+                    { start: 17, end: 17, label: '湖北', color: '#fde8cd' },
+                    { start: 18, end: 18, label: '广西', color: '#fde8cd' },
+                    { start: 19, end: 19, label: '甘肃', color: '#fde8cd' },
+                    { start: 20, end: 20, label: '山西', color: '#fffdd6' },
+                    { start: 21, end: 21, label: '内蒙古', color: '#ddcfe6' },
+                    { start: 22, end: 22, label: '陕西', color: '#fad8e9' },
+                    { start: 23, end: 23, label: '吉林', color: '#fce8cd' },
+                    { start: 24, end: 24, label: '福建', color: '#fad8e8' },
+                    { start: 25, end: 25, label: '贵州', color: '#fad8e8' },
+                    { start: 26, end: 26, label: '广东', color: '#ddcfe8' },
+                    { start: 27, end: 27, label: '青海', color: '#fad8e9' },
+                    { start: 28, end: 28, label: '西藏', color: '#ddcfe6' },
+                    { start: 29, end: 29, label: '四川', color: '#e4f1d5' },
+                    { start: 30, end: 30, label: '宁夏', color: '#fefcd5' },
+                    { start: 31, end: 31, label: '海南', color: '#fad8e9' },
+                    { start: 32, end: 32, label: '台湾', color: '#fce8cd' },
+                    { start: 33, end: 33, label: '香港', color: '#dc9bbb' },
+                    { start: 34, end: 34, label: '澳门', color: '#e0f7cc' }
+                ]
+            }
+        }
         );
       });
 
@@ -470,6 +496,9 @@ export default {
         },
         geo: {
           map: "china",
+          top: 0,
+          bottom: 0,
+          regions:[{name: "北京", itemStyle: {color: 'red', areaColor: 'red', normal: {areaColor: 'red',}}}],
           label: {
             show: true,
             emphasis: {
@@ -491,9 +520,9 @@ export default {
             }
           }
         },
+        regions: [{name: "东北", itemStyle: {color: 'red', areaColor: 'red', normal: {areaColor: 'red',}}}],
         series: series
       }
-      console.log(series, option, 'Brand-----series')
 
       myChart.setOption(option, true);
 
@@ -531,22 +560,6 @@ export default {
         line-height: 0.75rem;
         letter-spacing: 1px;
       }
-      // .weather {
-      //   position: absolute;
-      //   left: 1.375rem;
-      //   top: 0.35rem;
-      //   font-size: 0.25rem;
-      //   color: rgba(126, 240, 255, .7);
-      //   img {
-      //     width: .45rem;
-      //   }
-      //   span {
-      //     display: inline-block;
-      //   }
-      //   .tem {
-      //     margin: 0 .1rem 0 .2rem;
-      //   }
-      // }
       .showTime {
         position: absolute;
         right: 1.375rem;
@@ -571,95 +584,29 @@ export default {
         }
       }
     }
+    .el-btn {
+      position: absolute;
+      z-index: 10;
+      top: 50px;
+      left: 50px;
+    }
     
     .mainbox {
+      position: relative;
       min-width: 1024px;
-      max-width: 1920px;
+      width: 100%;
       padding: 0.125rem 0.125rem 0;
       display: flex;
+      position: relative;
       height: calc(100% - 66px);
       .item {
-        flex: 3;
+        display: flex;
+        width: 100%;
+        height: 100%;
         &.center {
           flex: 5;
           margin: 0 0.125rem 0.1rem;
           overflow: hidden;
-
-          // .resume {
-          //   background: rgba(101, 132, 226, 0.1);
-          //   padding: 0.1875rem;
-          //   .resume-hd {
-          //     position: relative;
-          //     border: 1px solid rgba(25, 186, 139, 0.17);
-          //     ul {
-          //       display: flex;
-          //       %li-line {
-          //         content: "";
-          //         position: absolute;
-          //         height: 50%;
-          //         width: 1px;
-          //         background: rgba(255, 255, 255, 0.2);
-          //         top: 25%;
-          //       }
-          //       li {
-          //         position: relative;
-          //         flex: 1;
-          //         text-align: center;
-          //         height: 1.2rem;
-          //         line-height: 1.2rem;
-          //         font-size: 0.65rem;
-          //         color: #ffeb7b;
-          //         padding: 0.05rem 0;
-          //         font-family: 'DIGITALDREAMFAT';
-          //         font-weight: bold;
-          //         &:nth-child(2) {
-          //           &:after {
-          //             @extend %li-line;
-          //             right: 0;
-          //           }
-          //           &:before {
-          //             @extend %li-line;
-          //             left: 0;
-          //           }
-          //         }
-          //       }
-          //     }
-          //     &:before {
-          //       content: "";
-          //       position: absolute;
-          //       width: 30px;
-          //       height: 10px;
-          //       border-top: 2px solid #02a6b5;
-          //       border-left: 2px solid #02a6b5;
-          //       top: 0;
-          //       left: 0;
-          //     }
-          //     &:after {
-          //       content: "";
-          //       position: absolute;
-          //       width: 30px;
-          //       height: 10px;
-          //       border-bottom: 2px solid #02a6b5;
-          //       border-right: 2px solid #02a6b5;
-          //       right: 0;
-          //       bottom: 0;
-          //     }
-          //   }
-          //   .resume-bd {
-          //     ul {
-          //       display: flex;
-          //       li {
-          //         flex: 1;
-          //         height: 0.5rem;
-          //         line-height: 0.5rem;
-          //         text-align: center;
-          //         font-size: 0.225rem;
-          //         color: rgba(255, 255, 255, 0.7);
-          //         padding-top: 0.125rem;
-          //       }
-          //     }
-          //   }
-          // }
         }
         
         %map-style {
@@ -675,14 +622,19 @@ export default {
         }
         .map {
           position: relative;
+          flex: 1;
           height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           .chart {
             position: absolute;
             top: 0;
             left: 0;
             z-index: 5;
             height: 100%;
-            width: 100%;
+            width: 140%;
           }
           .map1 {
             @extend %map-style;
@@ -706,78 +658,6 @@ export default {
             animation: rotate1 10s linear infinite;
           }
         }
-        // .panel {
-        //   position: relative;
-        //   height: 3.875rem;
-        //   border: 1px solid rgba(25, 186, 139, 0.17);
-        //   background: rgba(255, 255, 255, 0.04) url(../assets/img/brand/line.png);
-        //   padding: 0 0.1875rem 0;
-        //   margin-bottom: 0.1875rem;
-        //   &:before {
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     content: "";
-        //     width: 10px;
-        //     height: 10px;
-        //     border-top: 2px solid #02a6b5;
-        //     border-left: 2px solid #02a6b5;
-        //   }
-        //   &:after {
-        //     position: absolute;
-        //     top: 0;
-        //     right: 0;
-        //     content: "";
-        //     width: 10px;
-        //     height: 10px;
-        //     border-top: 2px solid #02a6b5;
-        //     border-right: 2px solid #02a6b5;
-        //   }
-
-        //   .panel-footer {
-        //     position: absolute;
-        //     left: 0;
-        //     bottom: 0;
-        //     width: 100%;
-        //     &:before {
-        //       position: absolute;
-        //       bottom: 0;
-        //       left: 0;
-        //       content: "";
-        //       width: 10px;
-        //       height: 10px;
-        //       border-bottom: 2px solid #02a6b5;
-        //       border-left: 2px solid #02a6b5;
-        //     }
-        //     &:after {
-        //       position: absolute;
-        //       bottom: 0;
-        //       right: 0;
-        //       content: "";
-        //       width: 10px;
-        //       height: 10px;
-        //       border-bottom: 2px solid #02a6b5;
-        //       border-right: 2px solid #02a6b5;
-        //     }
-        //   }
-
-        //   h2 {
-        //     height: 0.6rem;
-        //     line-height: 0.6rem;
-        //     text-align: center;
-        //     color: #fff;
-        //     font-size: 0.225rem;
-        //     font-weight: 400;
-        //     a {
-        //       margin: 0 0.1875rem;
-        //       color: #fff;
-        //       text-decoration: none;
-        //     }
-        //   }
-        //   .chart {
-        //     height: 3rem;
-        //   }
-        // }
       }
 
     }
